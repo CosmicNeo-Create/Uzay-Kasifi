@@ -1,0 +1,607 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mars - Uzay Kaşifi</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background: #050510;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.bilgi {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #111122;
+    border-radius: 25px;
+    border: 2px solid #444466;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-top: 35px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.istatistik {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.kart {
+    width: 190px;
+    padding: 20px;
+    background: #202038;
+    border-radius: 18px;
+}
+
+.kart h3 {
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.kart p {
+    font-size: 17px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 16px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.acilir {
+    display: none;
+    margin-top: 30px;
+    padding: 30px;
+    background: #19192d;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.acilir h2 {
+    text-align: center;
+}
+
+.acilir p {
+    font-size: 18px;
+}
+
+.geri {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 25px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.geri:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="bilgi">
+
+<h1>MARS</h1>
+
+<p>
+Güneş Sistemi'nin kızıl gezegeni
+</p>
+
+<h2>Mars Hakkında</h2>
+
+<p>
+Mars, Güneş'e dördüncü en yakın gezegendir ve Dünya gibi
+kayalık bir gezegendir. Yüzeyindeki demir minerallerinin
+oksitlenmesi nedeniyle kırmızımsı bir renge sahiptir.
+</p>
+
+<p>
+Mars'ın atmosferi Dünya'nınkinden çok daha incedir.
+Geçmişte yüzeyinde sıvı su bulunmuş olabileceğini gösteren
+çok sayıda jeolojik kanıt vardır.
+</p>
+
+<h2>Mars'ın Özellikleri</h2>
+
+<div class="istatistik">
+
+<div class="kart">
+<h3>Güneşe Uzaklık</h3>
+<p>1,52 AB</p>
+</div>
+
+<div class="kart">
+<h3>Ortalama Uzaklık</h3>
+<p>Yaklaşık 228 milyon km</p>
+</div>
+
+<div class="kart">
+<h3>Çap</h3>
+<p>Yaklaşık 6.779 km</p>
+</div>
+
+<div class="kart">
+<h3>Bir Yıl</h3>
+<p>687 Dünya günü</p>
+</div>
+
+<div class="kart">
+<h3>Bir Gün</h3>
+<p>24 saat 37 dakika</p>
+</div>
+
+<div class="kart">
+<h3>Uydular</h3>
+<p>2</p>
+</div>
+
+<div class="kart">
+<h3>Halkalar</h3>
+<p>Yok</p>
+</div>
+
+<div class="kart">
+<h3>Yapısı</h3>
+<p>Kayalık gezegen</p>
+</div>
+
+<div class="kart">
+<h3>Ortalama Sıcaklık</h3>
+<p>Yaklaşık -63°C</p>
+</div>
+
+<div class="kart">
+<h3>Atmosfer</h3>
+<p>Çoğunlukla karbondioksit</p>
+</div>
+
+</div>
+
+
+<button onclick="ac('fazla')">
+Daha Fazla Bilgi
+</button>
+
+<div id="fazla" class="acilir">
+
+<h2>Mars Hakkında Çok Daha Fazla Bilgi</h2>
+
+<h3>Kızıl Rengi</h3>
+
+<p>
+Mars'ın kırmızı görünmesinin temel nedeni yüzeyindeki demir
+içeren minerallerin oksitlenmesidir. Bu maddeler zaman içinde
+pas benzeri demir oksitler oluşturmuştur. Gezegenin yüzeyindeki
+toz da bu maddeleri içerdiği için Mars uzaktan kırmızı görünür.
+</p>
+
+<h3>Kayalık Yapısı</h3>
+
+<p>
+Mars, Merkür, Venüs ve Dünya gibi kayalık bir gezegendir.
+Yüzeyinde kraterler, vadiler, ovalar, dağlar ve volkanlar
+bulunur. Mars'ın iç yapısında çekirdek, manto ve kabuk
+bulunduğu düşünülmektedir.
+</p>
+
+<h3>Atmosfer</h3>
+
+<p>
+Mars'ın atmosferi Dünya'nın atmosferinden çok daha incedir.
+Atmosferin büyük bölümü karbondioksitten oluşur ve daha az
+miktarda azot ile argon bulunur. İnce atmosfer nedeniyle
+Mars'ın yüzeyindeki basınç Dünya'dakinden çok daha düşüktür.
+</p>
+
+<h3>Sıcaklık</h3>
+
+<p>
+Mars genel olarak çok soğuk bir gezegendir. Ortalama yüzey
+sıcaklığı yaklaşık -63°C civarındadır. Ancak sıcaklık bölgeye,
+mevsime ve günün saatine göre önemli ölçüde değişebilir.
+</p>
+
+<h3>Su Buzu</h3>
+
+<p>
+Mars'ın kutup bölgelerinde su buzu bulunur. Bilim insanları
+gezegenin yüzeyinin altında da önemli miktarda su buzu
+bulunduğuna dair kanıtlar elde etmiştir. Bu buzlar Mars'ın
+geçmişini anlamak açısından büyük önem taşır.
+</p>
+
+<h3>Geçmişte Sıvı Su</h3>
+
+<p>
+Mars'ın yüzeyinde geçmişte nehirlerin ve göllerin bulunduğunu
+gösteren birçok jeolojik iz vardır. Kurumuş nehir vadileri,
+delta oluşumları ve bazı mineraller geçmişte sıvı suyun
+varlığına işaret eder.
+</p>
+
+<h3>Olympus Mons</h3>
+
+<p>
+Olympus Mons, Mars'ta bulunan dev bir volkandır. Güneş
+Sistemi'ndeki bilinen en büyük volkanlardan biridir.
+Çok geniş bir alana yayılan bu yapı Mars'ın güçlü volkanik
+geçmişinin önemli kanıtlarından biridir.
+</p>
+
+<h3>Valles Marineris</h3>
+
+<p>
+Valles Marineris, Mars'ın yüzeyinde bulunan devasa bir
+kanyon sistemidir. Binlerce kilometre boyunca uzanan bu
+yapı, Dünya'daki Grand Canyon'dan çok daha büyük ölçektedir.
+</p>
+
+<h3>Toz Fırtınaları</h3>
+
+<p>
+Mars'ta küçük yerel toz fırtınalarının yanı sıra çok geniş
+alanları etkileyebilen büyük fırtınalar da meydana gelir.
+Bazı büyük fırtınalar gezegenin önemli bir bölümünü kaplayan
+toz bulutları oluşturabilir.
+</p>
+
+<h3>Mevsimler</h3>
+
+<p>
+Mars'ın ekseni eğik olduğu için Dünya gibi mevsimleri vardır.
+Ancak Mars'ın Güneş etrafındaki bir turu daha uzun sürdüğü için
+Mars'taki mevsimler Dünya'dakilerden daha uzun sürer.
+</p>
+
+<h3>Phobos</h3>
+
+<p>
+Phobos, Mars'ın iki doğal uydusundan biridir ve gezegene
+oldukça yakındır. Küçük ve düzensiz şekilli olan Phobos'un
+yüzeyinde çok sayıda krater bulunur.
+</p>
+
+<h3>Deimos</h3>
+
+<p>
+Deimos, Mars'ın diğer doğal uydusudur. Phobos'tan daha küçük
+olan Deimos, Mars'tan daha uzakta dolanır. Yüzeyi koyu renkli
+ve kraterlerle kaplıdır.
+</p>
+
+<h3>Manyetik Alan</h3>
+
+<p>
+Mars'ın günümüzde Dünya gibi güçlü ve küresel bir manyetik
+alanı bulunmaz. Ancak Mars'ın kabuğunda geçmişte gezegenin
+manyetik alanına sahip olduğunu gösteren izler vardır.
+</p>
+
+<h3>Geçmişteki Atmosfer</h3>
+
+<p>
+Bilimsel kanıtlar Mars'ın geçmişte bugünkünden daha kalın
+bir atmosfere sahip olmuş olabileceğini göstermektedir.
+Atmosferin zamanla incelmesi Mars'ın daha soğuk ve kuru
+bir gezegene dönüşmesinde önemli rol oynamış olabilir.
+</p>
+
+<h3>Yaşam Araştırmaları</h3>
+
+<p>
+Mars'taki araştırmaların önemli amaçlarından biri geçmişte
+yaşam için uygun koşulların bulunup bulunmadığını anlamaktır.
+Şimdiye kadar Mars'ta dünya dışı yaşamın kesin kanıtı
+bulunmamıştır.
+</p>
+
+<h3>Mars Gezginleri</h3>
+
+<p>
+Spirit, Opportunity, Curiosity ve Perseverance gibi gezgin
+robotlar Mars yüzeyinde bilimsel araştırmalar yaptı.
+Bu araçlar kayaları, toprağı, atmosferi ve geçmişteki
+çevre koşullarını incelemek için çeşitli cihazlar kullandı.
+</p>
+
+<h3>Curiosity</h3>
+
+<p>
+Curiosity gezgini 2012 yılında Mars'a indi. Gale Krateri'nde
+kayaları ve toprağı inceleyerek Mars'ın geçmişte yaşam için
+uygun çevre koşullarına sahip olup olmadığını araştırdı.
+</p>
+
+<h3>Perseverance</h3>
+
+<p>
+Perseverance 2021 yılında Mars'a indi ve Jezero Krateri'nde
+araştırmalar yapmaya başladı. Eski bir göl ortamının izlerini
+inceledi ve gelecekte Dünya'ya getirilebilecek kaya örnekleri
+topladı.
+</p>
+
+<h3>Ingenuity</h3>
+
+<p>
+Ingenuity, başka bir gezegende kontrollü ve motorlu uçuş
+gerçekleştiren ilk araç oldu. Mars'ın ince atmosferinde
+uçuşların mümkün olduğunu göstererek gelecekteki keşifler
+için önemli bilgiler sağladı.
+</p>
+
+<h3>Uzaydan Mars</h3>
+
+<p>
+Mars, teleskoplarla Dünya'dan gözlemlenebilen gezegenlerden
+biridir. Uzay araçları sayesinde yüzeyi çok daha ayrıntılı
+şekilde haritalanmış ve binlerce görüntü elde edilmiştir.
+</p>
+
+<h3>Gelecekte Mars</h3>
+
+<p>
+Mars gelecekteki robotik ve insanlı uzay araştırmalarının
+en önemli hedeflerinden biridir. Bilim insanları gezegenin
+geçmişini, su kaynaklarını, jeolojisini ve yaşam için uygun
+olup olmadığını daha ayrıntılı araştırmaya devam edecektir.
+</p>
+
+</div>
+
+
+<button onclick="ac('gecmis')">
+Mars'ın Geçmişi
+</button>
+
+<div id="gecmis" class="acilir">
+
+<h2>Mars'ın Geçmişi</h2>
+
+<h3>Güneş Sistemi'nin Oluşumu</h3>
+
+<p>
+Mars yaklaşık 4,5 milyar yıl önce Güneş Sistemi'nin oluşumu
+sırasında meydana geldi. Genç Güneş'in çevresindeki gaz ve
+toz diskinde bulunan kaya parçaları zamanla birleşerek
+Mars'ı oluşturdu.
+</p>
+
+<h3>İlk Mars</h3>
+
+<p>
+Mars'ın ilk dönemlerinde gezegen bugünkünden daha sıcak ve
+jeolojik olarak daha aktifti. İç kısmındaki ısı, volkanik
+faaliyetlerin ve yüzey değişimlerinin daha güçlü olmasını
+sağladı.
+</p>
+
+<h3>Erken Atmosfer</h3>
+
+<p>
+Mars'ın geçmişte daha kalın bir atmosfere sahip olduğu
+düşünülmektedir. Daha kalın atmosfer, yüzeyde sıvı suyun
+bulunabileceği koşulların oluşmasına yardımcı olmuş olabilir.
+</p>
+
+<h3>Eski Su Akıntıları</h3>
+
+<p>
+Mars'ın eski yüzeyinde suyun akmış olabileceğini gösteren
+çok sayıda vadi ve kanal bulunmuştur. Bu yapılar gezegenin
+geçmişte bugünkünden daha ıslak bir ortam olabileceğini
+göstermektedir.
+</p>
+
+<h3>Eski Göller</h3>
+
+<p>
+Mars'ta geçmişte göllerin bulunduğu düşünülen birçok bölge
+keşfedilmiştir. Gale ve Jezero kraterleri bu konuda önemli
+araştırma alanlarıdır.
+</p>
+
+<h3>Volkanik Geçmiş</h3>
+
+<p>
+Mars'ın geçmişinde büyük ölçekli volkanik faaliyetler yaşandı.
+Olympus Mons ve Tharsis bölgesindeki dev volkanik yapılar
+bu jeolojik geçmişin önemli parçalarıdır.
+</p>
+
+<h3>Manyetik Alanın Kaybolması</h3>
+
+<p>
+Mars'ın geçmişte küresel bir manyetik alana sahip olduğu
+düşünülmektedir. Zamanla bu manyetik alanın büyük ölçüde
+kaybolması, atmosferin Güneş rüzgârıyla etkileşimini
+değiştirmiş olabilir.
+</p>
+
+<h3>Atmosferin İncelmesi</h3>
+
+<p>
+Uzun zaman içerisinde Mars atmosferinin önemli bir bölümü
+kayboldu. Atmosferin incelmesi yüzeyde sıvı suyun uzun süre
+kararlı kalmasını zorlaştırdı ve gezegenin daha soğuk,
+kuru bir hale gelmesine katkıda bulundu.
+</p>
+
+<h3>Yüzeyin Değişimi</h3>
+
+<p>
+Mars'ın yüzeyi milyarlarca yıl boyunca volkanizma, çarpışmalar,
+rüzgâr, buz ve geçmişteki su hareketleri tarafından şekillendirildi.
+Bu süreçlerin izleri bugün kraterlerde, vadilerde ve kaya
+oluşumlarında görülebilir.
+</p>
+
+<h3>Eski İnsan Gözlemleri</h3>
+
+<p>
+Mars Dünya'dan çıplak gözle görülebildiği için çok eski
+çağlardan beri insanlar tarafından gözlemlenmektedir.
+Gezegenin kırmızı rengi onu diğer gök cisimlerinden ayırmıştır.
+</p>
+
+<h3>İlk Teleskop Gözlemleri</h3>
+
+<p>
+Teleskopların gelişmesiyle Mars'ın yüzeyindeki açık ve koyu
+bölgeler daha ayrıntılı şekilde incelenmeye başladı. Ancak
+eski teleskoplarla görülen bazı yüzey özelliklerinin daha
+sonra yanlış yorumlandığı anlaşıldı.
+</p>
+
+<h3>İlk Uzay Görevleri</h3>
+
+<p>
+Mars'a gönderilen ilk uzay araçları 1960'lı yıllarda gezegene
+ulaşmaya başladı. Bu görevler Mars'ın atmosferi ve yüzeyi
+hakkında Dünya'dan yapılan gözlemlerden çok daha ayrıntılı
+bilgiler sağladı.
+</p>
+
+<h3>Mariner Görevleri</h3>
+
+<p>
+NASA'nın Mariner görevleri Mars'ın yakınından geçerek önemli
+fotoğraflar ve bilimsel veriler gönderdi. Özellikle Mariner 4,
+Mars'ın yüzeyine ilişkin ilk yakın görüntülerden bazılarını
+Dünya'ya ulaştırdı.
+</p>
+
+<h3>Viking Görevleri</h3>
+
+<p>
+NASA'nın Viking 1 ve Viking 2 araçları 1976 yılında Mars'a
+indi. Bu görevler yüzeyde deneyler yaptı ve Mars toprağı ile
+atmosferi hakkında önemli bilgiler topladı.
+</p>
+
+<h3>Spirit ve Opportunity</h3>
+
+<p>
+Spirit ve Opportunity gezginleri Mars'ın yüzeyinde uzun süre
+çalışarak kayaları ve toprakları inceledi. Özellikle Opportunity,
+geçmişte Mars'ta sıvı su bulunmuş olabileceğine dair önemli
+kanıtların anlaşılmasına katkıda bulundu.
+</p>
+
+<h3>Curiosity Dönemi</h3>
+
+<p>
+Curiosity 2012 yılında Mars'a indi ve Gale Krateri'ni
+araştırmaya başladı. Araç, geçmişte Mars'ta mikrobiyal yaşam
+için uygun olabilecek çevresel koşulların bulunduğuna dair
+önemli bilgiler elde etti.
+</p>
+
+<h3>Perseverance Dönemi</h3>
+
+<p>
+Perseverance 2021 yılında Jezero Krateri'ne indi. Eski göl
+ortamını inceleyen araç, kaya ve toprak örneklerini gelecekte
+Dünya'da ayrıntılı olarak incelenebilmesi amacıyla toplamaya
+başladı.
+</p>
+
+<h3>Gelecekteki Mars Araştırmaları</h3>
+
+<p>
+Mars'ın geçmişi hakkında hâlâ cevaplanmamış birçok soru vardır.
+Bilim insanları özellikle gezegenin eski atmosferini, su
+kaynaklarını ve geçmişte yaşam için uygun koşulların ne kadar
+uzun süre devam ettiğini araştırmaktadır.
+</p>
+
+<h3>İnsanlı Mars Görevleri</h3>
+
+<p>
+Gelecekte Mars'a insan gönderilmesi uzay araştırmalarının
+önemli hedeflerinden biridir. Böyle bir görev için yaşam
+destek sistemleri, radyasyondan korunma, su kullanımı ve
+uzun süreli uzay yolculuğu gibi birçok konu üzerinde çalışmalar
+yapılması gerekir.
+</p>
+
+<h3>Mars'ın Geleceği</h3>
+
+<p>
+Mars, Güneş Sistemi'ni ve kayalık gezegenlerin geçmişini
+anlamak için çok önemli bir araştırma alanıdır. Yeni görevler
+sayesinde Mars'ın nasıl değiştiği ve geçmişteki koşullarının
+Dünya'ya ne kadar benzediği hakkında daha fazla bilgi elde
+edilmesi beklenmektedir.
+</p>
+
+</div>
+
+
+<a class="geri" href="index.html">
+Gezegenlere Dön
+</a>
+
+</div>
+
+
+<script>
+
+function ac(id) {
+
+    const bilgi = document.getElementById(id);
+
+    if (bilgi.style.display === "block") {
+        bilgi.style.display = "none";
+    } else {
+        bilgi.style.display = "block";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
