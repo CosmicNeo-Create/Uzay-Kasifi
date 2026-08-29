@@ -1,0 +1,631 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Satürn - Uzay Kaşifi</title>
+
+<style>
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background: #050510;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.bilgi {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #111122;
+    border-radius: 25px;
+    border: 2px solid #444466;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-top: 35px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.istatistik {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.kart {
+    width: 190px;
+    padding: 20px;
+    background: #202038;
+    border-radius: 18px;
+}
+
+.kart h3 {
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.kart p {
+    font-size: 17px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 16px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.acilir {
+    display: none;
+    margin-top: 30px;
+    padding: 30px;
+    background: #19192d;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.acilir h2 {
+    text-align: center;
+}
+
+.acilir p {
+    font-size: 18px;
+}
+
+.geri {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 25px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.geri:hover {
+    transform: scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bilgi">
+
+<h1>SATÜRN</h1>
+
+<p>
+Güneş Sistemi'nin ünlü halkalı gezegeni
+</p>
+
+<h2>Satürn Hakkında</h2>
+
+<p>
+Satürn, Güneş'e altıncı en yakın gezegendir ve Güneş Sistemi'nin
+ikinci en büyük gezegenidir. Jüpiter gibi bir gaz devidir ve
+büyük ölçüde hidrojen ile helyumdan oluşur.
+</p>
+
+<p>
+Satürn özellikle geniş ve parlak halkalarıyla tanınır.
+Gezegenin atmosferinde güçlü rüzgârlar, büyük fırtınalar ve
+farklı renklerde bulut kuşakları bulunur.
+</p>
+
+<h2>Satürn'ün Özellikleri</h2>
+
+<div class="istatistik">
+
+<div class="kart">
+<h3>Güneşe Uzaklık</h3>
+<p>Yaklaşık 1,43 milyar km</p>
+</div>
+
+<div class="kart">
+<h3>Çap</h3>
+<p>Yaklaşık 116.460 km</p>
+</div>
+
+<div class="kart">
+<h3>Bir Yıl</h3>
+<p>29,45 Dünya yılı</p>
+</div>
+
+<div class="kart">
+<h3>Bir Gün</h3>
+<p>Yaklaşık 10,7 saat</p>
+</div>
+
+<div class="kart">
+<h3>Uydular</h3>
+<p>274</p>
+</div>
+
+<div class="kart">
+<h3>Halkalar</h3>
+<p>Var</p>
+</div>
+
+<div class="kart">
+<h3>Yapısı</h3>
+<p>Gaz devi</p>
+</div>
+
+<div class="kart">
+<h3>Ortalama Sıcaklık</h3>
+<p>Yaklaşık -140°C</p>
+</div>
+
+</div>
+
+
+<button onclick="ac('fazla')">
+Daha Fazla Bilgi
+</button>
+
+<div id="fazla" class="acilir">
+
+<h2>Satürn Hakkında Çok Daha Fazla Bilgi</h2>
+
+<h3>Halkaları</h3>
+
+<p>
+Satürn'ün halkaları çoğunlukla su buzu, kaya parçaları ve
+çok küçük toz parçacıklarından oluşur. Bu parçaların boyutları
+çok küçük taneciklerden birkaç metre büyüklüğündeki parçalara
+kadar değişebilir.
+</p>
+
+<p>
+Halkalar gezegenin çevresinde çok geniş bir alana yayılır.
+Ancak halkaların büyük bölümü oldukça ince bir yapıya sahiptir.
+Dünya'dan bakıldığında Satürn'ün en dikkat çekici özelliği
+halkalarıdır.
+</p>
+
+<h3>Gaz Devi</h3>
+
+<p>
+Satürn'ün Dünya gibi üzerinde yürüyebileceğimiz katı bir yüzeyi
+yoktur. Gezegenin dış kısmı çoğunlukla hidrojen ve helyumdan
+oluşan kalın atmosferden meydana gelir.
+</p>
+
+<p>
+Gezegenin derinliklerine doğru gidildikçe basınç ve sıcaklık
+çok büyük değerlere ulaşır. Daha derin bölgelerde hidrojenin
+farklı fiziksel özellikler gösterdiği düşünülmektedir.
+</p>
+
+<h3>Satürn'ün Şekli</h3>
+
+<p>
+Satürn çok hızlı döndüğü için kutuplardan biraz basık,
+ekvator bölgesinden ise daha geniştir. Bu nedenle mükemmel
+bir küre şeklinde değildir.
+</p>
+
+<p>
+Satürn'ün kendi ekseni etrafındaki dönüşü yaklaşık 10,7 saat
+sürer. Bu hızlı dönüş gezegenin genel şeklini önemli ölçüde
+etkiler.
+</p>
+
+<h3>Titan</h3>
+
+<p>
+Titan, Satürn'ün en büyük uydusudur ve Güneş Sistemi'ndeki
+en ilginç uydulardan biridir. Kalın ve azot bakımından zengin
+bir atmosferi vardır.
+</p>
+
+<p>
+Titan'ın yüzeyinde sıvı su yerine metan ve etandan oluşan
+göller ve denizler bulunur. Ayrıca yüzeyinin altında
+su bakımından zengin bir okyanus bulunabileceği düşünülmektedir.
+</p>
+
+<h3>Enceladus</h3>
+
+<p>
+Enceladus küçük ve buzlu bir uydudur. Yüzeyinin altında
+küresel bir sıvı su okyanusu bulunabileceğine dair güçlü
+kanıtlar elde edilmiştir.
+</p>
+
+<p>
+Enceladus'un güney kutbu bölgesindeki çatlaklardan uzaya
+su buharı ve buz parçacıkları püsküren jetler gözlemlenmiştir.
+Bu püskürmeler Satürn'ün halkalarından birinin oluşmasına
+katkıda bulunur.
+</p>
+
+<h3>Manyetik Alan</h3>
+
+<p>
+Satürn güçlü bir manyetik alana sahiptir. Bu manyetik alan
+gezegenin çevresinde büyük bir manyetosfer oluşturur ve
+Güneş'ten gelen yüklü parçacıklarla etkileşir.
+</p>
+
+<p>
+Satürn'ün manyetik alanı Dünya'nın manyetik alanından çok daha
+güçlüdür. Manyetik alanın etkileri kutuplarda görülen
+auroraların oluşmasına da katkıda bulunur.
+</p>
+
+<h3>Atmosfer</h3>
+
+<p>
+Satürn'ün atmosferinin büyük bölümü hidrojen ve helyumdan oluşur.
+Atmosferde ayrıca daha küçük miktarlarda metan, amonyak ve
+başka kimyasal maddeler bulunur.
+</p>
+
+<p>
+Atmosferde farklı renklerde bulut kuşakları görülür.
+Gezegende zaman zaman çok büyük fırtınalar meydana gelir ve
+bunlar gezegenin geniş bölgelerini etkileyebilir.
+</p>
+
+<h3>Kuzey Kutbundaki Altıgen</h3>
+
+<p>
+Satürn'ün kuzey kutbunda çok ilginç bir altıgen şekilli
+atmosfer yapısı bulunur. Bu yapı yüzlerce kilometre genişliğindedir
+ve uzun yıllardır gözlemlenmektedir.
+</p>
+
+<p>
+Altıgen yapı bir fırtına sistemiyle ilişkilidir. Bilim insanları
+bu yapının oluşumunu ve uzun süre devam edebilmesini anlamak
+için atmosfer hareketlerini incelemektedir.
+</p>
+
+<h3>Rüzgârlar</h3>
+
+<p>
+Satürn'ün atmosferinde çok güçlü rüzgârlar bulunur.
+Bazı bölgelerde rüzgâr hızları Dünya'daki en güçlü fırtınalardan
+çok daha yüksek değerlere ulaşabilir.
+</p>
+
+<p>
+Bu güçlü rüzgârların oluşmasında Satürn'ün hızlı dönüşü,
+atmosfer yapısı ve gezegenin içinden gelen enerji önemli
+rol oynar.
+</p>
+
+<h3>Uyduları</h3>
+
+<p>
+Satürn'ün çok sayıda doğal uydusu vardır. Bu uyduların
+boyutları küçük düzensiz cisimlerden Titan gibi büyük
+uydularda kadar değişir.
+</p>
+
+<p>
+Uyduların her biri farklı özelliklere sahiptir. Titan'ın
+kalın atmosferi, Enceladus'un buzlu yüzeyi ve Iapetus'un
+iki farklı renkli görünümü bilim insanlarının özellikle
+ilgisini çekmektedir.
+</p>
+
+<h3>Yoğunluğu</h3>
+
+<p>
+Satürn'ün ortalama yoğunluğu sudan daha düşüktür. Bu özellik,
+Satürn'ün diğer gezegenlerden farklı ve ilginç özelliklerinden
+biridir.
+</p>
+
+<p>
+Ancak bu, Satürn'ün gerçekten bir su küvetinde yüzebileceği
+anlamına gelmez. Satürn'ün uygun büyüklükte bir su ortamına
+konulması fiziksel olarak mümkün değildir.
+</p>
+
+<h3>Uzay Araştırmaları</h3>
+
+<p>
+Satürn bugüne kadar birçok uzay aracı tarafından araştırılmıştır.
+Pioneer 11, Voyager 1 ve Voyager 2 gezegenin yakınından geçerek
+önemli bilgiler toplamıştır.
+</p>
+
+<p>
+Cassini-Huygens görevi ise Satürn sistemi hakkında şimdiye kadar
+elde edilen en ayrıntılı bilgilerin büyük bölümünü sağlamıştır.
+Görev sırasında gezegen, halkalar ve birçok uydu uzun süre
+boyunca incelenmiştir.
+</p>
+
+<h3>Cassini-Huygens</h3>
+
+<p>
+Cassini uzay aracı Satürn'ün yörüngesine 2004 yılında girdi.
+Yıllarca gezegenin atmosferini, halkalarını, manyetik alanını
+ve uydularını araştırdı.
+</p>
+
+<p>
+Görevin Huygens bölümü 2005 yılında Titan'ın yüzeyine indi.
+Bu olay, Dünya dışında başka bir uydunun yüzeyine yapılan
+önemli inişlerden biri oldu.
+</p>
+
+<h3>Satürn'ün İç Yapısı</h3>
+
+<p>
+Satürn'ün merkezinde ağır elementlerden oluşan yoğun bir çekirdek
+bulunduğu düşünülmektedir. Bunun çevresinde metalik hidrojen ve
+moleküler hidrojen bakımından zengin katmanlar bulunur.
+</p>
+
+<p>
+Gezegenin iç kısmı çok yüksek basınç ve sıcaklık altındadır.
+Satürn'ün içinden gelen enerji, atmosferindeki hava olaylarının
+oluşmasına da katkıda bulunur.
+</p>
+
+</div>
+
+
+<button onclick="ac('gecmis')">
+Satürn'ün Geçmişi
+</button>
+
+<div id="gecmis" class="acilir">
+
+<h2>Satürn'ün Geçmişi</h2>
+
+<h3>Oluşumu</h3>
+
+<p>
+Satürn yaklaşık 4,5 milyar yıl önce Güneş Sistemi'nin oluşumu
+sırasında meydana geldi. Genç Güneş'in çevresindeki gaz ve
+toz diskinde bulunan maddeler zamanla bir araya gelerek
+gezegenin oluşmasını sağladı.
+</p>
+
+<p>
+Satürn'ün oluşumundan sonra çevresindeki maddelerin bir kısmı
+gezegenin uydularını ve halka sistemini oluşturdu. Gezegenin
+büyük kütlesi, oluştuğu bölgedeki gazların önemli bir bölümünü
+çekmesine yardımcı oldu.
+</p>
+
+<h3>Genç Satürn</h3>
+
+<p>
+Satürn'ün ilk dönemlerinde gezegen günümüzde olduğundan çok
+daha sıcak ve enerjik durumdaydı. Zaman içinde uzaya enerji
+yayarak yavaş yavaş soğumaya başladı.
+</p>
+
+<p>
+Gezegenin iç yapısı milyarlarca yıl boyunca gelişmeye devam etti.
+Bugün gözlemlediğimiz atmosfer ve halka sistemi de uzun bir
+kozmik geçmişin sonucudur.
+</p>
+
+<h3>Halkaların Geçmişi</h3>
+
+<p>
+Satürn'ün halkalarının tam olarak ne zaman oluştuğu hâlâ
+araştırılan bir konudur. Bazı bilimsel çalışmalar halkaların
+gezegenin oluşumundan çok daha sonra meydana gelmiş olabileceğini
+öne sürmektedir.
+</p>
+
+<p>
+Başka araştırmalar ise halkaların daha eski olabileceğini
+düşünmektedir. Halkaların yaşı ve nasıl oluştuğu konusunda
+bilim insanları yeni veriler toplamaya devam etmektedir.
+</p>
+
+<h3>Eski Gözlemler</h3>
+
+<p>
+Satürn çıplak gözle Dünya'dan görülebildiği için binlerce yıldır
+insanlar tarafından gözlemlenmektedir. Eski uygarlıklar gezegenin
+gökyüzündeki hareketlerini kaydetmiş ve ona farklı isimler vermiştir.
+</p>
+
+<p>
+Satürn'ün çok yavaş hareket etmesi ve parlak görünmesi onu
+eski gökbilimcilerin dikkat ettiği önemli gök cisimlerinden
+biri haline getirmiştir.
+</p>
+
+<h3>Adının Kökeni</h3>
+
+<p>
+Satürn adı Roma mitolojisindeki Saturnus adlı tanrıdan gelir.
+Bu isim daha sonra gezegenin adı olarak kullanılmaya başlanmıştır.
+</p>
+
+<p>
+Satürn'ün farklı uygarlıklarda farklı isimleri bulunuyordu.
+Gezegenin adı zaman içinde astronomi geleneğinde günümüzdeki
+haline ulaştı.
+</p>
+
+<h3>Teleskop Dönemi</h3>
+
+<p>
+1610 yılında Galileo Galilei Satürn'ü teleskopla gözlemledi.
+Ancak kullandığı teleskop yeterince güçlü olmadığı için
+halkaların gerçek yapısını anlayamadı.
+</p>
+
+<p>
+Daha gelişmiş teleskoplarla yapılan gözlemler sonucunda
+Satürn'ün çevresinde geniş bir halka sisteminin bulunduğu
+anlaşıldı. Bu keşif gezegenin astronomideki önemini daha da artırdı.
+</p>
+
+<h3>Voyager Görevleri</h3>
+
+<p>
+Voyager 1 ve Voyager 2, Satürn'ün yanından geçerek gezegenin
+ve uydularının daha ayrıntılı görüntülerini gönderdi.
+Bu görevler Satürn'ün halka sistemi ve uyduları hakkında
+önemli bilgiler sağladı.
+</p>
+
+<p>
+Voyager araçları özellikle Titan ve diğer büyük uyduların
+daha önce görülmemiş özelliklerini ortaya çıkardı. Ayrıca
+Satürn'ün atmosferindeki ayrıntılı yapılar incelendi.
+</p>
+
+<h3>Cassini-Huygens Görevi</h3>
+
+<p>
+Cassini-Huygens görevi 1997 yılında Dünya'dan fırlatıldı ve
+2004 yılında Satürn sistemine ulaştı. Cassini yıllarca Satürn'ün
+yörüngesinde çalışarak çok büyük miktarda bilimsel veri topladı.
+</p>
+
+<p>
+Huygens iniş aracı 2005 yılında Titan'ın yüzeyine indi.
+Titan'ın atmosferi ve yüzeyi hakkında doğrudan ölçümler yaptı
+ve Dünya'ya önemli bilgiler gönderdi.
+</p>
+
+<h3>Enceladus Keşifleri</h3>
+
+<p>
+Cassini görevi Enceladus'un güney kutbundan uzaya doğru
+püsküren buz ve su buharı jetlerini gözlemledi. Bu gözlemler,
+uydunun altında sıvı su bulunabileceğine dair önemli kanıtlar sağladı.
+</p>
+
+<p>
+Bu keşif Enceladus'u Güneş Sistemi'nde yaşam için uygun
+ortamların araştırıldığı en önemli gök cisimlerinden biri
+haline getirdi.
+</p>
+
+<h3>Titan Araştırmaları</h3>
+
+<p>
+Cassini ve Huygens görevleri Titan hakkında daha önce hiç
+elde edilmemiş ayrıntılı bilgiler sağladı. Titan'ın kalın
+atmosferi, yüzey şekilleri ve sıvı hidrokarbon gölleri incelendi.
+</p>
+
+<p>
+Titan'ın Dünya'ya bazı yönlerden benzeyen bir sıvı döngüsüne
+sahip olduğu görüldü. Ancak Titan'da bu döngü su yerine
+metan ve etan gibi hidrokarbonlarla gerçekleşir.
+</p>
+
+<h3>Cassini'nin Sonu</h3>
+
+<p>
+Cassini uzay aracı görevini tamamladıktan sonra 2017 yılında
+Satürn'ün atmosferine kontrollü olarak gönderildi. Böylece
+uzay aracının Satürn'ün uydularını yanlışlıkla kirletme ihtimali
+azaltılmış oldu.
+</p>
+
+<p>
+Cassini'nin görevi sona erse de gönderdiği veriler bugün hâlâ
+bilim insanları tarafından incelenmektedir. Görev Satürn sistemi
+hakkındaki bilgilerimizi büyük ölçüde değiştirdi.
+</p>
+
+<h3>Günümüzde Satürn</h3>
+
+<p>
+Satürn günümüzde teleskoplarla ve daha önceki uzay görevlerinden
+elde edilen veriler kullanılarak araştırılmaya devam edilmektedir.
+Gezegenin atmosferi, halkaları ve uyduları hakkında yeni bilgiler
+elde edilmektedir.
+</p>
+
+<p>
+Özellikle Titan ve Enceladus gelecekteki araştırmalar açısından
+çok önemli hedeflerdir. Bu uyduların yapısını anlamak, Güneş
+Sistemi'nin geçmişini ve yaşam için gerekli koşulların nerelerde
+oluşabileceğini anlamamıza yardımcı olabilir.
+</p>
+
+<h3>Gelecekteki Araştırmalar</h3>
+
+<p>
+Gelecekte Satürn sistemine yeni uzay araçlarının gönderilmesi
+planlanabilir. Özellikle Titan'ın ayrıntılı olarak araştırılması
+bilim insanlarının önemli hedeflerinden biridir.
+</p>
+
+<p>
+Yeni görevler sayesinde Satürn'ün halkalarının oluşumu,
+uydularının iç yapısı ve özellikle Titan ile Enceladus'un
+özellikleri hakkında daha fazla bilgi edinilmesi beklenmektedir.
+</p>
+
+</div>
+
+
+<a class="geri" href="index.html">
+Gezegenlere Dön
+</a>
+
+</div>
+
+
+<script>
+
+function ac(id) {
+
+    const bilgi = document.getElementById(id);
+
+    if (bilgi.style.display === "block") {
+        bilgi.style.display = "none";
+    } else {
+        bilgi.style.display = "block";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```

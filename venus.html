@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venüs - Uzay Kaşifi</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background: #050510;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.bilgi {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #111122;
+    border-radius: 25px;
+    border: 2px solid #444466;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-top: 35px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.istatistik {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.kart {
+    width: 190px;
+    padding: 20px;
+    background: #202038;
+    border-radius: 18px;
+}
+
+.kart h3 {
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.kart p {
+    font-size: 17px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 16px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.acilir {
+    display: none;
+    margin-top: 30px;
+    padding: 30px;
+    background: #19192d;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.acilir h2 {
+    text-align: center;
+}
+
+.acilir p {
+    font-size: 18px;
+}
+
+.geri {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 25px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.geri:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="bilgi">
+
+<h1>VENÜS</h1>
+
+<p>
+Güneş Sistemi'nin en sıcak gezegeni
+</p>
+
+<h2>Venüs Hakkında</h2>
+
+<p>
+Venüs, Güneş'e ikinci en yakın gezegendir ve Dünya'ya boyut
+ve yapı bakımından oldukça benzeyen kayalık bir gezegendir.
+Gökyüzünde Güneş ve Ay'dan sonra görülebilen en parlak doğal
+gök cisimlerinden biridir.
+</p>
+
+<p>
+Kalın atmosferi büyük ölçüde karbondioksitten oluşur.
+Bu yoğun atmosfer güçlü bir sera etkisi oluşturduğu için
+Venüs'ün yüzey sıcaklığı yaklaşık 465°C'ye ulaşabilir.
+</p>
+
+<h2>Venüs'ün Özellikleri</h2>
+
+<div class="istatistik">
+
+<div class="kart">
+<h3>Güneşe Uzaklık</h3>
+<p>0,72 AB</p>
+</div>
+
+<div class="kart">
+<h3>Ortalama Uzaklık</h3>
+<p>Yaklaşık 108,2 milyon km</p>
+</div>
+
+<div class="kart">
+<h3>Çap</h3>
+<p>Yaklaşık 12.104 km</p>
+</div>
+
+<div class="kart">
+<h3>Bir Yıl</h3>
+<p>224,7 Dünya günü</p>
+</div>
+
+<div class="kart">
+<h3>Bir Gün</h3>
+<p>243 Dünya günü</p>
+</div>
+
+<div class="kart">
+<h3>Uydular</h3>
+<p>0</p>
+</div>
+
+<div class="kart">
+<h3>Halkalar</h3>
+<p>Yok</p>
+</div>
+
+<div class="kart">
+<h3>Yapısı</h3>
+<p>Kayalık gezegen</p>
+</div>
+
+<div class="kart">
+<h3>Ortalama Sıcaklık</h3>
+<p>Yaklaşık 465°C</p>
+</div>
+
+<div class="kart">
+<h3>Atmosfer</h3>
+<p>Çoğunlukla karbondioksit</p>
+</div>
+
+</div>
+
+
+<button onclick="ac('fazla')">
+Daha Fazla Bilgi
+</button>
+
+<div id="fazla" class="acilir">
+
+<h2>Venüs Hakkında Çok Daha Fazla Bilgi</h2>
+
+<h3>Güneş'e Uzaklığı</h3>
+
+<p>
+Venüs'ün Güneş'e ortalama uzaklığı yaklaşık 108,2 milyon
+kilometredir. Bu uzaklık yaklaşık 0,72 AB'dir. Venüs'ün yörüngesi
+Dünya'nın yörüngesinden Güneş'e daha yakındır.
+</p>
+
+<h3>Kayalık Yapısı</h3>
+
+<p>
+Venüs, Dünya gibi kayalık bir gezegendir. Yüzeyinde dağlar,
+vadiler, ovalar ve çok sayıda volkanik yapı bulunur.
+Gezegenin katı yüzeyi kalın atmosferin altında yer alır.
+</p>
+
+<h3>Aşırı Sıcaklık</h3>
+
+<p>
+Venüs'ün yüzey sıcaklığı yaklaşık 465°C'dir. Bu sıcaklık,
+Güneş'e daha uzak olan Merkür'ün ortalama yüzey sıcaklığından
+bile daha yüksektir.
+</p>
+
+<h3>Güçlü Sera Etkisi</h3>
+
+<p>
+Venüs'ün atmosferinde çok fazla karbondioksit bulunur.
+Atmosfer ısıyı güçlü şekilde hapsederek gezegenin yüzeyinin
+çok yüksek sıcaklıklara ulaşmasına neden olur.
+Bu nedenle Venüs, Güneş Sistemi'ndeki en sıcak gezegendir.
+</p>
+
+<h3>Atmosfer</h3>
+
+<p>
+Venüs'ün atmosferinin büyük bölümünü karbondioksit oluşturur.
+Atmosfer ayrıca az miktarda azot ve başka gazlar içerir.
+Atmosfer basıncı Dünya'dakinden yaklaşık 90 kat daha yüksektir.
+</p>
+
+<h3>Bulutlar</h3>
+
+<p>
+Venüs'ün atmosferinde çok kalın bulut tabakaları bulunur.
+Bu bulutların önemli bir bölümünü sülfürik asit damlacıkları
+oluşturur. Kalın bulutlar gezegenin yüzeyinin uzaydan
+doğrudan görülmesini zorlaştırır.
+</p>
+
+<h3>Volkanlar</h3>
+
+<p>
+Venüs'ün yüzeyinde binlerce volkanik yapı olduğu bilinmektedir.
+Bazı bölgelerde geniş lav düzlükleri bulunur.
+Bilim insanları Venüs'te günümüzde de volkanik etkinlik
+olabileceğine dair kanıtlar elde etmiştir.
+</p>
+
+<h3>Dağlar ve Yüzey</h3>
+
+<p>
+Venüs'ün yüzeyinde büyük dağlık bölgeler ve geniş ovalar vardır.
+Maxwell Montes, gezegenin en yüksek dağlık bölgelerinden biridir.
+Yüzeyin önemli bölümü geçmişte gerçekleşen volkanik faaliyetlerle
+şekillenmiştir.
+</p>
+
+<h3>Ters Yönde Dönüş</h3>
+
+<p>
+Venüs kendi ekseni etrafında gezegenlerin çoğunun ters yönünde
+döner. Venüs'ün kendi ekseni etrafındaki dönüşü çok yavaştır.
+Bir Venüs günü yaklaşık 243 Dünya günü sürer.
+</p>
+
+<h3>Venüs'te Bir Yıl</h3>
+
+<p>
+Venüs, Güneş'in etrafındaki bir turunu yaklaşık 224,7 Dünya
+gününde tamamlar. İlginç şekilde Venüs'te bir gün, Venüs'teki
+bir yıldan daha uzun sürer.
+</p>
+
+<h3>Dünya ile Benzerliği</h3>
+
+<p>
+Venüs'ün çapı ve kütlesi Dünya'nınkine oldukça yakındır.
+Her iki gezegen de kayalık yapıya sahiptir. Ancak yüzey
+koşulları çok farklıdır; Venüs çok daha sıcak ve yoğun
+bir atmosfere sahiptir.
+</p>
+
+<h3>Manyetik Alan</h3>
+
+<p>
+Venüs, Dünya gibi güçlü bir küresel manyetik alana sahip değildir.
+Bu durum gezegenin Güneş rüzgârıyla etkileşimini farklı hale getirir.
+Venüs'ün çevresinde Güneş rüzgârıyla oluşan bir etkileşim bölgesi vardır.
+</p>
+
+<h3>Su ve Geçmişteki Koşullar</h3>
+
+<p>
+Bilim insanları Venüs'ün çok uzak geçmişte bugünkünden farklı
+koşullara sahip olup olmadığını araştırmaktadır. Bazı modeller,
+erken Venüs'te uzun süreler boyunca daha fazla su bulunmuş
+olabileceğini öne sürmektedir.
+</p>
+
+<h3>Venüs'te Yaşam İhtimali</h3>
+
+<p>
+Venüs'ün yüzeyi günümüzde bilinen yaşam için son derece zorlu
+koşullara sahiptir. Buna rağmen atmosferin daha yüksek ve daha
+ılıman bölgeleri bilimsel araştırmaların konusu olmaya devam
+etmektedir.
+</p>
+
+<h3>Venüs'ün Görünüşü</h3>
+
+<p>
+Venüs, Dünya'dan bakıldığında çok parlak görünür. Bunun önemli
+nedenlerinden biri kalın bulutlarının Güneş ışığını güçlü şekilde
+yansıtmasıdır. Bu nedenle Venüs bazen sabah veya akşam gökyüzünde
+kolayca fark edilebilir.
+</p>
+
+<h3>Venüs'ün Evreleri</h3>
+
+<p>
+Venüs, Dünya'dan teleskopla gözlemlendiğinde Ay'a benzer şekilde
+farklı evrelerden geçer. Bunun nedeni Venüs'ün Güneş'in etrafında
+Dünya'nın iç tarafında bulunan bir yörüngede hareket etmesidir.
+</p>
+
+<h3>Uzay Araştırmaları</h3>
+
+<p>
+Venüs birçok uzay aracı tarafından araştırılmıştır.
+Sovyetler Birliği'nin Venera görevleri gezegenin atmosferi ve
+yüzeyi hakkında önemli bilgiler elde etmiştir.
+</p>
+
+<h3>Venera Görevleri</h3>
+
+<p>
+Venera programındaki bazı araçlar Venüs'ün yüzeyine ulaşmayı
+başarmıştır. Venera 9 ve Venera 13 gibi görevler yüzeyden
+bilimsel veriler ve görüntüler göndermiştir.
+</p>
+
+<h3>Magellan</h3>
+
+<p>
+NASA'nın Magellan uzay aracı 1990'larda Venüs'ün çevresinde
+çalıştı. Radar kullanarak gezegenin yüzeyinin büyük bölümünü
+haritaladı ve volkanlar ile diğer yüzey şekilleri hakkında
+çok önemli bilgiler sağladı.
+</p>
+
+<h3>Gelecekteki Araştırmalar</h3>
+
+<p>
+Venüs gelecekte de önemli bir araştırma hedefi olmaya devam
+edecek. Yeni uzay görevleri gezegenin atmosferini, yüzeyini,
+volkanlarını ve geçmişteki koşullarını daha ayrıntılı incelemeyi
+amaçlamaktadır.
+</p>
+
+</div>
+
+
+<button onclick="ac('gecmis')">
+Venüs'ün Geçmişi
+</button>
+
+<div id="gecmis" class="acilir">
+
+<h2>Venüs'ün Geçmişi</h2>
+
+<h3>Güneş Sistemi'nin Oluşumu</h3>
+
+<p>
+Venüs yaklaşık 4,5 milyar yıl önce Güneş Sistemi'nin oluşumu
+sırasında meydana geldi. Genç Güneş'in çevresindeki gaz, toz,
+kaya ve metal parçaları zamanla birleşerek gezegenin oluşmasını
+sağladı.
+</p>
+
+<h3>İlk Venüs</h3>
+
+<p>
+Gezegenin ilk dönemlerinde Venüs çok sıcak ve jeolojik olarak
+aktif bir dünyaydı. Zaman içerisinde yüzeyi soğudu ve katı bir
+kabuk oluştu.
+</p>
+
+<h3>Yoğun Volkanik Dönem</h3>
+
+<p>
+Venüs'ün geçmişinde çok büyük volkanik faaliyetler yaşandı.
+Gezegenin geniş yüzey alanlarının lav akıntıları tarafından
+şekillendirilmiş olması, bu geçmişin önemli kanıtlarından biridir.
+</p>
+
+<h3>Atmosferin Gelişimi</h3>
+
+<p>
+Venüs'ün atmosferi zaman içinde büyük değişimler geçirdi.
+Karbondioksidin atmosferde birikmesi ve güçlü sera etkisi,
+gezegenin sıcaklığının çok yüksek seviyelere çıkmasına katkıda
+bulundu.
+</p>
+
+<h3>Su Kaybı</h3>
+
+<p>
+Venüs'ün geçmişte daha fazla suya sahip olup olmadığı bilim
+insanlarının araştırdığı konulardan biridir. Eğer geçmişte
+daha fazla su varsa, zaman içinde büyük bölümünün uzaya kaçmış
+veya atmosferik süreçlerle kaybolmuş olması mümkündür.
+</p>
+
+<h3>Yüzeyin Yenilenmesi</h3>
+
+<p>
+Venüs'ün yüzeyinin büyük bölümünün geçmişte yeniden şekillendiği
+düşünülmektedir. Volkanik faaliyetler eski yüzeylerin üzerine
+yeni lavlar yayarak gezegenin görünümünü değiştirmiş olabilir.
+</p>
+
+<h3>Eski İnsan Gözlemleri</h3>
+
+<p>
+Venüs çıplak gözle çok parlak görülebildiği için binlerce yıldır
+insanlar tarafından gözlemlenmektedir. Eski uygarlıklar Venüs'ü
+sabah ve akşam gökyüzünde gördükleri parlak bir gök cismi olarak
+kaydetmiştir.
+</p>
+
+<h3>Eski Uygarlıklar</h3>
+
+<p>
+Venüs birçok eski kültürün gökyüzü gözlemlerinde önemli bir yere
+sahipti. Gezegen farklı uygarlıklarda farklı isimlerle anılmış
+ve gökyüzündeki hareketleri takip edilmiştir.
+</p>
+
+<h3>Teleskop Dönemi</h3>
+
+<p>
+Teleskopların geliştirilmesiyle Venüs'ün evreleri ayrıntılı
+şekilde gözlemlenmeye başlandı. Bu gözlemler Güneş Sistemi'nin
+yapısının anlaşılmasına önemli katkılar sağladı.
+</p>
+
+<h3>Venera Dönemi</h3>
+
+<p>
+20. yüzyılda Venüs'e gönderilen uzay araçları gezegen hakkındaki
+bilgimizi büyük ölçüde artırdı. Venera görevleri, Venüs'ün yoğun
+atmosferine rağmen yüzeye ulaşmayı ve veri göndermeyi başardı.
+</p>
+
+<h3>Yüzeyden İlk Veriler</h3>
+
+<p>
+Venüs yüzeyine ulaşan araçlar çok yüksek sıcaklık ve basınç
+koşullarında çalışmak zorundaydı. Bu görevlerden elde edilen
+veriler Venüs'ün kayalık yüzeyinin doğrudan incelenmesini sağladı.
+</p>
+
+<h3>Magellan Dönemi</h3>
+
+<p>
+Magellan görevi radar kullanarak Venüs'ün yüzeyinin büyük
+bölümünü haritaladı. Bu haritalar gezegenin volkanlarını,
+kraterlerini, dağlarını ve geniş ovalarını incelemek için
+çok değerli bilgiler sağladı.
+</p>
+
+<h3>Günümüzde Venüs</h3>
+
+<p>
+Günümüzde bilim insanları Venüs'ün neden Dünya'dan bu kadar
+farklı hale geldiğini anlamaya çalışıyor. Özellikle atmosferin
+geçmişi, volkanik faaliyetler ve olası eski su kaynakları
+üzerinde araştırmalar yapılıyor.
+</p>
+
+<h3>Gelecekte Venüs</h3>
+
+<p>
+Gelecekte Venüs'e yeni yörünge araçları ve atmosfer araştırma
+araçları gönderilmesi planlanmaktadır. Bu görevler gezegenin
+geçmişini ve bugünkü aşırı koşulların nasıl oluştuğunu daha
+iyi anlamamıza yardımcı olabilir.
+</p>
+
+</div>
+
+
+<a class="geri" href="index.html">
+Gezegenlere Dön
+</a>
+
+</div>
+
+
+<script>
+
+function ac(id) {
+
+    const bilgi = document.getElementById(id);
+
+    if (bilgi.style.display === "block") {
+        bilgi.style.display = "none";
+    } else {
+        bilgi.style.display = "block";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
