@@ -1,10 +1,10 @@
-# Python code block to add mobile/tablet scale up/down controls (+ and - buttons) to the UI
-code = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Uzay Kaşifi</title>
+<title>Uzay Kaşifi | 3D Güneş Sistemi ve İnteraktif Uzay Simülasyonu</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 <meta name="google-site-verification" content="MvAljxFIG21JPon3kJDfscK-sioECFxFxSrZHV3ghJI" />
 <style>
 *{box-sizing:border-box}
@@ -42,8 +42,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 #animasyonBtn.aktif{background:#ffcc00; color:#000; box-shadow:0 0 10px rgba(255,204,0,.6);}
 #muzikKontrolBtn{border:1px solid #00ffcc; background:#002233; color:#00ffcc; font-weight:bold;}
 #muzikKontrolBtn.aktif{background:#00ffcc; color:#000; box-shadow:0 0 10px rgba(0,255,204,.5);}
-#fotoModuBtn{border:1px solid #ff00ff; background:#330033; color:#ff99ff; font-weight:bold;}
-#fotoModuBtn:hover{background:#660066;}
 #xrayBtn{border:1px solid #00eeff; background:#002233; color:#00eeff; font-weight:bold;}
 #xrayBtn.aktif{background:#00eeff; color:#000; box-shadow:0 0 10px rgba(0,238,255,.6);}
 
@@ -52,13 +50,12 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 
 #serbestBilgi{padding:10px 13px; background:rgba(5,7,19,.92); border:1px solid #414b88; border-radius:9px; color:#cbd0ec; font-size:clamp(10px, 1vw, 12px); display:none; width:100%;}
 
-/* MOBİL / TABLET İÇİN SANAL YÖN KONTROLÜ VE ÖLÇEKLEME (JOYPAD & ZOOM & BOYUTLANDIRMA) */
 #mobilKontrolPaneli {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 65;
-    display: none; /* Sadece dokunmatik / mobil cihazlarda açılacak */
+    display: none;
     flex-direction: column;
     gap: 8px;
     align-items: center;
@@ -102,49 +99,10 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
     letter-spacing: 0.5px;
 }
 
-/* SADECE MOBİL/TABLETLERDE GEÇERLİ DİNAMİK ARAYÜZ ÖLÇEKLEME SINIFI */
 .mobil-olcekli {
     font-size: calc(100% * var(--mobil-font-carpani, 1));
 }
 
-/* FOTOĞRAF MODU / FİLTRE EKRANI */
-#fotoFiltreOverlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 75;
-    border: 8px solid rgba(0, 255, 204, 0);
-    transition: 0.3s;
-}
-#fotoFiltreOverlay.aktif {
-    border: 8px solid rgba(0, 255, 204, 0.85);
-    box-shadow: inset 0 0 50px rgba(0,255,204,0.3);
-}
-
-/* FOTOĞRAF ÇEKİLDİ BİLDİRİMİ */
-#fotoBildirim {
-    position: fixed;
-    top: 15vh;
-    left: 50%;
-    transform: translateX(-50%) scale(0.8);
-    background: rgba(0, 255, 204, 0.95);
-    color: #000;
-    padding: 10px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 14px;
-    z-index: 90;
-    opacity: 0;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    pointer-events: none;
-    box-shadow: 0 0 20px rgba(0,255,204,0.6);
-}
-#fotoBildirim.goster {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-}
-
-/* YOUTUBE TARZI 3D BOYUT TURU BİLGİ EKRANI */
 #turBilgiKutusu {
     position: fixed;
     bottom: 5vh;
@@ -179,7 +137,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
     text-shadow: 0 0 15px rgba(0,255,204,0.5);
 }
 
-/* ROBOT ASİSTAN PANELİ */
 .robotAsistan{position:fixed; right:1.5vw; bottom:2vh; z-index:60; width:clamp(200px, 20vw, 240px); background:rgba(8,12,32,0.95); border:1px solid #5868c9; border-radius:16px; padding:12px; box-shadow:0 0 20px rgba(88,104,201,0.3); display:flex; flex-direction:column; gap:8px; transition:0.3s;}
 .robotBaslik{display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #333d75; padding-bottom:6px;}
 .robotSol{display:flex; align-items:center; gap:8px;}
@@ -201,6 +158,7 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 .butongrubu{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;}
 .buton{border:0; border-radius:8px; padding:8px 12px; background:#29356e; color:white; cursor:pointer; font-weight:bold; font-size:clamp(11px, 1vw, 13px);}
 .buton:hover{background:#394a9b;}
+.sesDurumu{font-size:11px; margin-top:6px; color:#00ffcc; font-family:monospace; min-height:16px;}
 
 .karsilastirma{position:fixed; right:22vw; bottom:2vh; width:clamp(280px, 28vw, 360px); max-height:400px; overflow:auto; z-index:45; padding:16px; background:rgba(5,7,19,.96); border:1px solid #5663a8; border-radius:16px; display:none;}
 .karsilastirma h2{margin:0 0 10px; font-size:20px;}
@@ -215,7 +173,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 #gecis.aktif{opacity:1;}
 .yukleniyor{position:fixed; inset:0; z-index:100; background:#000; display:flex; align-items:center; justify-content:center; font-size:24px;}
 
-/* DİKEY MOD UYARI EKRANI (PORTRAIT UYARISI) */
 #yatayUyarisi {
     position: fixed;
     inset: 0;
@@ -253,7 +210,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 <div class="yukleniyor" id="yukleniyor">Uzay zamanı yükleniyor...</div>
 <div id="uzay"></div>
 
-<!-- MOBİL / TABLET İÇİN DOKUNMATİK KONTROL PANELİ & ÖLÇEKLEME -->
 <div id="mobilKontrolPaneli">
     <div class="mobilTusSatiri">
         <button class="mobilBtn" id="mYukari">▲</button>
@@ -274,9 +230,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
         <button class="mobilBtn" id="mBoyutBuyut" title="Büyüt">+</button>
     </div>
 </div>
-
-<div id="fotoFiltreOverlay"></div>
-<div id="fotoBildirim">Uzay Hatırası Kaydedildi!</div>
 
 <div id="turBilgiKutusu">
     <div id="turBaslik"></div>
@@ -304,7 +257,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
         <button id="canliKonumBtn" onclick="canliKonumlaraEslestir()">Anlık Dünya Saatine Sıfırla</button>
     </div>
     
-    <button id="fotoModuBtn" class="panelButon" onclick="fotografCek()">Fotoğraf Çek</button>
     <button id="serbestKamera" class="panelButon" onclick="serbestKameraAc()">Serbest Kamera</button>
 
     <div class="not" id="not">Uzay keşfi başlıyor...</div>
@@ -334,7 +286,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
     </div>
 </div>
 
-<!-- ROBOT ASİSTAN PANELİ -->
 <div class="robotAsistan" id="robotAsistan" onwheel="event.stopPropagation()">
     <div class="robotBaslik">
         <div class="robotSol">
@@ -361,7 +312,7 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
         <button class="buton" onclick="kesfet()">Detay Sayfası</button>
         <button class="buton" onclick="karsilastirmaAc()">Karşılaştır</button>
     </div>
-    <div class="sesDurumu" id="sesDurumu" style="font-size:11px; margin-top:6px; color:#00ffcc; font-family:monospace; min-height:16px;">Sinyal çözücü aktif.</div>
+    <div class="sesDurumu" id="sesDurumu">Sinyal çözücü aktif.</div>
 </div>
 
 <div class="karsilastirma" id="karsilastirma" style="position:fixed;">
@@ -378,7 +329,6 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-// Mobil / Tablet Algılama, Kontrol ve Boyutlandırma Paneli
 const dokunmatikCihazMi = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 let mobilFontCarpani = 1.0;
 
@@ -503,30 +453,6 @@ function xrayModunuAcKapat(){
     });
 }
 
-function fotografCek(){
-    efektCal(1046.50, 0.15);
-    const overlay = document.getElementById("fotoFiltreOverlay");
-    const bildirim = document.getElementById("fotoBildirim");
-    
-    overlay.classList.add("aktif");
-    bildirim.classList.add("goster");
-
-    setTimeout(() => {
-        try {
-            const dataURL = renderer.domElement.toDataURL("image/png");
-            const link = document.createElement("a");
-            link.download = "uzay-kasifi-hatirasi.png";
-            link.href = dataURL;
-            link.click();
-        } catch(err){}
-    }, 200);
-
-    setTimeout(() => {
-        overlay.classList.remove("aktif");
-        bildirim.classList.remove("goster");
-    }, 2000);
-}
-
 function muzikAcKapat(){
     if(!audioCtx){
         try {
@@ -627,7 +553,7 @@ const hamSorular = [
     { s: "Ay tutulması esnasında neden kırmızı renk görünür?", c: "Dünya atmosferinden kırılan güneş ışıkları Ay'ı kırmızı tonlarda aydınlatır." },
     { s: "Ayna teleskopları merceklere göre neden daha avantajlıdır?", c: "Renk sapması yapmazlar ve çok daha büyük boyutlarda üretilebilirler." },
     { s: "Balıklar takımyıldızı gökyüzünde nerededir?", c: "Sonbahar ve kış aylarında kuzey yarımküreden görülebilen büyük bir takımyıldızdır." },
-    { s: "Barnard yıldızı neden astronomi için özeldir?", c: "Gökyüzündeki en yüksek öz harekete (açısal hıza) sahip yıldızdır." },
+    { s: "Barnard yıldızı neden astronomi için özeldır?", c: "Gökyüzündeki en yüksek öz harekete (açısal hıza) sahip yıldızdır." },
     { s: "Başak takımyıldızı içinde hangi büyük yapıları barındırır?", c: "Çok sayıda galaksi içeren Başak Galaksi Kümesi'ni barındırır." },
     { s: "Batlamyus dünyayı merkez alan modeli ne zaman öne sürmüştür?", c: "Antik çağda yer merkezli evren modelini matematikselleştirmiştir." },
     { s: "Bebek yıldızlar hangi bulutsu bölgelerinde doğar?", c: "Dev moleküler bulutlar ve yıldız oluşum bölgelerinde doğarlar." },
@@ -964,14 +890,14 @@ document.getElementById("uzay").appendChild(renderer.domElement);
 
 const starGeometry = new THREE.BufferGeometry();
 const starPositions = [];
-for(let i=0; i<11000; i++){
+for(let i=0; i<15000; i++){
     const r = 1600 + Math.random()*3800;
     const theta = Math.random()*Math.PI*2;
     const phi = Math.acos(2*Math.random()-1);
     starPositions.push(r*Math.sin(phi)*Math.cos(theta), r*Math.cos(phi), r*Math.sin(phi)*Math.sin(theta));
 }
 starGeometry.setAttribute("position", new THREE.Float32BufferAttribute(starPositions, 3));
-scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({ color:0xffffff, size:1.4, transparent:true, opacity:.75 })));
+scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({ color:0xffffff, size:1.6, transparent:true, opacity:.85 })));
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.22));
 const sunLight = new THREE.PointLight(0xfffaed, 1.55, 6000);
@@ -1135,7 +1061,7 @@ const venus = gezegenOlustur({
         "[RADYO: VENÜS SİNYALİ #02] YOĞUN SÜLFÜRİK ASİT BULUT KATMANI RADYOYU EMİYOR.",
         "[RADYO: VENÜS SİNYALİ #03] ATMOSFERİK BASINÇ: 92 DÜNYA ATMOSFERİ.",
         "[RADYO: VENÜS SİNYALİ #04] TERSİNE DÖNME HAREKETİ (RETROGRAD) DEVAM EDİYOR.",
-        "[RADYO: VENÜS SİNYALİ #05] AKTİf VOLKANİK PÜSKÜRME DALGALARI ALGILANDI.",
+        "[RADYO: VENÜS SİNYALİ #05] AKTİF VOLKANİK PÜSKÜRME DALGALARI ALGILANDI.",
         "[RADYO: VENÜS SİNYALİ #06] İYONOSFERİK PLAZMA KUŞAĞI KARARSIZ.",
         "[RADYO: VENÜS SİNYALİ #07] YÜZEYDE KAYA ERİME NOKTASI AŞILDI.",
         "[RADYO: VENÜS SİNYALİ #08] KARSILIKLI GÜNEŞ KÜTLEÇEKİMİ REZONANSI AKTİF.",
@@ -1166,7 +1092,7 @@ const earth = gezegenOlustur({
         "[RADYO: DÜNYA SİNYALİ #09] BULUT ÖRTÜSÜ KÜRESEL ALBEDO ORANINI KORUYOR.",
         "[RADYO: DÜNYA SİNYALİ #10] İÇ ÇEKİRDEK DÖNME HIZI MANTO İLE SENKRONİZE.",
         "[RADYO: DÜNYA SİNYALİ #11] METEOROLOJİK UYDU AĞI FREKANSLARI AKTİF.",
-        "[RADYO: DÜNYA SİNYALİ #12] İYONOSFERDE RADyo DALgasi YANSITMASI KARARLI.",
+        "[RADYO: DÜNYA SİNYALİ #12] İYONOSFERDE RADYO DALGASI YANSITMASI KARARLI.",
         "[RADYO: DÜNYA SİNYALİ #13] BİYOLOJİK ÇEŞİTLİLİK VERİTABANI BAĞLANTISI GÜVENLİ.",
         "[RADYO: DÜNYA SİNYALİ #14] KARBON DÖNGÜSÜ DENGEDE, BAĞLANTI OPTİMAL.",
         "[RADYO: DÜNYA SİNYALİ #15] GÜNEŞ SİSTEMİ ANA KOMUTA MERKEZİ YANITI ALINDI."
@@ -1190,7 +1116,7 @@ const mars = gezegenOlustur({
         "[RADYO: MARS SİNYALİ #09] GECE SICAKLIĞI -120 C DERECEYE KADAR DÜŞÜYOR.",
         "[RADYO: MARS SİNYALİ #10] GÜNEŞ PANELİ ENERJİ VERİMLİLİĞİ DÜŞÜK SEVİYEDE.",
         "[RADYO: MARS SİNYALİ #11] YÜZEYDEKİ ROBOTİK SONDALARIN VERİ AKIŞI AKTİF.",
-        "[RADYO: MARS SİNYALİ #12] YERALTI TUZLU SU CEPLERİne DAİR RADAR YANKISI.",
+        "[RADYO: MARS SİNYALİ #12] YERALTI TUZLU SU CEPLERİNE DAİR RADAR YANKISI.",
         "[RADYO: MARS SİNYALİ #13] KIZIL GÖKYÜZÜ DAĞILIM SPEKTRUMU DOĞRULANDI.",
         "[RADYO: MARS SİNYALİ #14] MEVSİMSEL KUTUP ERİMESİ BAŞLANGICI GÖZLENDİ.",
         "[RADYO: MARS SİNYALİ #15] GELECEK İNSANLI GÖREVLER İÇİN İNİŞ BÖLGESİ TARANIYOR."
@@ -1233,9 +1159,9 @@ const saturn = gezegenOlustur({
         "[RADYO: SATÜRN SİNYALİ #04] DÜŞÜK YOĞUNLUK: SU ÜSTÜNDE YÜZEBİLECEK YAPIDA.",
         "[RADYO: SATÜRN SİNYALİ #05] CASSİNİ BOŞLUĞUNDAN GEÇEN RADYO DALGASI YANKISI.",
         "[RADYO: SATÜRN SİNYALİ #06] ENCELADUS UYDUSUNUN BUZ FIRKATI PÜSKÜRTÜLERİ.",
-        "[RADYO: SATÜRN SİNYALİ #07] HİDROJEN VE HELYUM YAĞMURLARI ÇEKİRDEĞE İNİYOR.",
+        "[RADYO: SATÜRN SİNYALİ #07] HİDROJEN VE HELYUM YAĞMURLARI ÇEKİRDEĞİNE İNİYOR.",
         "[RADYO: SATÜRN SİNYALİ #08] RADYAL HALKA DALGALANMALARI TESPİT EDİLDİ.",
-        "[RADYO: SATÜRN SİNYALİ #09] MAGNETOSFERİK DÖNGÜ GÜNEŞ RÜZGARIYla DEĞİŞİYOR.",
+        "[RADYO: SATÜRN SİNYALİ #09] MAGNETOSFERİK DÖNGÜ GÜNEŞ RÜZGARIYLA DEĞİŞİYOR.",
         "[RADYO: SATÜRN SİNYALİ #10] MİMAS UYDUSUNUN DEV KRATERİNDEN YANKI.",
         "[RADYO: SATÜRN SİNYALİ #11] HIZLI KENDİ ETRAFINDA DÖNÜŞ İNDÜKSİYONU YÜKSEK.",
         "[RADYO: SATÜRN SİNYALİ #12] İÇ ISI ÜRETİMİ HELYUM ÇÖKELMESİYLE SAĞLANIYOR.",
@@ -1364,8 +1290,8 @@ cometCore.userData = {
     signals:[
         "[RADYO: HALLEY #01] BUZLU ÇEKİRDEK GÜNEŞ'E YAKLAŞTIKÇA GAZ PÜSKÜRTÜYOR.",
         "[RADYO: HALLEY #02] ORGANİK KARBON BİLEŞİKLERİ BUHARLAŞIYOR.",
-        "[RADYO: HALLEY #03] İYON KUYRUĞU GÜNEŞ RÜZGARIYla TERS YÖNE UZANIYOR.",
-        "[RADYO: HALLEY #04] TOZ BULUTU İZİ DÜNYA YÖRÜNGE HATTIYla KESİŞİYOR.",
+        "[RADYO: HALLEY #03] İYON KUYRUĞU GÜNEŞ RÜZGARIYLA TERS YÖNE UZANIYOR.",
+        "[RADYO: HALLEY #04] TOZ BULUTU İZİ DÜNYA YÖRÜNGE HATTIYLA KESİŞİYOR.",
         "[RADYO: HALLEY #05] 75 YILLIK YÖRÜNGE DÖNGÜSÜ TELEMETRİSİ AKTİF.",
         "[RADYO: HALLEY #06] KÖMÜR KARASI ÇEKİRDEK ALBEDOSU %3 SEVİYESİNDE.",
         "[RADYO: HALLEY #07] ÇÖZÜNEN SU BUZU MOLEKÜLLERİ SPEKTRUMDA GÖRÜLÜYOR.",
@@ -1374,9 +1300,9 @@ cometCore.userData = {
         "[RADYO: HALLEY #10] MİKRO GÖKTAŞI FIRTINASI İZ BIRAKIYOR.",
         "[RADYO: HALLEY #11] ÇEKİRDEK DÖNME EKSENİNDE DÜZENSİZ SALINIM.",
         "[RADYO: HALLEY #12] 1986 GEÇİŞ VERİLERİYLE KARŞILAŞTIRMA YAPILIYOR.",
-        "[RADYO: HALLEY #13] DERİN UZAY TOZ PARÇACIK YOĞUNLUĞU ARTİYOR.",
+        "[RADYO: HALLEY #13] DERİN UZAY TOZ PARÇACIK YOĞUNLUĞU ARTIYOR.",
         "[RADYO: HALLEY #14] SPEKTROSKOPİK ANALİZ: SİYANÜR VE AMONYAK İZLERİ.",
-        "[RADYO: HALLEY #15] KUYruklu YILDIZ İLETİŞİM KANALI AÇIK."
+        "[RADYO: HALLEY #15] KUYRUKLU YILDIZ İLETİŞİM KANALI AÇIK."
     ],
     page:"halley.html" 
 };
@@ -1672,7 +1598,6 @@ renderer.domElement.addEventListener("touchend", e => {
     if(e.touches.length === 0) dragging = false;
 });
 
-// Mobil Sanal Buton Kontrolleri Event Dinleyicileri
 function butonAksiyonuKur(id, callback){
     const btn = document.getElementById(id);
     if(!btn) return;
@@ -1717,7 +1642,6 @@ butonAksiyonuKur("mZoomOut", () => {
     else if(kameraModu === "gezegen") { hedefGezegenUzaklik = Math.min(350, hedefGezegenUzaklik + 5); }
 });
 
-// Mobil Arayüz Büyütme / Küçültme Tuşları
 document.getElementById("mBoyutBuyut").addEventListener("click", () => {
     efektCal(600, 0.04);
     arayuzBoyutunuGuncelle(mobilFontCarpani + 0.1);
@@ -1976,8 +1900,3 @@ setInterval(()=>{
 </script>
 </body>
 </html>
-"""
-
-with open("uzay_kasifi.html", "w", encoding="utf-8") as f:
-    f.write(code)
-print("File generated successfully with scaling controls.")
