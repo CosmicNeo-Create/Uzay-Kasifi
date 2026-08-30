@@ -27,6 +27,44 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 #canliKonumBtn{border:1px solid #00ffcc; background:#003322; color:#00ffcc; margin-top:5px; width:100%; padding:6px; border-radius:7px; cursor:pointer; font-weight:bold; font-size:clamp(9px, 1vw, 11px);}
 #canliKonumBtn:hover{background:#006644;}
 
+/* TARİHE IŞINLAN BÖLÜMÜ (EMOJİSİZ VE BEYAZ TAKVİM İKONU İLE) */
+.tariheIsinlanKutu {
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(0,255,204,0.1), rgba(41,53,110,0.9));
+    border: 2px solid #00ffcc;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,255,204,0.4);
+}
+.tariheIsinlanBaslik {
+    color: #00ffcc;
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0,255,204,0.6);
+    letter-spacing: 1px;
+}
+#tarihSecici {
+    width: 100%;
+    padding: 8px;
+    background: #0b0e20;
+    color: #ffffff;
+    color-scheme: dark;
+    border: 2px solid #00ffcc;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: inset 0 0 8px rgba(0,255,204,0.3);
+}
+#tarihSecici:hover {
+    background: #111832;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
 .not{padding:10px 14px; background:rgba(5,8,20,.87); border:1px solid #414b88; border-radius:12px; color:#dce0ff; font-size:clamp(11px, 1.1vw, 13px); line-height:1.4;}
 
 .sagUstPanel{position:fixed; top:2vh; right:1.5vw; z-index:50; display:flex; flex-direction:column; gap:8px; align-items:flex-end; width:clamp(220px, 24vw, 340px);}
@@ -255,6 +293,12 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
             <button class="hizButonu" data-hiz="2592000">1 Ay/sn</button>
         </div>
         <button id="canliKonumBtn" onclick="canliKonumlaraEslestir()">Anlık Dünya Saatine Sıfırla</button>
+    </div>
+    
+    <!-- TARİHE IŞINLAN BÖLÜMÜ (EMOJİSİZ VE BEYAZ TAKVİM İKONU İLE) -->
+    <div class="tariheIsinlanKutu">
+        <div class="tariheIsinlanBaslik">TARİHE IŞINLAN</div>
+        <input type="date" id="tarihSecici" onchange="tariheGit(this.value)">
     </div>
     
     <button id="serbestKamera" class="panelButon" onclick="serbestKameraAc()">Serbest Kamera</button>
@@ -1041,7 +1085,7 @@ const mercury = gezegenOlustur({
         "[RADYO: MERKÜR SİNYALİ #06] GECE TARAFI SICAKLIĞI -180 C SEVİYESİNDE SABİTLENDİ.",
         "[RADYO: MERKÜR SİNYALİ #07] TEKTONİK BÜZÜLME FAYLARI SİNYALİ BOZUYOR.",
         "[RADYO: MERKÜR SİNYALİ #08] MİKRO GÖKTAŞI ÇARPIŞMA DALGALARI ALGILANDI.",
-        "[RADYO: MERKÜR SİNYALİ #09] MAGNETOPAUZA DUVARI GÜNEŞ FIRTINASIYLA SIKIŞTI.",
+        "[RADYO: MERKÜR SİNYALİ #09] MAGNETOPAUZA DUVARI GÜNEŞ FIRTINASIYla SIKIŞTI.",
         "[RADYO: MERKÜR SİNYALİ #10] RADYOMETRİK TARAMA: YÜZEYDE SODYUM BUHARLARI VAR.",
         "[RADYO: MERKÜR SİNYALİ #11] ÇEKİRDEK-MANTO SINIRINDA ISI TRANSFERİ YÜKSEK.",
         "[RADYO: MERKÜR SİNYALİ #12] YÖRÜNGE HIZI SAPMASI: 47 KİLOMETRE/SANİYE.",
@@ -1092,7 +1136,7 @@ const earth = gezegenOlustur({
         "[RADYO: DÜNYA SİNYALİ #09] BULUT ÖRTÜSÜ KÜRESEL ALBEDO ORANINI KORUYOR.",
         "[RADYO: DÜNYA SİNYALİ #10] İÇ ÇEKİRDEK DÖNME HIZI MANTO İLE SENKRONİZE.",
         "[RADYO: DÜNYA SİNYALİ #11] METEOROLOJİK UYDU AĞI FREKANSLARI AKTİF.",
-        "[RADYO: DÜNYA SİNYALİ #12] İYONOSFERDE RADYO DALGASI YANSITMASI KARARLI.",
+        "[RADYO: DÜNYA SİNYALİ #12] İYONOSFERDE RADYO DALgası YANSITMASI KARARLI.",
         "[RADYO: DÜNYA SİNYALİ #13] BİYOLOJİK ÇEŞİTLİLİK VERİTABANI BAĞLANTISI GÜVENLİ.",
         "[RADYO: DÜNYA SİNYALİ #14] KARBON DÖNGÜSÜ DENGEDE, BAĞLANTI OPTİMAL.",
         "[RADYO: DÜNYA SİNYALİ #15] GÜNEŞ SİSTEMİ ANA KOMUTA MERKEZİ YANITI ALINDI."
@@ -1116,7 +1160,7 @@ const mars = gezegenOlustur({
         "[RADYO: MARS SİNYALİ #09] GECE SICAKLIĞI -120 C DERECEYE KADAR DÜŞÜYOR.",
         "[RADYO: MARS SİNYALİ #10] GÜNEŞ PANELİ ENERJİ VERİMLİLİĞİ DÜŞÜK SEVİYEDE.",
         "[RADYO: MARS SİNYALİ #11] YÜZEYDEKİ ROBOTİK SONDALARIN VERİ AKIŞI AKTİF.",
-        "[RADYO: MARS SİNYALİ #12] YERALTI TUZLU SU CEPLERİNE DAİR RADAR YANKISI.",
+        "[RADYO: MARS SİNYALİ #12] YERALTI TUZLU SU CEPLERİne DAİR RADAR YANKISI.",
         "[RADYO: MARS SİNYALİ #13] KIZIL GÖKYÜZÜ DAĞILIM SPEKTRUMU DOĞRULANDI.",
         "[RADYO: MARS SİNYALİ #14] MEVSİMSEL KUTUP ERİMESİ BAŞLANGICI GÖZLENDİ.",
         "[RADYO: MARS SİNYALİ #15] GELECEK İNSANLI GÖREVLER İÇİN İNİŞ BÖLGESİ TARANIYOR."
@@ -1129,7 +1173,7 @@ const jupiter = gezegenOlustur({
     mass:"1,90 x 10^27 kg", diameter:"139.820 km", gravity:"24,79 m/s^2", year:"11,86 Dünya yılı", temp:"-110 C", page:"jupiter.html",
     description:"Jüpiter kendi etrafında en hızlı dönen gezegendir (sadece 9.9 saat).",
     signals:[
-        "[RADYO: JÜPİTER SİNYALİ #01] DEV KIRMIZI LEKE FIRTINASI GÜRÜLTÜSÜ YAYILIYOR.",
+        "[RADYO: JÜPİTER SİNYALİ #01] DEV KIRMIZI LEKE FIRTINASI GÜRÜLTÜSü YAYILIYOR.",
         "[RADYO: JÜPİTER SİNYALİ #02] GÜNEŞ SİSTEMİNİN EN GÜÇLÜ MANYETİK ALANI AKTİF.",
         "[RADYO: JÜPİTER SİNYALİ #03] IO UYDUSUNDAN GELEN VOLKANİK PLAZMA AKINTISI.",
         "[RADYO: JÜPİTER SİNYALİ #04] EUROPA UYDUSUNUN BUZLU OKYANUS YANKISI.",
@@ -1159,14 +1203,14 @@ const saturn = gezegenOlustur({
         "[RADYO: SATÜRN SİNYALİ #04] DÜŞÜK YOĞUNLUK: SU ÜSTÜNDE YÜZEBİLECEK YAPIDA.",
         "[RADYO: SATÜRN SİNYALİ #05] CASSİNİ BOŞLUĞUNDAN GEÇEN RADYO DALGASI YANKISI.",
         "[RADYO: SATÜRN SİNYALİ #06] ENCELADUS UYDUSUNUN BUZ FIRKATI PÜSKÜRTÜLERİ.",
-        "[RADYO: SATÜRN SİNYALİ #07] HİDROJEN VE HELYUM YAĞMURLARI ÇEKİRDEĞİNE İNİYOR.",
+        "[RADYO: SATÜRN SİNYALİ #07] HİDROJEN VE HELYUM YAĞMURLARI ÇEKİRDEĞİne İNİYOR.",
         "[RADYO: SATÜRN SİNYALİ #08] RADYAL HALKA DALGALANMALARI TESPİT EDİLDİ.",
-        "[RADYO: SATÜRN SİNYALİ #09] MAGNETOSFERİK DÖNGÜ GÜNEŞ RÜZGARIYLA DEĞİŞİYOR.",
+        "[RADYO: SATÜRN SİNYALİ #09] MAGNETOSFERİK DÖNGÜ GÜNEŞ RÜZGARIYla DEĞİŞİYOR.",
         "[RADYO: SATÜRN SİNYALİ #10] MİMAS UYDUSUNUN DEV KRATERİNDEN YANKI.",
         "[RADYO: SATÜRN SİNYALİ #11] HIZLI KENDİ ETRAFINDA DÖNÜŞ İNDÜKSİYONU YÜKSEK.",
         "[RADYO: SATÜRN SİNYALİ #12] İÇ ISI ÜRETİMİ HELYUM ÇÖKELMESİYLE SAĞLANIYOR.",
         "[RADYO: SATÜRN SİNYALİ #13] ÜST ATMOSFERDE ALTIGEN DALGA FORMÜLÜ DOĞRULANDI.",
-        "[RADYO: SATÜRN SİNYALİ #14] RINGSYSTEM GEOMETRİK DÖNGÜSÜ ANALİZ EDİLİYOR.",
+        "[RADYO: SATÜRN SİNYALİ #14] RINGSYSTEM GEOMETRİK DÖNGÜSü ANALİZ EDİLİYOR.",
         "[RADYO: SATÜRN SİNYALİ #15] DEV HALKA SİSTEMİ İLETİŞİM KÖPRÜSÜ AÇIK."
     ]
 });
@@ -1202,7 +1246,7 @@ const neptune = gezegenOlustur({
     description:"Neptün kendi ekseninde 16.1 saatte dönerken 1 yılı 165 Dünya yılı sürer.",
     signals:[
         "[RADYO: NEPTÜN SİNYALİ #01] GÜNEŞ SİSTEMİNİN EN ŞİDDETLİ RÜZGARI: 2100 KM/S.",
-        "[RADYO: NEPTÜN SİNYALİ #02] KANLI MAVİ METAN BULUTU DÖNGÜSÜ AKTİF.",
+        "[RADYO: NEPTÜN SİNYALİ #02] KANLI MAVİ METAN BULUTU DÖNGÜSü AKTİF.",
         "[RADYO: NEPTÜN SİNYALİ #03] BÜYÜK KARANLIK LEKE FIRTINASI GÖZLEMLENİYOR.",
         "[RADYO: NEPTÜN SİNYALİ #04] TRİTON UYDUSUNUN TERS YÖNLÜ YÖRÜNGE HAREKETİ.",
         "[RADYO: NEPTÜN SİNYALİ #05] ELMAS YAĞMURU OLUŞTURAN YÜKSEK BASINÇLI MANTO.",
@@ -1235,6 +1279,24 @@ function canliKonumlaraEslestir(){
         }
     });
     document.getElementById("not").textContent = "Bütün gezegenler ve Dünya saati anlık konuma sıfırlandı!";
+}
+
+function tariheGit(secilenTarihStr) {
+    if(!secilenTarihStr) return;
+    efektCal(650, 0.08);
+    
+    simulatedDate = new Date(secilenTarihStr + "T00:00:00Z");
+    
+    planets.forEach(p => {
+        if(p.userData.periodDays){
+            p.userData.angle = getRealTimeAngle(p.userData.periodDays, p.userData.baseAngle, simulatedDate);
+        }
+        if(p.userData.name === "Dünya"){
+            p.rotation.y = getEarthRotationAngle(simulatedDate);
+        }
+    });
+    
+    document.getElementById("not").textContent = secilenTarihStr + " tarihli göksel konumlara ışınlandı!";
 }
 
 const cloudMesh = new THREE.Mesh(
@@ -1291,7 +1353,7 @@ cometCore.userData = {
         "[RADYO: HALLEY #01] BUZLU ÇEKİRDEK GÜNEŞ'E YAKLAŞTIKÇA GAZ PÜSKÜRTÜYOR.",
         "[RADYO: HALLEY #02] ORGANİK KARBON BİLEŞİKLERİ BUHARLAŞIYOR.",
         "[RADYO: HALLEY #03] İYON KUYRUĞU GÜNEŞ RÜZGARIYLA TERS YÖNE UZANIYOR.",
-        "[RADYO: HALLEY #04] TOZ BULUTU İZİ DÜNYA YÖRÜNGE HATTIYLA KESİŞİYOR.",
+        "[RADYO: HALLEY #04] TOZ BULUTU İZİ DÜNYA YÖRÜNGE HATTINLA KESİŞİYOR.",
         "[RADYO: HALLEY #05] 75 YILLIK YÖRÜNGE DÖNGÜSÜ TELEMETRİSİ AKTİF.",
         "[RADYO: HALLEY #06] KÖMÜR KARASI ÇEKİRDEK ALBEDOSU %3 SEVİYESİNDE.",
         "[RADYO: HALLEY #07] ÇÖZÜNEN SU BUZU MOLEKÜLLERİ SPEKTRUMDA GÖRÜLÜYOR.",
