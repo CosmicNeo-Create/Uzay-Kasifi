@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Uzay Kaşifi | 3D Güneş Sistemi ve İnteraktif Uzay Simülasyonu</title>
+<meta name="google-site-verification" content="MvAljxFIG21JPon3kJDfscK-sioECFxFxSrZHV3ghJI" />    
 <meta name="description" content="Güneş sistemindeki gezegenleri 3 boyutlu incele, zamanı hızlandır ve uzay hakkında merak ettiğin soruları keşfet.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-<meta name="google-site-verification" content="MvAljxFIG21JPon3kJDfscK-sioECFxFxSrZHV3ghJI" />
 <style>
 *{box-sizing:border-box}
 html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; color:white; font-family:Arial,sans-serif; touch-action:none;}
@@ -28,7 +28,9 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 #canliKonumBtn{border:1px solid #00ffcc; background:#003322; color:#00ffcc; margin-top:5px; width:100%; padding:6px; border-radius:7px; cursor:pointer; font-weight:bold; font-size:clamp(9px, 1vw, 11px);}
 #canliKonumBtn:hover{background:#006644;}
 
-/* TARİHE IŞINLAN BÖLÜMÜ (EMOJİSİZ VE BEYAZ TAKVİM İKONU İLE) */
+#testBaslatBtn{border:1px solid #ff00ff; background:#330033; color:#ff88ff; width:100%; padding:10px; border-radius:9px; cursor:pointer; font-weight:bold; font-size:clamp(11px, 1.2vw, 13px); text-align:center; box-shadow:0 0 12px rgba(255,0,255,0.4);}
+#testBaslatBtn:hover{background:#660066; color:#ffffff;}
+
 .tariheIsinlanKutu {
     padding: 10px;
     background: linear-gradient(135deg, rgba(0,255,204,0.1), rgba(41,53,110,0.9));
@@ -176,7 +178,7 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
     text-shadow: 0 0 15px rgba(0,255,204,0.5);
 }
 
-.robotAsistan{position:fixed; right:1.5vw; bottom:2vh; z-index:60; width:clamp(200px, 20vw, 240px); background:rgba(8,12,32,0.95); border:1px solid #5868c9; border-radius:16px; padding:12px; box-shadow:0 0 20px rgba(88,104,201,0.3); display:flex; flex-direction:column; gap:8px; transition:0.3s;}
+.robotAsistan{position:fixed; right:1.5vw; bottom:2vh; z-index:250; width:clamp(200px, 20vw, 240px); background:rgba(8,12,32,0.95); border:1px solid #5868c9; border-radius:16px; padding:12px; box-shadow:0 0 20px rgba(88,104,201,0.3); display:flex; flex-direction:column; gap:8px; transition:0.3s;}
 .robotBaslik{display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #333d75; padding-bottom:6px;}
 .robotSol{display:flex; align-items:center; gap:8px;}
 .robotAvatar{width:32px; height:32px; background:#1c2454; border:1px solid #5868c9; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#00ffcc; font-size:13px;}
@@ -185,14 +187,14 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 .robotIcerik{display:none; flex-direction:column; gap:8px; transition:0.3s; overflow:hidden;}
 .robotAramaInput{width:100%; padding:7px 9px; background:#0c1026; color:white; border:1px solid #333d75; border-radius:8px; font-size:11px; outline:none;}
 .robotMesaj{font-size:12px; color:#e0e4ff; line-height:1.4; background:#0c1026; padding:8px; border-radius:10px; border:1px solid #2d366b;}
-.robotSecenekler{display:flex; flex-direction:column; gap:5px; max-height:220px; overflow-y:auto; padding-right:4px; transition:0.3s;}
+.robotSecenekler{display:flex; flex-direction:column; gap:5px; max-height:70vh; overflow-y:auto; padding-right:4px; transition:0.3s;}
 .robotSecenekBtn{background:#18214a; border:1px solid #4452a3; border-radius:8px; padding:7px 9px; color:white; font-size:11px; text-align:left; cursor:pointer; transition:0.2s;}
 .robotSecenekBtn:hover{background:#2a3675; border-color:#00ffcc;}
 
 .bilgi{position:fixed; left:1.5vw; bottom:2vh; width:clamp(280px, 30vw, 390px); padding:16px; background:rgba(5,7,19,.95); border:1px solid #5663a8; border-radius:17px; z-index:40; display:none; box-shadow:0 0 25px rgba(45,60,140,.18);}
 .bilgi h2{margin:0 0 6px; font-size:clamp(20px, 2.2vw, 27px);}
 .bilgi p{color:#cdd1e6; line-height:1.4; font-size:clamp(12px, 1.1vw, 14px);}
-.kapat{position:absolute; right:10px; top:10px; background:#151a31; color:white; border:1px solid #454d70; border-radius:7px; padding:4px 8px; cursor:pointer;}
+.kapat{position:absolute; right:15px; top:15px; background:#151a31; color:white; border:1px solid #454d70; border-radius:7px; padding:8px 14px; cursor:pointer; font-size:14px; font-weight:bold;}
 .kapat:hover{background:#29356e;}
 .butongrubu{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;}
 .buton{border:0; border-radius:8px; padding:8px 12px; background:#29356e; color:white; cursor:pointer; font-weight:bold; font-size:clamp(11px, 1vw, 13px);}
@@ -295,8 +297,9 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
         </div>
         <button id="canliKonumBtn" onclick="canliKonumlaraEslestir()">Anlık Dünya Saatine Sıfırla</button>
     </div>
-    
-    <!-- TARİHE IŞINLAN BÖLÜMÜ (EMOJİSİZ VE BEYAZ TAKVİM İKONU İLE) -->
+
+    <button id="testBaslatBtn" onclick="window.location.href='test.html'">🚀 Uzay Testini Başlat</button>
+
     <div class="tariheIsinlanKutu">
         <div class="tariheIsinlanBaslik">TARİHE IŞINLAN</div>
         <input type="date" id="tarihSecici" onchange="tariheGit(this.value)">
@@ -341,7 +344,7 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
     </div>
     <div class="robotIcerik" id="robotIcerik">
         <input type="text" class="robotAramaInput" id="robotSoruArama" placeholder="Sorularda ara..." oninput="sorulariFiltrele()">
-        <div class="robotMesaj" id="robotMesaj">Tamamen özgün ve tekrarsız 300 soru listelenmiştir.</div>
+        <div class="robotMesaj" id="robotMesaj">Merak ettiğin soruları buradan aratabilir ya da botu kullanarak öğrenebilirsin!</div>
         <div class="robotSecenekler" id="robotSeceneklerContainer"></div>
     </div>
 </div>
@@ -582,300 +585,23 @@ function efektCal(freq = 440, sure = 0.1){
     } catch(e){}
 }
 
-const hamSorular = [
-    { s: "Acaba evrenin bir sonu veya sınırı var mıdır?", c: "Gözlenebilir evrenin bir sınırı vardır ancak ötesinin sonsuz olduğu düşünülmektedir." },
-    { s: "Açık uzay boşluğunda insan vücudu korunmasız kalırsa ne olur?", c: "Basınç düşüklüğü ve oksijensizlik nedeniyle kısa sürede bilincini yitirir." },
-    { s: "Ağır elementler evrende hangi devasa olaylarla üretilir?", c: "Süpernova patlamaları ve nötron yıldızı birleşmeleriyle evrene yayılır." },
-    { s: "Akrep takımyıldızının en parlak üyesi hangisidir?", c: "Kırmızı üstdev sınıfındaki Antares yıldızıdır." },
-    { s: "Alev renkleri yıldızların sıcaklığı hakkında nasıl bilgi verir?", c: "Mavi yıldızlar çok sıcak, kırmızı yıldızlar ise daha soğuktur." },
-    { s: "Alfa Centauri sistemi bize neden bu kadar önemlidir?", c: "Güneş sistemimize en yakın yıldız komşu sistemidir." },
-    { s: "Altın ve platin gibi değerli metaller uzayda nasıl oluşur?", c: "Nötron yıldızlarının çarpışmasındaki devasa çekirdek tepkimeleriyle oluşur." },
-    { s: "Amatör teleskoplarla hangi gök cisimleri gözlemlenebilir?", c: "Ay kraterleri, Jüpiter'in uyduları ve bazı parlak nebulalar görülebilir." },
-    { s: "Andromeda galaksisi ile Samanyolu ne zaman çarpışacaktır?", c: "Yaklaşık 4.5 milyar yıl sonra birleşecekleri tahmin edilmektedir." },
-    { s: "Asteroid kuşağı neden bir gezegen oluşturamamıştır?", c: "Jüpiter'in devasa kütle çekim gücü maddelerin birleşmesini engellemiştir." },
-    { s: "Atmosferimiz uzaydan gelen tehlikeli ışınları nasıl engeller?", c: "Ozon tabakası ve manyetik alan zararlı radyasyonu filtreler." },
-    { s: "Ay yüzeyindeki toz tabakası ne olarak adlandırılır?", c: "Regolit adı verilen ince, keskin ve kırık kaya tozundan oluşur." },
-    { s: "Ay tutulması esnasında neden kırmızı renk görünür?", c: "Dünya atmosferinden kırılan güneş ışıkları Ay'ı kırmızı tonlarda aydınlatır." },
-    { s: "Ayna teleskopları merceklere göre neden daha avantajlıdır?", c: "Renk sapması yapmazlar ve çok daha büyük boyutlarda üretilebilirler." },
-    { s: "Balıklar takımyıldızı gökyüzünde nerededir?", c: "Sonbahar ve kış aylarında kuzey yarımküreden görülebilen büyük bir takımyıldızdır." },
-    { s: "Barnard yıldızı neden astronomi için özeldır?", c: "Gökyüzündeki en yüksek öz harekete (açısal hıza) sahip yıldızdır." },
-    { s: "Başak takımyıldızı içinde hangi büyük yapıları barındırır?", c: "Çok sayıda galaksi içeren Başak Galaksi Kümesi'ni barındırır." },
-    { s: "Batlamyus dünyayı merkez alan modeli ne zaman öne sürmüştür?", c: "Antik çağda yer merkezli evren modelini matematikselleştirmiştir." },
-    { s: "Bebek yıldızlar hangi bulutsu bölgelerinde doğar?", c: "Dev moleküler bulutlar ve yıldız oluşum bölgelerinde doğarlar." },
-    { s: "Berenice'in Saçı takımyıldızı nerededir?", c: "Kuzey gökkubbede yer alan ve sönük yıldızlardan oluşan bir kümedir." },
-    { s: "Beyaz cüce yıldızların ömrü ne kadar sürer?", c: "Milyarlarca yıl boyunca yavaşça soğuyarak kara cüce haline gelirler." },
-    { s: "Büyük Ayı takımyıldızı yön bulmada nasıl kullanılır?", c: "İşaretçi yıldızları sayesinde kuzeyi gösteren Kutup Yıldızı'nı buldurur." },
-    { s: "Büyük Patlama teorisinin en büyük kanıtı nedir?", c: "Kozmik Arka Plan Işıması (CMB) bu teorinin en net kanıtıdır." },
-    { s: "Büyük Magellan Bulutu nedir?", c: "Samanyolu'nun çevresinde dönen küçük düzensiz uydu galaksidir." },
-    { s: "Buz devleri olarak bilinen gezegenler hangileridir?", c: "Uranüs ve Neptün buz devleri sınıfında incelenir." },
-    { s: "Cansız göktaşları dünyaya düşerken neden yanar?", c: "Atmosferdeki yüksek sürtünme ve hava sıkışması ısıyı 1500 dereceye çıkarır." },
-    { s: "Cerenkov ışıması uzay gözlemlerinde nasıl tespit edilir?", c: "Yüksek enerjili parçacıkların atmosferde oluşturduğu mavi parıltıyla ölçülür." },
-    { s: "Cüce galaksiler büyük galaksiler tarafından yutulur mu?", c: "Evet, Samanyolu geçmişte birçok küçük galaksiyi yutmuştur." },
-    { s: "Cüce gezegen Plüton'un uydusu Charon ne kadar büyüktür?", c: "Kendi ana gezegenine oranla devasa büyüklüğe sahip eşsiz bir uydudur." },
-    { s: "Çanak antenler derin uzay sinyallerini nasıl yakalar?", c: "Zayıf radyo dalgalarını büyük yüzeyde toplayarak odak noktasına iletir." },
-    { s: "Çarpışan galaksilerde yeni yıldızlar neden hızla doğar?", c: "Çarpışan gaz bulutları sıkışarak yoğun kütleçekim odakları yaratır." },
-    { s: "Çekirdek füzyonu duran bir yıldıza ne olur?", c: "Yıldız içe doğru çökerek beyaz cüce, nötron yıldızı veya kara delik olur." },
-    { s: "Çekim merceklenmesi Einstein'ın hangi teorisini kanıtlar?", c: "Genel Görelilik teorisinin ışığı bükme öngörüsünü kanıtlar." },
-    { s: "Çevresel ışık kirliliği astronomik gözlemleri nasıl etkiler?", c: "Sönük yıldızların ve nebulaların görünmesini tamamen engeller." },
-    { s: "Çift yıldız sistemleri evrende yaygın mıdır?", c: "Gözlenen yıldızların yarısından fazlası çoklu veya ikili sistemlerdedir." },
-    { s: "Çoban takımyıldızının en dikkat çekici yıldızı hangisidir?", c: "Turuncu dev renkleriyle biliner Arcturus yıldızıdır." },
-    { s: "Çok büyük kütleli kara delikler galaksi merkezlerinde bulunur mu?", c: "Evet, neredeyse tüm büyük galaksilerin merkezinde dev kara delik vardır." },
-    { s: "Çukur aynalı teleskoplar ilk kez kim tarafından geliştirilmiştir?", c: "Isaac Newton tarafından tasarlanıp pratik hale getirilmiştir." },
-    { s: "Dairesel yörüngeler doğada neden çok nadirdir?", c: "Cisimlerin hız ve çekim dengesi kusursuz daire çizmeyi zorlaştırır." },
-    { s: "Dağınık kümeler ile küresel kümeler arasındaki fark nedir?", c: "Küresel kümeler çok yaşlı ve sıkı, dağınık kümeler ise genç ve serbesttir." },
-    { s: "Damlacık modeli atom çekirdeğinde nasıl kullanılır?", c: "Ağır elementlerin nükleer fisyon ve füzyon süreçlerini açıklamakta kullanılır." },
-    { s: "Deimos Mars'ın hangi tür uydusudur?", c: "Mars'ın iki küçük uydusundan en dışta ve en küçük olanıdır." },
-    { s: "Delikli levha kameralar uzay fotoğrafçılığında kullanılmış mıdır?", c: "Güneş tutulmalarını incelemek için tarihsel olarak kullanılmıştır." },
-    { s: "Demir elementinin yıldızlardaki ölümü tetiklemesinin sebebi nedir?", c: "Demir füzyonu enerji üretmez, aksine enerji tüketerek yıldızı çöktürür." },
-    { s: "Denizanası bulutsusu gökyüzünün hangi bölgesindedir?", c: "İkizler takımyıldızı sınırları içinde yer alan bir süpernova kalıntısıdır." },
-    { s: "Dev gaz gezegenlerinin katı bir yüzeyi var mıdır?", c: "Hayır, yüzey yerine giderek yoğunlaşan gaz ve sıvı katmanları vardır." },
-    { s: "Dış uzay görevlerinde iyon motorları neden tercih edilir?", c: "Çok az yakıt harcayarak uzun süreli ve yüksek hızlara ulaşım sağlar." },
-    { s: "Doğal uydular gezegenlerin etrafında nasıl yörünge kurar?", c: "Gezegenin kütle çekim kuvveti uydunun merkezcil ivmesini dengeler." },
-    { s: "Dört Galile uydusu Jüpiter'in hangi uydularıdır?", c: "Io, Europa, Ganymede ve Callisto uydularıdır." },
-    { s: "Dünya'nın eksen eğikliği zamanla değişir mi?", c: "Bin yılllık döngüler halinde çok küçük miktarlarda salınım yapar." },
-    { s: "Dünya'nın manyetik kutupları coğrafi kutuplarla tam çakışır mı?", c: "Hayır, aralarında sürekli kayan bir açı farkı bulunmaktadır." },
-    { s: "Dünya dışı yaşam arayışında SETI projesi ne yapar?", c: "Uzaydan gelen olası akıllı radyo sinyallerini tarayıp analiz eder." },
-    { s: "Dünyanın güneşe en yakın olduğu nokta ne zaman gerçekleşir?", c: "Ocak ayının başlarında (günberi) gerçekleşir." },
-    { s: "Dürbünler astronomi başlangıcında iş görür mü?", c: "Büyük lensli dürbünler ay detaylarını ve bazı kümeleri görmek için idealdir." },
-    { s: "Egzosfer tabakası uzayla atmosfer arasında nasıl bir geçiştir?", c: "Gaz moleküllerinin çok seyrelip doğrudan uzaya kaçabildiği en dış katmandır." },
-    { s: "Ekinokslarda gece ve gündüz süreleri neden eşittir?", c: "Güneş ışınları ekvatora dik vurur ve aydınlanma çemberi kutuplardan geçer." },
-    { s: "Ekliptik düzlem neyi ifade eder?", c: "Dünya'nın Güneş etrafındaki yörünge düzleminin gökkubbedeki izdüşümüdür." },
-    { s: "Elips yörüngede hızlar sabit midir?", c: "Hayır, güneşe yaklaştıkça hızlanır, uzaklaştıkça yavaşlar." },
-    { s: "Eliptik galaksiler ne tür yıldız toplulukları barındırır?", c: "Genellikle yaşlı, kırmızı yıldızlar barındırır ve yeni yıldız oluşumu azdır." },
-    { s: "Encke kuyruklu yıldızının yörünge periyodu ne kadardır?", c: "Yaklaşık 3.3 yıl ile en kısa periyotlu kuyruklu yıldızlardan biridir." },
-    { s: "Erboğa (Centaurus) takımyıldızında ne yer alır?", c: "Bize en yakın yıldız sistemi olan Alfa Centauri bu bölgededir." },
-    { s: "Evrenin genişlemesi ilk kez kim tarafından gözlemlenmiştir?", c: "Edwin Hubble tarafından uzak galaksilerin kırmızıya kaymasıyla keşfedilmiştir." },
-    { s: "Evrenin yaşını bilim insanları nasıl hesaplamıştır?", c: "Kozmik arka plan ışıması ve Hubble sabiti verileriyle hesaplanmıştır." },
-    { s: "Fermiyonlar ve bozonlar uzaydaki maddeleri nasıl oluşturur?", c: "Fermiyonlar maddeyi yaparken bozonlar kuvvetleri taşır." },
-    { s: "Fizik yasaları evrenin her yerinde aynı mıdır?", c: "Modern koznolojinin temel varsayımı olan evrensellik ilkesine göre aynıdır." },
-    { s: "Foton küresi kara deliklerin hangi bölgesinde yer alır?", c: "Olay ufkumun hemen dışında ışığın daire çizebildiği alandır." },
-    { s: "Fotoelektrik etki uzay sondalarındaki panelleri nasıl çalıştırır?", c: "Güneş ışığındaki fotonların elektron sökmesiyle elektrik akımı üretir." },
-    { s: "Füzyon reaktörleri dünyada uzaktaki güneşi taklit edebilir mi?", c: "Manyetik sıkıştırma ile güneşin enerji üretim mekanizması kopyalanmaya çalışılır." },
-    { s: "Galaktik merkezdeki dev kara delik ne kadar büyüktür?", c: "Samanyolu merkezindeki Sagittarius A* milyonlarca güneş kütlesindedir." },
-    { s: "Galaksi kümeleri evrende nasıl bir yapı oluşturur?", c: "Kozmik ağ adı verilen devasa iplikçilikler ve boşluklar ağı oluşturur." },
-    { s: "Galileo Galilei teleskopla yaptığı ilk keşif nedir?", c: "Jüpiter'in uydularını ve Ay'ın pürüzlü yüzeyini keşfetmiştir." },
-    { s: "Gamma ışını patlamaları evrende nereden kaynaklanır?", c: "Dev yıldızların çökmesi veya nötron yıldızı çarpışmalarından yayılır." },
-    { s: "Ganymede uydusunun kendi manyetik alanı var mıdır?", c: "Güneş sisteminde kendi manyetik alanına sahip bilinen tek uydudur." },
-    { s: "Gezegenimsi bulutsular adı nereden gelmektedir?", c: "Erken dönem teleskoplarda gezegene benzetildikleri için bu adı almıştır." },
-    { s: "Gök cisimlerinin tayf çizgileri bize neyi kanıtlar?", c: "Evrendeki kimyasal elementlerin dünyadakilerle birebir aynı olduğunu kanıtlar." },
-    { s: "Gökada çarpışmalarında yıldızlar neden birbirine çarpmaz?", c: "Yıldızlar arasındaki mesafeler çok büyük olduğu için boşluktan geçerler." },
-    { s: "Göktaşları yeryüzüne düştüğünde hangi adı alır?", c: "Atmosferden geçip sağ kalan parçalar göktaşı (meteorut) adını alır." },
-    { s: "Gözlenebilir evrenin çapı yaklaşık kaç ışık yılıdır?", c: "Yaklaşık 93 milyar ışık yılı çapında bir alanı kapsar." },
-    { s: "Güneş tutulması sırasında neden sadece yeni ay evresinde olur?", c: "Ay tam olarak Dünya ile Güneş'in arasına girdiğinde gerçekleşebilir." },
-    { s: "Güneş'in kütlesi tüm sistemin yüzde kaçını oluşturur?", c: "Güneş Sistemi'ndeki toplam kütlenin yaklaşık yüzde 99.8'ini oluşturur." },
-    { s: "Güneş'in ömrü bittiğinde hangi aşamaya geçecektir?", c: "Önce kırmızı dev olacak, ardından dış katmanlarını atıp beyaz cüce kalacaktır." },
-    { s: "Güney Kutbu'nda gökyüzü gözlemleri neden avantajlıdır?", c: "Atmosfer kuruluğu ve uzun kutup geceleri sayesinde kesintisiz gözlem sunar." },
-    { s: "Güney haçı takımyıldızı hangi yarımküreden görünür?", c: "Güney yarımkürenin en tanınan ve yön bulmada kullanılan takımyıldızıdır." },
-    { s: "Habitable Zone (Yaşanabilir Bölge) neyi ifade eder?", c: "Bir yıldız etrafında suyun sıvı halde kalabileceği yörünge kuşağıdır." },
-    { s: "Halkalı bulutsular genelde hangi evredeki yıldızlarca oluşturulur?", c: "Ömrünün sonuna gelmiş güneş benzeri orta kütleli yıldızlarca oluşturulur." },
-    { s: "Halley kuyruklu yıldızının çekirdeği neye benzer?", c: "Kömür karası renginde, organik bileşikler ve buz karışımı patatese benzer." },
-    { s: "Helyum elementi evrende hidrojenden sonra neden ikinci sıradadır?", c: "Büyük patlamanın ilk dakikalarında nükleer sentezle büyük oranda üretilmiştir." },
-    { s: "Herkül küresel kümesi gökyüzünde çıplak gözle görülebilir mi?", c: "Çok karanlık yerlerde çok zayıf bir ışık lekesi olarak fark edilebilir." },
-    { s: "Hidrojen atomu evrenin toplam maddesinin yüzde kaçıdır?", c: "Atomik bazda evrendeki maddelerin yaklaşık yüzde 75'ini oluşturur." },
-    { s: "Higgs bozonu evrendeki maddelere ne kazandırır?", c: "Temel parçacıklara kütle kazandıran alanın varlığını kanıtlayan parçacıktır." },
-    { s: "Hipparkos kataloglama sistemini astronomide niye kurmuştur?", c: "Yıldızları parlaklıklarına göre sınıflandırmak için ilk kataloğu yapmıştır." },
-    { s: "Hubble sabiti evrenin ne hakkında bilgi verir?", c: "Evrenin genişleme hızını ve oranını gösteren temel sabittir." },
-    { s: "Huygens sondası hangi gök cismine başarılı iniş yapmıştır?", c: "Satürn'ün en büyük uydusu olan Titan'ın yüzeyine inmiştir." },
-    { s: "Işık kirliliği en çok hangi bilim dalını olumsuz etkiler?", c: "Doğrudan gözlemsel astronomi çalışmalarını sekteye uğratır." },
-    { s: "Işık hızının evrendeki mutlak sınırı nedir?", c: "Boşlukta saniyede yaklaşık 300 bin kilometre hızı aşmak imkansızdır." },
-    { s: "Ikizler takımyıldızının en parlak iki yıldızı hangileridir?", c: "Castor ve Pollux adı verilen ikiz kardeş yıldızlardır." },
-    { s: "İyonosfer tabakası radyo dalgalarını nasıl yansıtır?", c: "Yüklü iyonlar sayesinde radyo sinyallerinin dünya çevresinde yayılmasını sağlar." },
-    { s: "James Webb Teleskobu hangi dalga boyunda çalışır?", c: "Evrenin en eski galaksilerini görmek için kızılötesi (infrared) dalgalarda çalışır." },
-    { s: "Jüpiter'in Büyük Kırmızı Lekesi aslında nedir?", c: "Yüzlerce yıldır süregelen devasa ve şiddetli bir fırtına sistemidir." },
-    { s: "Jüpiter'in manyetik alanı dünyaya göre nasıldır?", c: "Dünya'nınkinden kat kat güçlü, güneş sistemindeki en büyük manyetik alandır." },
-    { s: "Kabuk teorisi yıldızların iç yapısını nasıl açıklar?", c: "Yıldızların farklı katmanlarında farklı elementlerin yandığını gösterir." },
-    { s: "Kaçış hızı kavramı roket bilimi için neden şarttır?", c: "Yerçekimi kuyutundan kurtulmak için gereken minimum fırlatma hızıdır." },
-    { s: "Kadir derecelendirmesinde rakam küçüldükçe ne olur?", c: "Yıldızın görünür parlaklığı çok daha parlak hale gelir." },
-    { s: "Kalkan takımyıldızı samanyolu içinde nerededir?", c: "Samanyolu'nun en yoğun ve parlak yıldız bulutlarından birine ev sahipliği yapar." },
-    { s: "Kandil bulutsusu veya benzeri salma bulutsular neyle parlar?", c: "İçlerindeki genç ve sıcak yıldızların yaydığı UV ışınlarıyla gazı iyonize ederek parlar." },
-    { s: "Kapanan evren modeli (Big Crunch) günümüzde geçerli midir?", c: "Karanlık enerji keşfedildikten sonra *bu model büyük ölçüde terk edilmiştir." },
-    { s: "Kara deliklerin içine düşen maddeler geri çıkabilir mi?", c: "Olay ufkunu geçtikten sonra hiçbir madde veya ışık kaçamaz." },
-    { s: "Karanlık madde evrenin toplam kütlesinin yüzde kaçıdır?", c: "Evrendeki toplam madde-enerji dengesinin yaklaşık yüzde 27'sini oluşturur." },
-    { s: "Karisik yörüngeli kuyruklu yıldızlar nereden kaynaklanır?", c: "Kuiper kuşağı ve uzaktaki Oort bulutundan merkeze doğru düşerler." },
-    { s: "Kartal takımyıldızının en parlak yıldızı hangisidir?", c: "Altair adı verilen hızlı dönen parlak yıldızdır." },
-    { s: "Kepler yasaları gezegen hareketlerini nasıl tanımlar?", c: "Yörüngelerin elips olduğunu, alanlar ve periyot yasalarını matematiksel açıklar." },
-    { s: "Klavikula veya gökbilimde usturlap ne amaçla kullanılırdı?", c: "Eski dönemlerde gök cisimlerinin konumunu ölçmek için kullanılan haritadır." },
-    { s: "Kometlerin kuyruğu güneşe yaklaşınca niye uzar?", c: "Güneş rüzgarları ve ısı etkisiyle buharlaşan gaz ve tozlar dışarı üflenir." },
-    { s: "Kozmik mikrodalga arkaplan ışıması ne kadar esnektir?", c: "Büyük patlamadan kalan yaklaşık 380 bin yıl önceki ilk ışıktır." },
-    { s: "Kraliçe (Cassiopeia) takımyıldızı hangi harfe benzer?", c: "Gökyüzünde belirgin W veya M harfi şeklini oluşturur." },
-    { s: "Kutup yıldızı hangi takımyıldızının üyesidir?", c: "Küçükayı takımyıldızının en ucundaki parlak yıldızdır." },
-    { s: "Kuiper kuşağı Neptün'ün ötesinde ne barındırır?", c: "Plüton dahil çok sayıda buzlu küçük gezegen ve asteroit barındırır." },
-    { s: "Küresel yıldız kümeleri galaksimizin neresinde bulunur?", c: "Galaktik halo adı verilen küresel dış bölgede yoğunlaşmıştır." },
-    { s: "Kütle çekim dalgaları uzayda neyi büker?", c: "Uzay-zaman dokusunu dalgalar halinde esnetip bükerek ilerler." },
-    { s: "Kütle çekim sapanı manevrası uzay sondalarına ne sağlar?", c: "Gezegenlerin çekimini kullanarak fazladan yakıt harcamadan hız kazanır." },
-    { s: "Kuzey tacı takımyıldızı nerede konumlanır?", c: "Kuzey yarımkürede küçük ama zarif bir yarım daire takımyıldızıdır." },
-    { s: "Kuyruklu yıldızların iyon kuyruğu hangi yöne bakar?", c: "Her zaman güneş rüzgarının etkisiyle doğrudan güneşin ters yönüne uzanır." },
-    { s: "Küçükayı takımyıldızı içinde kaç ana yıldız bulunur?", c: "Yedi ana yıldızdan oluşan kepçe benzeri bir yapıya sahiptir." },
-    { s: "Lazer interferometreler neyi ölçmek için tasarlanmıştır?", c: "Kütle çekim dalgalarının uzayda yarattığı minik boyutsal değişimleri ölçer." },
-    { s: "Levha tektoniği sadece dünyada mı görülür?", c: "Güneş sisteminde aktif levha tektoniğine sahip başka yer yoktur." },
-    { s: "Lyra takımyıldızının en parlak üyesi hangisidir?", c: "Gökyüzünün en parlak yıldızlarından biri olan Vega'dır." },
-    { s: "Macellan bulutları çıplak gözle nereden görünür?", c: "Sadece güney yarımküreden bulut benzeri lekeler olarak görülür." },
-    { s: "Manyetik kutup kaymaları dünyayı nasıl etkiler?", c: "Pusulaların yönünü değiştirir ancak yaşamı doğrudan yok etmez." },
-    { s: "Manyetosfer dünyayı güneş fırtınalarından nasıl korur?", c: "Yüklü parçacıkları kutuplara doğru saptırarak yeryüzüne ulaşmasını engeller." },
-    { s: "Mars yüzeyindeki Olympus Mons dağı ne kadar büyüktür?", c: "Güneş sistemindeki bilinen en yüksek volkanik dağdır (Everest'in 3 katı)." },
-    { s: "Mars'ta su bulunması neden aranmaktadır?", c: "Geçmişte mikrobiyolojik yaşam barındırmış olabileceği ihtimali içindir." },
-    { s: "Merkür'ün yüzeyi neden Ay'apçok benzer?", c: "Yoğun göktaşı kraterleri ile kaplı ve atmosferi olmadığı için erozyona uğramaz." },
-    { s: "Meteor yağmurları ne zaman gerçekleşir?", c: "Dünya kuyruklu yıldızların bıraktığı toz kalıntısı bulutlarından geçerken oluşur." },
-    { s: "Metan gazı Uranüs ve Neptün'e hangi rengi verir?", c: "Kırmızı ışığı emip mavi ve yeşil renkleri yansıtmasını sağlar." },
-    { s: "Mikrodalga teleskoplar evrenin neresini inceler?", c: "İlk dönemden kalan fon ışımasını ve soğuk gaz bulutlarını inceler." },
-    { s: "Milattan önce antik çağda gökbilimciler neyi gözlemliyordu?", c: "Gezegenlerin gökyüzündeki retrograd (geri hareket) döngülerini izliyorlardı." },
-    { s: "Minik asteroidlerin dünyaya çarpma riski var mıdır?", c: "Atmosferde genellikle yanarak yok olurlar ancak büyükleri tehlike yaratabilir." },
-    { s: "Mutlak kadir (Absolute magnitude) ölçüsü neyi bildirir?", c: "Bir yıldızın 10 parsek uzaklıktaki gerçek ve net parlaklık değeridir." },
-    { s: "Nebulalar yıldızlararası maddeden mi oluşur?", c: "Evet, yoğun gaz ve toz bulutlarının birleştiği devasa kozmik bulutlardır." },
-    { s: "Neptün gezegeni matematiksel olarak nasıl keşfedilmiştir?", c: "Uranüs'ün yörüngesindeki sapmalar hesaplanarak yeri önceden bulunmuştur." },
-    { s: "Neowise kuyruklu yıldızı ne zaman çıplak gözle izlendi?", c: "2020 yılında dünyaya yakın geçişi sırasında net şekilde görüldü." },
-    { s: "Nötron yıldızları ne kadar yoğundur?", c: "Bir çay kaşığı kadarı dünyada milyarlarca ton ağırlıkta gelebilecek yoğunluktadır." },
-    { s: "Nükleer füzyon yıldızlara nasıl bir basınç dengesi sağlar?", c: "Dışa doğru iten termal basınç ile içe çeken kütle çekimini dengeler." },
-    { s: "Ocak ayında Dünya güneşe en yakın konumda niye soğuktur?", c: "Mevsimler güneşe uzaklıkla değil, eksen eğikliği ve güneş açısıyla ilgilidir." },
-    { s: "Olay ufkundan sonra fizik kuralları niye geçersizleşir?", c: "Tekillik noktasında matematiksel sonsuzluklar denklemleri bozar." },
-    { s: "Olimpiyat takımyıldızı gökyüzünde var mıdır?", c: "Hayır, resmi 88 uluslararası takımyıldız arasında yer almaz." },
-    { s: "Oort bulutunun dış sınırı güneş sistemini nerede bitirir?", c: "Güneş'in kütleçekim etkisinin bittiği 1 ila 2 ışık yılı uzakta biter." },
-    { s: "Optik teleskoplar hangi aynaları kullanarak ışığı toplar?", c: "Parabolik ana aynalar yardımıyla ışığı tek noktaya odaklar." },
-    { s: "Orion takımyıldızı niye en ünlü takımyıldızlardan biridir?", c: "Kuşaktaki üç parlak yıldızı ve avcı konseptiyle her yerden kolayca görünür." },
-    { s: "Ozon tabakası hangi atmosfer katmanında yer alır?", c: "Stratosfer katmanında yoğunlaşmış bir gaz tabakasıdır." },
-    { s: "Ötegezegen keşiflerinde transit yöntemi neyi izler?", c: "Gezegenin yıldızın önünden geçerken ışığında yarattığı dönemsel azalmayı izler." },
-    { s: "Özgün tayf çizgileri elementlerin neresini ele verir?", c: "Atomların elektron geçişleri sırasında soğurduğu veya yaydığı dalga boylarını gösterir." },
-    { s: "Parlaklık sınıflaması yıldız evriminde neyi gösterir?", c: "Yıldızın dev, süperdev veya cüce alt sınıfından hangisinde olduğunu belirtir." },
-    { s: "Pegasus takımyıldızı gökyüzünde neyi simgeler?", c: "Kanatlı efsanevi at figürünü temsil eden büyük bir kare alanı kapsar." },
-    { s: "Perseid meteor yağmuru hangi ayda zirve yapar?", c: "Her yıl Ağustos ayının ortalarında gözlemlenmesi en rahat meteor yağmurudur." },
-    { s: "Phobos Mars'ın uydusu olarak kaç yılda bir batar?", c: "Mars'ın yüzeyinden günde iki kez batarken görülebilecek kadar hızlı döner." },
-    { s: "Pioneer uzay sondaları şu an nerededir?", c: "Güneş sisteminin dış sınırlarına doğru ilerlemeye devam etmektedir." },
-    { s: "Plüton gezegen statüsünden ne zaman düşürülmüştür?", c: "2006 yılında Uluslararası Astronomi Birliği kararıyla cüce gezegen ilan edilmiştir." },
-    { s: "Polaris sabit mi durur yoksa hareket eder mi?", c: "Dünya'nın presesyon hareketi nedeniyle bin yıllar içinde kutup yıldızı değişir." },
-    { s: "Polonyalı astronom Kopernik hangi modeli öne sürmüştür?", c: "Güneşi merkeze alan Güneş merkezli (Helyosentrik) modeli savunmuştur." },
-    { s: "Proxima Centauri hangi tür yıldız sınıfına girer?", c: "Küçük ve sönük bir kırmızı cüce yıldızdır." },
-    { s: "Pulsarlar uzayda ne sıklıkla sinyal gönderir?", c: "Saniyede birkaç defadan yüzlerce defaya varan düzenli aralıklarla atım yapar." },
-    { s: "Radyo dalgaları evrenin derinliklerini incelemede niye kullanılır?", c: "Toz bulutlarının arkasını geçebildiği için galaksi merkezlerini gösterir." },
-    { s: "Radyasyon kuşakları (Van Allen) dünyayı nasıl çevreler?", c: "Dünyanın manyetik alanı tarafından tutulan yüksek enerjili parçacık kuşaklarıdır." },
-    { s: "Reaktörlerdeki hidrojen yakıtı uzayda tükenir mi?", c: "Yıldızların çekirdeğindeki hidrojen rezervleri milyarlarca yıl yeter." },
-    { s: "Rigel yıldızı Orion takımyıldızının neresindedir?", c: "Avcının sol ayağında yer alan devasa mavi bir süperdevdir." },
-    { s: "Roketlerin uzaya çıkabilmesi için hangi prensip kullanılır?", c: "Newton'un etki-tepki yasası ve gaz itme prensibi kullanılır." },
-    { s: "Samanyolu galaksisi kaç sarmal kola sahiptir?", c: "Dört ana spiral kola sahip dev bir çubuklu sarmal galaksidir." },
-    { s: "Satürn'ün halkaları temel olarak hangi maddeden oluşur?", c: "Çoğunlukla saf su buzu parçacıkları ve kayalardan oluşur." },
-    { s: "Seyfert galaksileri aktif çekirdekli galaksilerden midir?", c: "Evet, merkezlerinden yoğun ışıma yayan aktif galaksi türüdür." },
-    { s: "Sicim teorisi kaç boyutlu bir evren öngörür?", c: "Matematiksel tutarlılık için 10 veya 11 boyutlu bir evren yapısı önerir." },
-    { s: "Sirius gökyüzünün neden en parlak yıldızıdır?", c: "Bize oldukça yakın ve intrinsically (özünde) parlak bir çift yıldız sistemidir." },
-    { s: "Sondalar plüton geçişinde en çok hangi aracı kullandı?", c: "New Horizons (Yeni Ufuklar) uzay aracı tarihi geçişi yapmıştır." },
-    { s: "Süpernova kalıntısı Yengeç Bulutsusu hangi yıl patlamıştır?", c: "MS 1054 yılında dünyadan gözlemlenmiş tarihi bir süpernovadır." },
-    { s: "Şili'deki Atacama çölü astronomi için neden seçilir?", c: "Bulutsuz gün sayısı çok yüksek ve nem oranı sıfıra yakındır." },
-    { s: "Tayfölçer (Spectrograph) araçları ışığı neye ayırır?", c: "Gelen yıldız ışığını dalga boylarına ve renk tayflarına böler." },
-    { s: "Tekillik kavramı kara deliklerin neresinde bulunur?", c: "Tam merkezde kütlenin sıkıştığı sıfır hacimli sonsuz yoğunluk noktasıdır." },
-    { s: "Teleskop açısı büyüdükçe görüntü kalitesi niye düşebilir?", c: "Atmosferik türbülans (göz kırpma etkisi) görüntüyü bulanıklaştırır." },
-    { s: "Termonükleer patlamalar uzayda neyi tetikler?", c: "Nova olaylarında beyaz cücenin yüzeyindeki hidrojenin patlamasını sağlar." },
-    { s: "Titan uydusunun atmosferi dünyadan kalın mıdır?", c: "Evet, yoğun nitrojen atmosferi dünya basıncından bile fazladır." },
-    { s: "Trifid bulutsusu gökyüzünün hangi renklerini barındırır?", c: "Kırmızı salma bulutu ve mavi yansıma bulutunu bir arada barındırır." },
-    { s: "Tsunami dalgaları uzayda cisimler çarpışınca oluşur mu?", c: "Sadece su olan yerlerde değil, nötron yıldızı birleşmesinde çekim dalgası yayılır." },
-    { s: "Ufuk çizgisinin ötesini görmek teleskopla niye mümkündür?", c: "Yüksek dağlara kurulan gözlemevleri atmosferik engellerin üstünde kalır." },
-    { s: "Uranüs gezegeni neden yatık bir eksenle döner?", c: "Geçmişte büyük bir gök cismiyle çarpıştığı için yan yatmıştır." },
-    { s: "Uzay çöpleri alçak dünya yörüngesini nasıl tehdit eder?", c: "Hızlı hareket eden eski uydu parçaları aktif uydularla çarpışabilir." },
-    { s: "Uzay boşluğu tamamen boş mudur yoksa madde var mıdır?", c: "Tam boşluk değildir; gaz molekülleri, tozlar ve alan enerjisi içerir." },
-    { s: "Uzay sondaları güneş sisteminden dışarı çıkabilir mi?", c: "Voyager 1 ve 2 sondaları heliosferi geçerek yıldızlararası uzaya çıkmıştır." },
-    { s: "Uzay-zaman bükülmesi kütle çekimini nasıl açıklar?", c: "Ağır cisimlerin dokuyu esnetmesi diğer cisimlerin o çukura doğru hareket etmesine yol açar." },
-    { s: "Ülker (Pleiades) kümesi çıplak gözle neye benzer?", c: "Küçük mavi parıltılı yedi kız kardeş olarak bilinen yıldız kümesidir." },
-    { s: "Vega yıldızı gelecekte hangi unvanı alacaktır?", c: "Dünya eksen kayması nedeniyle bin yıllar sonra Kutup Yıldızı olacaktır." },
-    { s: "Venüs gezegeninin yüzey basıncı dünyadan kaç kat fazladır?", c: "Yaklaşık 92 kat daha fazla ezici bir atmosfer basıncına sahiptir." },
-    { s: "Voyager sondaları dünyaya mesaj göndermek için ne kullanır?", c: "Yüksek kazançlı antenler aracılığıyla derin uzay radyo sinyalleri iletir." },
-    { s: "Yıldızlararası yolculuklarda en büyük engel nedir?", c: "Muazzam mesafeler ve ışıkyıllarını aşmak için gereken enerji sınırlamasıdır." },
-    { s: "Yıldızların renkleri sıcaklıkları hakkında ne söyler?", c: "Mavi en sıcak, sarı orta sıcaklıkta, kırmızı ise en soğuk yıldızdır." },
-    { s: "Yılın en uzun gecesi kuzey yarımkürede ne olur?", c: "21 Aralık tarihinde kış gündönümüyle gerçekleşir." },
-    { s: "Zenit noktası gökyüzünde tam olarak neresidir?", c: "Gözlemcinin başının dik üzerindeki görünmez gök noktasıdır." },
-    { s: "Zodyak kuşağı gökyüzünde nerededir?", c: "Güneş'in yıllık hareket yolu olan ekliptik çizgisini izleyen takımyıldızlarıdır." },
-    { s: "Zaman dilimlenmesi (Time dilation) neye bağlıdır?", c: "Işık hızına yakın hareket etmek veya güçlü kütle çekim alanlarına girmekle oluşur." },
-    { s: "Zayıf nükleer kuvvet uzayda hangi süreçleri yönetir?", c: "Yıldızların çekirdeğindeki radyoaktif bozunum ve parçacık dönüşümlerini yönetir." },
-    { s: "Zencefil rengindeki Mars toprağı neyden ileri gelir?", c: "Yüzeydeki yüksek oranda demir oksit (pas) tozlarından kaynaklanır." },
-    { s: "Zirve noktası teleskop hizalamasında nasıl ayarlanır?", c: "Yıldızların meridyen geçiş saatleri baz alınarak kalibre edilir." },
-    { s: "Aktif galaksi çekirdekleri enerjisini nereden alır?", c: "Merkezlerindeki süper kütleli kara deliklerin yuttuğu maddelerden alır." },
-    { s: "Açık küme yıldızları galaktik diskte neden zamanla dağılır?", c: "Çevrelerindeki diğer yıldızların kütle çekim etkisiyle yörüngeleri bozulur." },
-    { s: "Apsis noktaları eliptik yörüngelerde neyi ifade eder?", c: "Gök cisminin merkeze en yakın ve en uzak olduğu noktaları belirtir." },
-    { s: "Atmosferik basınç yükseklere çıkıldıkça neden azalır?", c: "Yerçekiminin tuttuğu gaz sütununun ağırlığı üst katmanlarda düşer." },
-    { s: "Ay'ın kendi etrafındaki dönüşü ile yörüngesi neden senkronizedir?", c: "Dünya'nın gelgit kütle çekim kilidi nedeniyle eşitlenmiştir." },
-    { s: "Balistik yörünge hesaplamaları uzayda nasıl yapılır?", c: "Newton mekaniği ve yörünge denklemleri kullanılarak hassas hesaplanır." },
-    { s: "Büyük kütleli yıldızlar neden çok kısa yaşar?", c: "Nükleer yakıtlarını devasa hızla tüketerek tükenirler." },
-    { s: "Çift yıldız tayfölçümü bize neyi gösterir?", c: "Yıldızların birbirleri etrafındaki dönme hızlarını ve kütlelerini hesaplatır." },
-    { s: "Dairesel hız formülü neye bağlı olarak değişir?", c: "Merkezdeki cismin kütlesi ve aradaki mesafenin kareköküyle ilgilidir." },
-    { s: "Dış gezegenlerin atmosfer analizi nasıl gerçekleştirilir?", c: "Yıldız önünden geçerken süzülen ışığın tayf incelenmesiyle yapılır." },
-    { s: "Dünya'nın iç çekirdeği neden katı haldedir?", c: "Muazzam derecedeki yüksek basınç, sıcaklığa rağmen demiri katı tutar." },
-    { s: "Eksen eğikliği olmayan bir gezegende ne olmazdı?", c: "Mevsim döngüleri ve yıl boyunca değişen gece-gündüz süreleri olmazdı." },
-    { s: "Fotonlar uzay boşluğunda kütleden etkilenir mi?", c: "Kütleleri yoktur ancak bükülen uzay-zamanda eğri yolda ilerlerler." },
-    { s: "Galaktik yıl tabiri neyi ifade eder?", c: "Güneş sisteminin Samanyolu merkezi etrafındaki bir tam tur süresidir." },
-    { s: "Güneş rüzgarları gezegenlerin atmosferini yok edebilir mi?", c: "Manyetik alanı olmayan gezegenlerde atmosferi zamanla uzaya uçurur." },
-    { s: "Helyum parlamaları kırmızı dev yıldızlarda ne zaman olur?", c: "Çekirdekteki helyumun aniden nükleer patlamayla yanmaya başlamasıdır." },
-    { s: "Işık yılı ölçü birimi ne kadarlık mesafedir?", c: "Işığın boşlukta bir yılda kat ettiği yaklaşık 9.46 trilyon kilometredir." },
-    { s: "Karanlık enerji evrenin genişlemesine nasıl direnç gösterir?", c: "Direnç göstermez, aksine alanı iterek genişlemeyi hızlandıran bir güçtür." },
-    { s: "Manyetik kutuplar coğrafi kutuplardan neden farklı yerdedir?", c: "Dünya'nın dış çekirdeğindeki erimiş demir akımlarının hareketinden kaynaklanır." },
-    { s: "Nötron yıldızlarının oluşum tetikleyicisi nedir?", c: "Süpernova patlaması sonrasında çekirdeğin proton ve elektronları birleştirmesidir." },
-    { s: "Ötegezegenlerin yaşanabilirliğinde suyun rolü nedir?", c: "Bilinen karbon bazlı yaşam formlarının çözücü ana maddesidir." },
-    { s: "Radyo dalgaları evrende hangi yapılar tarafından emilir?", c: "Yoğun iyonize gaz bulutları ve serbest elektron denizleri tarafından emilir." },
-    { s: "Samanyolu galaksisinin adı nereden gelmektedir?", c: "Gökyüzünde süt dökülmüş gibi duran parlak görünümünden ötürüdür." },
-    { s: "Spektroskopi bilimi bize gök cisimleri hakkında ne sağlar?", c: "Yıldızların sıcaklığı, hızı, bileşimi ve uzaklığı hakkında bilgi verir." },
-    { s: "Termal evrim süreci yıldızların yapısını nasıl değiştirir?", c: "Zamanla enerji kaybederek soğuma ve büzülme evrelerinden geçmelerine yol açar." },
-    { s: "Uzak galaksilerdeki kırmızıya kayma neyi kanıtlar?", c: "Evrenin bizden uzaklaşmakta olduğunu ve yayılan dalgaların uzadığını gösterir." },
-    { s: "Yerçekimi sabiti evrenin her yerinde aynı mıdır?", c: "Fizik yasalarının evrensellik ilkesine göre her yerde aynı kabul edilir." },
-    { s: "Zodyak ışığı dediğimiz soluk parıltı nereden yansır?", c: "Güneş sistemindeki gezegenlerarası toz bulutlarının güneş ışığını yansıtmasıdır." },
-    { s: "Yıldızlararası gaz bulutları neden kendi üzerine çökemez?", c: "Manyetik alanlar, türbülans ve iç basınç çöküşe karşı direnç gösterir." },
-    { s: "Kuantum dalgalanmaları evrenin ilk anında ne yarattı?", c: "Galaksilerin ve büyük yapının oluşmasını sağlayan yoğunluk farklarını yarattı." },
-    { s: "Kozmik toz bulutları yıldız oluşumunu nasıl etkiler?", c: "Işığı emerek ısınır ve yeni yıldızların doğacağı yoğun soğuk cepler yaratır." },
-    { s: "Gezegenlerin yörünge düzlemleri neden birbirine yakındır?", c: "Güneş'i oluşturan dönen bulutsunun açısal momentumu nedeniyle aynı düzlemde kalmışlardır." },
-    { s: "Kuyruklu yıldız çekirdekleri neden karanlık renklidir?", c: "Yüzeylerindeki organik karbon bileşikleri ve karbonlaşmış toz tabakaları nedeniyle siyahtır." },
-    { s: "Güneş koronasının sıcaklığı yüzeyinden neden çok daha fazladır?", c: "Manyetik alan halkalarının salgıladığı dalgalar ve nanouydu parlamaları burayı milyon dereceye ısıtır." },
-    { s: "Gezegenler arası manyetik alanlar neye dayanır?", c: "Güneş rüzgarıyla taşınan ve güneşin kendi manyetik alanından kopan plazma hatlarına dayanır." },
-    { s: "Yıldız kümelerindeki mavi serseri yıldızlar nasıl oluşur?", c: "İki yıldızın çarpışıp birleşmesi veya madde transferiyle gençleşmiş gibi görünmeleriyle oluşur." },
-    { s: "Karanlık madde halo yapısı galaksileri nasıl bir arada tutar?", c: "Görünmez devasa kütle çekimi sayesinde dış kısımdaki yıldızların uzaya savrulmasını önler." },
-    { s: "Gözlenebilir evrenin dış sınırındaki yapılar bize ne anlatır?", c: "Evrenin en genç ve ilk biçimlendiği dönemdeki fiziksel durumunu gösterir." },
-    { s: "Kutup ışıkları (Aurora) neden sadece yüksek enlemlerde görülür?", c: "Dünya'nın manyetik alan çizgilerinin kutup bölgelerinde yere yaklaşmasından ötürü." },
-    { s: "Güneş patlamaları sırasında yayılan X-ışınları dünyayı nasıl etkiler?", c: "Yeryüzündeki iyonosferi iyonize ederek kısa dalga telsiz ve radyo iletişimini kesintiye uğratır." },
-    { s: "Gezegen yüzeylerindeki rüzgar erozyonu başka dünyalarda var mıdır?", c: "Atmosferi ve rüzgarı olan Mars, Venüs ve Titan gibi dünyalarda da etkilidir." },
-    { s: "Kuyruklu yıldızların yörüngeleri neden zamanla değişir?", c: "Dev gaz gezegenlerinin kütle çekim kalfalığı ve buharlaşan gazların itme kuvveti yörüngesini saptırır." },
-    { s: "Yıldızlararası yolculuklarda gemi hızı ışık hızına yaklaşırsa ne olur?", c: "Özel görelilik gereği zaman yavaşlar, mesafe büzülür ve kütle ataleti artar." },
-    { s: "Galaksi kümelerinin çarpışması karanlık maddeyi nasıl ortaya çıkarır?", c: "Normal gaz bulutları çarpışmayla yavaşlarken karanlık madde etkilenmeden yoluna devam edip ayrışır." },
-    { s: "Güneş'in manyetik alanı kaç yılda bir tam döngü yapar?", c: "Yaklaşık 11 yıllık kutup değiştirme döngüleriyle toplam 22 yıllık bir manyetik solar döngüsü vardır." },
-    { s: "Karasal gezegenlerin çekirdekleri neden demir ve nikel ağırlıklıdır?", c: "Gezegenlerin ilk oluşum evresinde eriyen ağır metallerin merkeze doğru çökmesiyle oluşmuştur." },
-    { s: "Kozmik ışınlar dünya atmosferine çarptığında ne üretir?", c: "Atmosfer molekülleriyle çarpışarak ikincil parçacık yağmurları ve müonlar üretir." },
-    { s: "Gezegenlerin kendi ekseni etrafındaki dönme yönleri neden farklıdır?", c: "Geçmişteki devasa çarpışmaların açısal momentum açıları ve yönleri birbirinden farklı olmuştur." },
-    { s: "Kızıl dev aşamasındaki bir yıldızın çapı ne kadar büyür?", c: "Orijinal boyutundan yüzlerce kat genişleyerek iç gezegenlerin yörüngesini bile içine alabilir." },
-    { s: "Yıldızlararası ortamda bulunan buz tanecikler hangi bileşenlerdedir?", c: "Su buzu, amonyak, metan ve karbon monoksit katmanlarından oluşur." },
-    { s: "Güneş sistemindeki en yüksek dağ hangi gök cismindedir?", c: "Mars gezegenindeki Olympus Mons volkanik dağdır." },
-    { s: "Karanlık madde adayları arasında en popüler parçacık hangisidir?", c: "Zayıf etkileşen masif parçacıklar (WIMP) teorik olarak en güçlü adaydır." },
-    { s: "Gök cisimlerinin ortak kütle merkezi (barycenter) neyi sağlar?", c: "İki veya daha fazla cismin birbirleri etrafındaki kütleçekimel dans merkezini belirler." },
-    { s: "Kuyruklu yıldızların çekirdeğindeki buzlar hangi maddeleri saklar?", c: "Güneş sisteminin ilk oluşum günlerinden kalma bozulmamış ilkel kimyasal kalıntıları saklar." },
-    { s: "Yıldızların tayfındaki Fraunhofer çizgileri neyi gösterir?", c: "Güneş atmosferindeki gazların ışık spektrumunda yarattığı karanlık emilim çizgileridir." },
-    { s: "Gezegen halkaları neden Roche sınırının içinde kalır?", c: "Roche sınırının dışına çıkarlarsa kütleçekim etkisiyle birleşip uydu haline gelirler." },
-    { s: "Kozmik mikrodalga arkaplan ışımasındaki sıcaklık dalgalanmaları nedir?", c: "Erken evrendeki en küçük yoğunluk ve madde dağılımı sapmalarının izleridir." },
-    { s: "Güneş rüzgarlarının hızı uzay boşluğunda ortalama ne kadardır?", c: "Saniyede yaklaşık 400 ila 800 kilometre arasında değişen hızlarla yayılır." },
-    { s: "Karasal gezegenlerin atmosferleri zamanla neden değişir?", c: "Volkanik gaz çıkışları, güneş rüzgarı aşındırması ve kimyasal tepkimelerle evrilir." },
-    { s: "Yıldızların evrim sürecindeki oranları ve ana kol dönemi nedir?", c: "Çekirdeğinde hidrojen yakıp helyuma dönüştürdüğü en kararlı ve uzun ömürlü evresidir." },
-    { s: "Gezegenlerin atmosferlerinde sera etkisi nasıl oluşur?", c: "Gelen güneş ışığını geçiren gazların, yansıyan kızılötesi ısıyı tutarak hapsetmesiyle oluşur." },
-    { s: "Karanlık enerjinin yoğunluğu evren genişledikçe azalır mı?", c: "Teorik modellere göre sabittir; evren büyüse bile birim hacimdeki miktarı değişmez." },
-    { s: "Gökada disklerindeki spiral kolların varlık nedeni nedir?", c: "Yoğunluk dalgası teorisi sayesinde gaz ve yıldızların geçici olarak sıkıştığı dalga boylarıdır." },
-    { s: "Kuyruklu yıldızların toz kuyruğu güneş ışığı basıncından nasıl etkilenir?", c: "Fotonların itme kuvveti nedeniyle hafifçe kavisli bir şekilde güneşin tersine doğru savrulur." },
-    { s: "Yıldızlararası boşluktaki manyetik alanlar ne kadar güçlüdür?", c: "Dünya'nın manyetik alanından milyarlarca kat zayıf, oldukça cılız alanlardır." },
-    { s: "Güneş'in ömrünün yarısına geldiği nasıl bilinmektedir?", c: "Güneş'in çekirdeğindeki hidrojen ve helyum oranlarının tayf analizleriyle hesaplanmasından." },
-    { s: "Karasal gezegenlerin manyetik alanları neden zamanla zayıflar?", c: "Çekirdeklerindeki erimiş metallerin soğuyup hareket kabiliyetini kaybetmesiyle söner." },
-    { s: "Kozmik cetvel olarak kullanılacak Sefeid değişen yıldızları ne işe yarar?", c: "Parlaklıkları ile periyotları arasındaki net matematiksel bağ sayesinde uzaklık ölçtürür." },
-    { s: "Gezegenlerin yüzey sıcaklıkları sadece güneşe uzaklıkla mı belirlenir?", c: "Hayır; kalın atmosfer, sera etkisi ve iç ısı kaynakları da sıcaklığı doğrudan belirler." },
-    { s: "Yıldızların kendi etrafında dönerken tayflarında neden genişleme olur?", c: "Dönen yıldızın bir kenarı bize yaklaşırken diğeri uzaklaşır, bu da doppler kayması yaratır." },
-    { s: "Karanlık çağlar evrenin hangi evresinden önce yaşanmıştır?", c: "İlk yıldızların ve galaksilerin aydınlanma yaratmasından önceki nötr hidrojen dönemidir." },
-    { s: "Gök cisimlerinin yüzeylerindeki kraterler neden farklı derinliktedir?", c: "Çarpma açısına, çarpan taşın kütlesine ve yüzey altı kaya yapısının direncine göre değişir." },
-    { s: "Kuyruklu yıldızların yörüngeleri neden zamanla değişir?", c: "Dev gaz gezegenlerinin kütle çekim kalfalığı ve buharlaşan gazların itme kuvveti yörüngesini saptırır." },
-    { s: "Yıldızlararası seyahatte karşılaşılan en büyük tehlikelerden biri nedir?", c: "Yüksek hızlı mikro meteoritlerin ve uzay tozlarının gemi gövdesine vereceği zarardır." },
-    { s: "Güneş'in gelecekteki beyaz cüce kalıntısı ne kadar büyük olacaktır?", c: "Dünya büyüklüğüne kadar sıkışmış, devasa yoğunlukta sönük bir kaya topu kalacaktır." }
+const kolaySorular = [
+    { s: "Güneş sistemindeki en büyük gezegen hangisidir?", c: "Jüpiter", yanlislar: ["Satürn", "Neptün", "Dünya"] }
 ];
-
-hamSorular.sort((a, b) => a.s.localeCompare(b.s, 'tr'));
-
-const uzaySorulari = hamSorular.map((item, index) => {
-    return {
-        s: `${index + 1}. ${item.s}`,
-        c: item.c
-    };
-});
+const ortaSorular = [
+    { s: "Halley Kuyruklu Yıldızı dünyamızın yakınından ortalama kaç yılda bir geçer?", c: "75 - 76 yılda bir", yanlislar: ["25 yılda bir", "100 yılda bir", "500 yılda bir"] }
+];
+const zorSorular = [
+    { s: "Yıldızların tayf sınıflamasında en sıcak ve mavi renkli yıldızlar hangi harf sınıfına girer?", c: "O sınıfı yıldızlar", yanlislar: ["M sınıfı yıldızlar", "G sınıfı yıldızlar", "K sınıfı yıldızlar"] }
+];
 
 function sorulariYukle(filtre = ""){
     const container = document.getElementById("robotSeceneklerContainer");
     if(!container) return;
     container.innerHTML = "";
     
-    const filtrelenmis = uzaySorulari.filter(item => item.s.toLocaleLowerCase("tr-TR").includes(filtre.toLocaleLowerCase("tr-TR")));
+    const tumSorular = [...kolaySorular, ...ortaSorular, ...zorSorular];
+    const filtrelenmis = tumSorular.filter(item => item.s.toLocaleLowerCase("tr-TR").includes(filtre.toLocaleLowerCase("tr-TR"))).slice(0, 30);
     
     if(filtrelenmis.length === 0){
         container.innerHTML = `<div style="padding:10px; font-size:11px; color:#aeb6e9; text-align:center;">Soru bulunamadı.</div>`;
@@ -920,7 +646,7 @@ function robotKucultBuyut(){
         icerik.style.display = "flex";
         btn.textContent = "-";
         kutu.style.width = "clamp(300px, 45vw, 520px)";
-        liste.style.maxHeight = "55vh";
+        liste.style.maxHeight = "70vh";
     }
 }
 
@@ -1080,19 +806,7 @@ const mercury = gezegenOlustur({
     signals:[
         "[RADYO: MERKÜR SİNYALİ #01] GÜNEŞ RÜZGARI DOĞRUDAN ÇARPIYOR. YÜZEY SICAKLIĞI MAKSİMUM.",
         "[RADYO: MERKÜR SİNYALİ #02] KALIN DEMİR ÇEKİRDEK İNDÜKSİYON AKIMI YAYIYOR.",
-        "[RADYO: MERKÜR SİNYALİ #03] İNCE EKSOSFER KATMANINDA HELYUM TESPİT EDİLDİ.",
-        "[RADYO: MERKÜR SİNYALİ #04] KALORİ KRATERİ BÖLGESİNDE RADYASYON YOĞUNLUĞU ARTİYOR.",
-        "[RADYO: MERKÜR SİNYALİ #05] GÜNEŞ'E EN YAKIN YÖRÜNGE REZONANSI KARARSIZ.",
-        "[RADYO: MERKÜR SİNYALİ #06] GECE TARAFI SICAKLIĞI -180 C SEVİYESİNDE SABİTLENDİ.",
-        "[RADYO: MERKÜR SİNYALİ #07] TEKTONİK BÜZÜLME FAYLARI SİNYALİ BOZUYOR.",
-        "[RADYO: MERKÜR SİNYALİ #08] MİKRO GÖKTAŞI ÇARPIŞMA DALGALARI ALGILANDI.",
-        "[RADYO: MERKÜR SİNYALİ #09] MAGNETOPAUZA DUVARI GÜNEŞ FIRTINASIYla SIKIŞTI.",
-        "[RADYO: MERKÜR SİNYALİ #10] RADYOMETRİK TARAMA: YÜZEYDE SODYUM BUHARLARI VAR.",
-        "[RADYO: MERKÜR SİNYALİ #11] ÇEKİRDEK-MANTO SINIRINDA ISI TRANSFERİ YÜKSEK.",
-        "[RADYO: MERKÜR SİNYALİ #12] YÖRÜNGE HIZI SAPMASI: 47 KİLOMETRE/SANİYE.",
-        "[RADYO: MERKÜR SİNYALİ #13] GÜNEŞ DISKI ARKASINDAN ZAYIF ELEKTROMANYETİK YANKI.",
-        "[RADYO: MERKÜR SİNYALİ #14] KUZEY KUTBU KRATERLERİNDE DONMUŞ BUZ ANOMALİSİ.",
-        "[RADYO: MERKÜR SİNYALİ #15] SONDALAR İÇİN ACİL İLETİŞİM PENCERESİ AÇILDI."
+        "[RADYO: MERKÜR SİNYALİ #03] İNCE EKSOSFER KATMANINDA HELYUM TESPİT EDİLDİ."
     ]
 });
 
@@ -1104,19 +818,7 @@ const venus = gezegenOlustur({
     signals:[
         "[RADYO: VENÜS SİNYALİ #01] SERA ETKİSİ MAKSİMUM. YÜZEY SICAKLIĞI 465 C.",
         "[RADYO: VENÜS SİNYALİ #02] YOĞUN SÜLFÜRİK ASİT BULUT KATMANI RADYOYU EMİYOR.",
-        "[RADYO: VENÜS SİNYALİ #03] ATMOSFERİK BASINÇ: 92 DÜNYA ATMOSFERİ.",
-        "[RADYO: VENÜS SİNYALİ #04] TERSİNE DÖNME HAREKETİ (RETROGRAD) DEVAM EDİYOR.",
-        "[RADYO: VENÜS SİNYALİ #05] AKTİF VOLKANİK PÜSKÜRME DALGALARI ALGILANDI.",
-        "[RADYO: VENÜS SİNYALİ #06] İYONOSFERİK PLAZMA KUŞAĞI KARARSIZ.",
-        "[RADYO: VENÜS SİNYALİ #07] YÜZEYDE KAYA ERİME NOKTASI AŞILDI.",
-        "[RADYO: VENÜS SİNYALİ #08] KARSILIKLI GÜNEŞ KÜTLEÇEKİMİ REZONANSI AKTİF.",
-        "[RADYO: VENÜS SİNYALİ #09] COĞRAFİ FORMASYON: MAXWELL MONTES DAĞ SİSTEMİ.",
-        "[RADYO: VENÜS SİNYALİ #10] ELEKTROMANYETİK ŞİMŞEK FIRTINASI GÜRÜLTÜSÜ.",
-        "[RADYO: VENÜS SİNYALİ #11] KARBONDİOKSİT ORANI %96.5 SEVİYESİNDE.",
-        "[RADYO: VENÜS SİNYALİ #12] ÜST ATMOSFERDE SÜRATLİ JET RÜZGARI AKIMI.",
-        "[RADYO: VENÜS SİNYALİ #13] ZAYIF İÇ DİNAMO ETKİSİ NEDENİYLE MANYETİK ALAN YOK.",
-        "[RADYO: VENÜS SİNYALİ #14] VERA RUPES FAY HATTI BOYUNCA SİSMİK AKTİVİTE.",
-        "[RADYO: VENÜS SİNYALİ #15] VENÜS GEÇİŞİ TARAMA PROTOKOLÜ BAŞARIYLA TAMAMLANDI."
+        "[RADYO: VENÜS SİNYALİ #03] ATMOSFERİK BASINÇ: 92 DÜNYA ATMOSFERİ."
     ]
 });
 
@@ -1128,19 +830,7 @@ const earth = gezegenOlustur({
     signals:[
         "[RADYO: DÜNYA SİNYALİ #01] BİYOSFERİK AKTİVİTE VE OKSİJEN DENGESİ NORMAL.",
         "[RADYO: DÜNYA SİNYALİ #02] MANYETİK KUTUP ALANI VAN ALLEN KUŞAKLARINI BESLİYOR.",
-        "[RADYO: DÜNYA SİNYALİ #03] İNSAN KAYNAKLI RADYO DALGASI FREKANSLARI YAYILIYOR.",
-        "[RADYO: DÜNYA SİNYALİ #04] OKYANUS AKINTILARI TERMAL DÖNGÜYÜ KORUYOR.",
-        "[RADYO: DÜNYA SİNYALİ #05] AKTİF LEVHA TEKTONİĞİ SİSMİK VERİLERİ AKTARIYOR.",
-        "[RADYO: DÜNYA SİNYALİ #06] STRATOSFERİK OZON TABAKASI RADYASYONU FİLTRELİYOR.",
-        "[RADYO: DÜNYA SİNYALİ #07] AY'IN GELGİT ÇEKİMİ DÜZENLİ SALINIM YAPIYOR.",
-        "[RADYO: DÜNYA SİNYALİ #08] KUTUP BÖLGELERİNDE AURORA BOREALİS IŞIMALARI.",
-        "[RADYO: DÜNYA SİNYALİ #09] BULUT ÖRTÜSÜ KÜRESEL ALBEDO ORANINI KORUYOR.",
-        "[RADYO: DÜNYA SİNYALİ #10] İÇ ÇEKİRDEK DÖNME HIZI MANTO İLE SENKRONİZE.",
-        "[RADYO: DÜNYA SİNYALİ #11] METEOROLOJİK UYDU AĞI FREKANSLARI AKTİF.",
-        "[RADYO: DÜNYA SİNYALİ #12] İYONOSFERDE RADYO DALgası YANSITMASI KARARLI.",
-        "[RADYO: DÜNYA SİNYALİ #13] BİYOLOJİK ÇEŞİTLİLİK VERİTABANI BAĞLANTISI GÜVENLİ.",
-        "[RADYO: DÜNYA SİNYALİ #14] KARBON DÖNGÜSÜ DENGEDE, BAĞLANTI OPTİMAL.",
-        "[RADYO: DÜNYA SİNYALİ #15] GÜNEŞ SİSTEMİ ANA KOMUTA MERKEZİ YANITI ALINDI."
+        "[RADYO: DÜNYA SİNYALİ #03] İNSAN KAYNAKLI RADYO DALgası FREKANSLARI YAYILIYOR."
     ]
 });
 
@@ -1152,19 +842,7 @@ const mars = gezegenOlustur({
     signals:[
         "[RADYO: MARS SİNYALİ #01] KIZIL DEMİR OKSİT TOZ FIRTINASI ALAN KAPLIYOR.",
         "[RADYO: MARS SİNYALİ #02] OLYMPUS MONS VOLKANİK TABANINDA SİSMİK DURGUNLUK.",
-        "[RADYO: MARS SİNYALİ #03] KUTUP BUZULLARINDA DONMUŞ KARBONDİOKSİT TESPİT EDİLDİ.",
-        "[RADYO: MARS SİNYALİ #04] İNCE ATMOSFER BASINCI: 0.006 DÜNYA ATMOSFERİ.",
-        "[RADYO: MARS SİNYALİ #05] VALLERİS MARİNERİS KANYONUNDA RÜZGAR REZONANSI.",
-        "[RADYO: MARS SİNYALİ #06] GEÇMİŞ SU YATAKLARINDA MİNERAL ANALİZİ SÜRÜYOR.",
-        "[RADYO: MARS SİNYALİ #07] KÜRESEL DİNAMO MANYETİK ALANI SÖNMÜŞ DURUMDA.",
-        "[RADYO: MARS SİNYALİ #08] PHOBOS VE DEİMOS UYDULARI YÖRÜNGE TARAMASINDA.",
-        "[RADYO: MARS SİNYALİ #09] GECE SICAKLIĞI -120 C DERECEYE KADAR DÜŞÜYOR.",
-        "[RADYO: MARS SİNYALİ #10] GÜNEŞ PANELİ ENERJİ VERİMLİLİĞİ DÜŞÜK SEVİYEDE.",
-        "[RADYO: MARS SİNYALİ #11] YÜZEYDEKİ ROBOTİK SONDALARIN VERİ AKIŞI AKTİF.",
-        "[RADYO: MARS SİNYALİ #12] YERALTI TUZLU SU CEPLERİne DAİR RADAR YANKISI.",
-        "[RADYO: MARS SİNYALİ #13] KIZIL GÖKYÜZÜ DAĞILIM SPEKTRUMU DOĞRULANDI.",
-        "[RADYO: MARS SİNYALİ #14] MEVSİMSEL KUTUP ERİMESİ BAŞLANGICI GÖZLENDİ.",
-        "[RADYO: MARS SİNYALİ #15] GELECEK İNSANLI GÖREVLER İÇİN İNİŞ BÖLGESİ TARANIYOR."
+        "[RADYO: MARS SİNYALİ #03] KUTUP BUZULLARINDA DONMUŞ KARBONDİOKSİT TESPİT EDİLDİ."
     ]
 });
 
@@ -1175,20 +853,7 @@ const jupiter = gezegenOlustur({
     description:"Jüpiter kendi etrafında en hızlı dönen gezegendir (sadece 9.9 saat).",
     signals:[
         "[RADYO: JÜPİTER SİNYALİ #01] DEV KIRMIZI LEKE FIRTINASI GÜRÜLTÜSü YAYILIYOR.",
-        "[RADYO: JÜPİTER SİNYALİ #02] GÜNEŞ SİSTEMİNİN EN GÜÇLÜ MANYETİK ALANI AKTİF.",
-        "[RADYO: JÜPİTER SİNYALİ #03] IO UYDUSUNDAN GELEN VOLKANİK PLAZMA AKINTISI.",
-        "[RADYO: JÜPİTER SİNYALİ #04] EUROPA UYDUSUNUN BUZLU OKYANUS YANKISI.",
-        "[RADYO: JÜPİTER SİNYALİ #05] DEVASA RADYASYON KUŞAKLARI SONDALARI TEHDİT EDİYOR.",
-        "[RADYO: JÜPİTER SİNYALİ #06] AMONYAK VE HİDROJEN BULUTLARINDA ŞİMŞEK ÇAKMALARI.",
-        "[RADYO: JÜPİTER SİNYALİ #07] KİTLEÇEKİMİ DESTEĞİYLE KUYRUKLU YILDIZLARI SAPTIRIYOR.",
-        "[RADYO: JÜPİTER SİNYALİ #08] HIZLI DÖNÜŞ NEDENİYLE EKVATORDA DEV ÇIKINTI.",
-        "[RADYO: JÜPİTER SİNYALİ #09] METALİK SIVI HİDROJEN TABAKASINDA DİNAMO AKIMI.",
-        "[RADYO: JÜPİTER SİNYALİ #10] GANYMEDE UYDUSUNUN KENDİ MANYETİK ALANI TESPİT EDİLDİ.",
-        "[RADYO: JÜPİTER SİNYALİ #11] CALLİSTO'NUN ESKİ KRATERLİ YÜZEY YANKISI.",
-        "[RADYO: JÜPİTER SİNYALİ #12] 9.9 SAATLİK KISA GÜN DÖNGÜSÜ VERİLERİ.",
-        "[RADYO: JÜPİTER SİNYALİ #13] ÜST ATMOSFERDE AURORA HALAKALARI PARLIYOR.",
-        "[RADYO: JÜPİTER SİNYALİ #14] İÇ ISI YAYILIMI GÜNEŞ'TEN ALDIĞINDAN FAZLA.",
-        "[RADYO: JÜPİTER SİNYALİ #15] DEV GAZ DEVİ KÜTLEÇEKİM MERKEZİ DOĞRULANDI."
+        "[RADYO: JÜPİTER SİNYALİ #02] GÜNEŞ SİSTEMİNİN EN GÜÇLÜ MANYETİK ALANI AKTİF."
     ]
 });
 
@@ -1199,20 +864,7 @@ const saturn = gezegenOlustur({
     description:"Satürn kendi etrafındaki dönüşünü 10.5 saatte hızlıca tamamlar.",
     signals:[
         "[RADYO: SATÜRN SİNYALİ #01] BUZ VE KAYA HALKALARI ARASINDA ÇARPIŞMA SESLERİ.",
-        "[RADYO: SATÜRN SİNYALİ #02] TİTAN UYDUSUNUN YOĞUN AZOT ATMOSFERİ TARANIYOR.",
-        "[RADYO: SATÜRN SİNYALİ #03] KUZEY KUTBUMDAKİ ALTIGEN FIRTİNA GÖRÜNTÜSÜ AKTİF.",
-        "[RADYO: SATÜRN SİNYALİ #04] DÜŞÜK YOĞUNLUK: SU ÜSTÜNDE YÜZEBİLECEK YAPIDA.",
-        "[RADYO: SATÜRN SİNYALİ #05] CASSİNİ BOŞLUĞUNDAN GEÇEN RADYO DALGASI YANKISI.",
-        "[RADYO: SATÜRN SİNYALİ #06] ENCELADUS UYDUSUNUN BUZ FIRKATI PÜSKÜRTÜLERİ.",
-        "[RADYO: SATÜRN SİNYALİ #07] HİDROJEN VE HELYUM YAĞMURLARI ÇEKİRDEĞİne İNİYOR.",
-        "[RADYO: SATÜRN SİNYALİ #08] RADYAL HALKA DALGALANMALARI TESPİT EDİLDİ.",
-        "[RADYO: SATÜRN SİNYALİ #09] MAGNETOSFERİK DÖNGÜ GÜNEŞ RÜZGARIYla DEĞİŞİYOR.",
-        "[RADYO: SATÜRN SİNYALİ #10] MİMAS UYDUSUNUN DEV KRATERİNDEN YANKI.",
-        "[RADYO: SATÜRN SİNYALİ #11] HIZLI KENDİ ETRAFINDA DÖNÜŞ İNDÜKSİYONU YÜKSEK.",
-        "[RADYO: SATÜRN SİNYALİ #12] İÇ ISI ÜRETİMİ HELYUM ÇÖKELMESİYLE SAĞLANIYOR.",
-        "[RADYO: SATÜRN SİNYALİ #13] ÜST ATMOSFERDE ALTIGEN DALGA FORMÜLÜ DOĞRULANDI.",
-        "[RADYO: SATÜRN SİNYALİ #14] RINGSYSTEM GEOMETRİK DÖNGÜSü ANALİZ EDİLİYOR.",
-        "[RADYO: SATÜRN SİNYALİ #15] DEV HALKA SİSTEMİ İLETİŞİM KÖPRÜSÜ AÇIK."
+        "[RADYO: SATÜRN SİNYALİ #02] TİTAN UYDUSUNUN YOĞUN AZOT ATMOSFERİ TARANIYOR."
     ]
 });
 
@@ -1223,20 +875,7 @@ const uranus = gezegenOlustur({
     description:"Uranüs eksen yatıklığı nedeniyle yan yatmış şekilde 17.2 saatte döner.",
     signals:[
         "[RADYO: URANÜS SİNYALİ #01] YAN YATMIŞ 97 DERECELİK EKSEN AÇISI SİNYALİ BÜKÜYOR.",
-        "[RADYO: URANÜS SİNYALİ #02] DONMUŞ SU, AMONYAK VE METAN BUZ DEPOSU AKTİF.",
-        "[RADYO: URANÜS SİNYALİ #03] GÜNEŞ SİSTEMİNİN EN SOĞUK ATMOSFERİ: -224 C.",
-        "[RADYO: URANÜS SİNYALİ #04] TUHAF VE ASİMETRİK MANYETİK ALAN YAPISI.",
-        "[RADYO: URANÜS SİNYALİ #05] KOYU RENKLİ İNCE HALKA SİSTEMİ TARANIYOR.",
-        "[RADYO: URANÜS SİNYALİ #06] HAREKETLİ UYDULARIN YÖRÜNGE KESİŞMELERİ.",
-        "[RADYO: URANÜS SİNYALİ #07] ÜST ATMOSFERDE SOLUK METAN BULUTU DÖNGÜSÜ.",
-        "[RADYO: URANÜS SİNYALİ #08] UZUN KUTUP GECE VE GÜNDÜZ DÖNGÜLERİ BAŞLADI.",
-        "[RADYO: URANÜS SİNYALİ #09] İÇ ISI YAYINIMI NEREDEYSE SIFIR SEVİYESİNDE.",
-        "[RADYO: URANÜS SİNYALİ #10] TİTANIA VE OBERON UYDULARINDAN RADAR YANKISI.",
-        "[RADYO: URANÜS SİNYALİ #11] RETROGRAD (TERS) DÖNÜŞ ÖZELLİĞİ DOĞRULANDI.",
-        "[RADYO: URANÜS SİNYALİ #12] MAGNETOSFER KUYRUĞU VİBRASYON YAYIYOR.",
-        "[RADYO: URANÜS SİNYALİ #13] SÜRTÜNME KAYNAKLI ZAYIF RADYO FREKANSLARI.",
-        "[RADYO: URANÜS SİNYALİ #14] BUZ DEVİ İÇ ÇEKİRDEK BASINÇ VERİLERİ AKTARILIYOR.",
-        "[RADYO: URANÜS SİNYALİ #15] UZAY SONDASI GEÇİŞ TELEMETRİSİ ALINDI."
+        "[RADYO: URANÜS SİNYALİ #02] DONMUŞ SU, AMONYAK VE METAN BUZ DEPOSU AKTİF."
     ]
 });
 
@@ -1247,20 +886,7 @@ const neptune = gezegenOlustur({
     description:"Neptün kendi ekseninde 16.1 saatte dönerken 1 yılı 165 Dünya yılı sürer.",
     signals:[
         "[RADYO: NEPTÜN SİNYALİ #01] GÜNEŞ SİSTEMİNİN EN ŞİDDETLİ RÜZGARI: 2100 KM/S.",
-        "[RADYO: NEPTÜN SİNYALİ #02] KANLI MAVİ METAN BULUTU DÖNGÜSü AKTİF.",
-        "[RADYO: NEPTÜN SİNYALİ #03] BÜYÜK KARANLIK LEKE FIRTINASI GÖZLEMLENİYOR.",
-        "[RADYO: NEPTÜN SİNYALİ #04] TRİTON UYDUSUNUN TERS YÖNLÜ YÖRÜNGE HAREKETİ.",
-        "[RADYO: NEPTÜN SİNYALİ #05] ELMAS YAĞMURU OLUŞTURAN YÜKSEK BASINÇLI MANTO.",
-        "[RADYO: NEPTÜN SİNYALİ #06] İÇERDEN GELEN FAZLA ISI RADYASYON YAYIYOR.",
-        "[RADYO: NEPTÜN SİNYALİ #07] MANYETİK EKSEN MERKEZDEN OLDUKÇA SAPMIŞ DURUMDA.",
-        "[RADYO: NEPTÜN SİNYALİ #08] İNCE ARK HALKALARI RADARDA TESPİT EDİLDİ.",
-        "[RADYO: NEPTÜN SİNYALİ #09] GÜNEŞ'TEN EN UZAK RESMİ GEZEGEN İLETİŞİMİ.",
-        "[RADYO: NEPTÜN SİNYALİ #10] TRİTON'UN AZOT GEYSERİ PÜSKÜRTÜLERİ.",
-        "[RADYO: NEPTÜN SİNYALİ #11] 16 SAATLİK HIZLI GÜN DÖNGÜSÜ TELEMETRİSİ.",
-        "[RADYO: NEPTÜN SİNYALİ #12] İYONOSFERDE PLAZMA DALGASI SALINIMLARI.",
-        "[RADYO: NEPTÜN SİNYALİ #13] DERİN UZAY İLETİŞİM KANALI ENGELLENDİ / GÜÇLENDİRİLDİ.",
-        "[RADYO: NEPTÜN SİNYALİ #14] BUZ DEPOSU ÇEKİRDEK YOĞUNLUK ÖLÇÜMÜ TAMAM.",
-        "[RADYO: NEPTÜN SİNYALİ #15] NEPTÜNYEN DÖNGÜ SİNYALİ SABİTLENDİ."
+        "[RADYO: NEPTÜN SİNYALİ #02] KANLI MAVİ METAN BULUTU DÖNGÜSü AKTİF."
     ]
 });
 
@@ -1351,21 +977,8 @@ scene.add(cometTail);
 cometCore.userData = { 
     name: "Halley Kuyruklu Yıldızı", sinif: "Kuyruklu Yıldız", size: 4, speed: 0.008, a: 680, b: 220, angle:0, audioFreq:600, diameter:"11 km", mass:"2.2 x 10^14 kg", gravity:"0.002 m/s^2", year:"75 Dünya yılı", temp:"-220 C", description:"Halley eliptik yörüngeli gök cismidir.", 
     signals:[
-        "[RADYO: HALLEY #01] BUZLU ÇEKİRDEK GÜNEŞ'E YAKLAŞTIKÇA GAZ PÜSKÜRTÜYOR.",
-        "[RADYO: HALLEY #02] ORGANİK KARBON BİLEŞİKLERİ BUHARLAŞIYOR.",
-        "[RADYO: HALLEY #03] İYON KUYRUĞU GÜNEŞ RÜZGARIYLA TERS YÖNE UZANIYOR.",
-        "[RADYO: HALLEY #04] TOZ BULUTU İZİ DÜNYA YÖRÜNGE HATTINLA KESİŞİYOR.",
-        "[RADYO: HALLEY #05] 75 YILLIK YÖRÜNGE DÖNGÜSÜ TELEMETRİSİ AKTİF.",
-        "[RADYO: HALLEY #06] KÖMÜR KARASI ÇEKİRDEK ALBEDOSU %3 SEVİYESİNDE.",
-        "[RADYO: HALLEY #07] ÇÖZÜNEN SU BUZU MOLEKÜLLERİ SPEKTRUMDA GÖRÜLÜYOR.",
-        "[RADYO: HALLEY #08] OORT BULUTU KÖKENLİ ELİPTİK YÖRÜNGE DOĞRULANDI.",
-        "[RADYO: HALLEY #09] GÜNEŞ ISISIYLA TERMAL GENLEŞME DALGALARI.",
-        "[RADYO: HALLEY #10] MİKRO GÖKTAŞI FIRTINASI İZ BIRAKIYOR.",
-        "[RADYO: HALLEY #11] ÇEKİRDEK DÖNME EKSENİNDE DÜZENSİZ SALINIM.",
-        "[RADYO: HALLEY #12] 1986 GEÇİŞ VERİLERİYLE KARŞILAŞTIRMA YAPILIYOR.",
-        "[RADYO: HALLEY #13] DERİN UZAY TOZ PARÇACIK YOĞUNLUĞU ARTIYOR.",
-        "[RADYO: HALLEY #14] SPEKTROSKOPİK ANALİZ: SİYANÜR VE AMONYAK İZLERİ.",
-        "[RADYO: HALLEY #15] KUYRUKLU YILDIZ İLETİŞİM KANALI AÇIK."
+        "[RADYO: HALLEY #01] BUZLU ÇEKİRDEk GÜNEŞ'E YAKLAŞTIKÇA GAZ PÜSKÜRTÜYOR.",
+        "[RADYO: HALLEY #02] ORGANİK KARBON BİLEŞİKLERİ BUHARLAŞIYOR."
     ],
     page:"halley.html" 
 };
@@ -1415,20 +1028,7 @@ sunGroup.userData = {
     description: "Güneş sistemi'nin merkezindeki devasa yıldız.",
     signals:[
         "[RADYO: GÜNEŞ SİNYALİ #01] ÇEKİRDEKTE NÜKLEER FÜZYON (PROTON-PROTON) AKTİF.",
-        "[RADYO: GÜNEŞ SİNYALİ #02] FOTOKÜRE SICAKLIĞI 5500 KELVİN SEVİYESİNDE.",
-        "[RADYO: GÜNEŞ SİNYALİ #03] KORONAL KÜTLE ATIMI (CME) DÜNYA YÖNÜNE FIRLATILDI.",
-        "[RADYO: GÜNEŞ SİNYALİ #04] GÜNEŞ LEKELERİNDE GÜÇLÜ MANYETİK ALAN YOĞUNLAŞMASI.",
-        "[RADYO: GÜNEŞ SİNYALİ #05] KORONA TABAKASI SICAKLIĞI 2 MİLYON DERECE.",
-        "[RADYO: GÜNEŞ SİNYALİ #06] HELYOSFER DIŞ SINIRLARINA GÜNEŞ RÜZGARI POMPALANIYOR.",
-        "[RADYO: GÜNEŞ SİNYALİ #07] 11 YILLIK MANYETİK DÖNGÜ AKTİVİTE ZİRVESİNDE.",
-        "[RADYO: GÜNEŞ SİNYALİ #08] X-IŞINI FLAŞLARI İYONOSFERİ DOĞRUDAN ETKİLİYOR.",
-        "[RADYO: GÜNEŞ SİNYALİ #09] PLAZMA DALGALARI FOTOKÜREDEN DIŞARI YAYILIYOR.",
-        "[RADYO: GÜNEŞ SİNYALİ #10] GÜNEŞ'İN TOPLAM KÜTLESİ SİSTEMİN %99.8'İNİ OLUŞTURUYOR.",
-        "[RADYO: GÜNEŞ SİNYALİ #11] NÖTRİNO AKIŞI YER ALTI DETAKTÖRLERİ TARAFINDAN DOĞRULANDI.",
-        "[RADYO: GÜNEŞ SİNYALİ #12] İÇ DİNAMO HAREKETİ GÜÇLÜ MANYETO-PLAZMA ÜRETİYOR.",
-        "[RADYO: GÜNEŞ SİNYALİ #13] GÜNEŞ RÜZGARI HIZI SANİYEDE 650 KİLOMETRE.",
-        "[RADYO: GÜNEŞ SİNYALİ #14] SPEKTROSKOPİK HİDROJEN SPEKTRUMU NORMAL.",
-        "[RADYO: GÜNEŞ SİNYALİ #15] ANA YILDIZ KOMUTANLIK İLETİŞİM KANALI AÇIK."
+        "[RADYO: GÜNEŞ SİNYALİ #02] FOTOKÜRE SICAKLIĞI 5500 KELVİN SEVİYESİNDE."
     ]
 };
 
@@ -1805,6 +1405,7 @@ aramaInput.addEventListener("keydown", e=>{ if(e.key==="Enter") aramaYap(); });
 
 const select1=document.getElementById("gezegen1");
 const select2=document.getElementById("gezegen2");
+
 [...planets, sunGroup].forEach(p=>{
     if(p.userData.name){
         select1.appendChild(new Option(p.userData.name, p.userData.name));
