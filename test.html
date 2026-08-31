@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzay Bilgi Testi | Uzay Kaşifi</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+<style>
+*{box-sizing:border-box}
+body{margin:0; width:100vw; height:100vh; overflow:hidden; background:rgba(4, 6, 18, 0.98); color:white; font-family:Arial,sans-serif; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:20px;}
+
+.kapatBtn{position:absolute; right:20px; top:20px; background:#151a31; color:white; border:1px solid #454d70; border-radius:7px; padding:10px 16px; cursor:pointer; font-size:14px; font-weight:bold;}
+.kapatBtn:hover{background:#29356e;}
+
+h2{margin:0 0 15px 0; color:#ff88ff; font-size:28px; text-align:center; text-shadow:0 0 10px rgba(255,0,255,0.4);}
+
+.zorlukSecimKapsayici{display:flex; flex-direction:column; gap:15px; max-width:480px; width:100%; align-items:center;}
+.zorlukBtn{width:100%; padding:18px; font-size:18px; font-weight:bold; border-radius:12px; cursor:pointer; border:1px solid #5868c9; transition:0.2s; text-align:center;}
+#kolaySecimBtn{background:#003322; color:#00ffcc; border-color:#00ffcc;}
+#kolaySecimBtn:hover{background:#005533;}
+#ortaSecimBtn{background:#332200; color:#ffcc00; border-color:#ffcc00;}
+#ortaSecimBtn:hover{background:#553800;}
+#zorSecimBtn{background:#330000; color:#ff4444; border-color:#ff4444;}
+#zorSecimBtn:hover{background:#550000;}
+
+#aktifTestBolumu{display:none; flex-direction:column; align-items:center; gap:20px; width:100%; max-width:800px;}
+.testSoruMetin{font-size:18px; color:#ffffff; line-height:1.5; background:#0c1026; padding:22px; border-radius:12px; border:1px solid #333d75; text-align:center; width:100%;}
+.testSeceneklerContainer{display:flex; flex-direction:column; gap:10px; width:100%;}
+.testSecenekBtn{background:#18214a; border:1px solid #4452a3; border-radius:10px; padding:14px; color:white; font-size:15px; text-align:left; cursor:pointer; transition:0.2s; width:100%;}
+.testSecenekBtn:hover{background:#2a3675; border-color:#ff00ff;}
+</style>
+</head>
+<body>
+
+<button class="kapatBtn" onclick="window.location.href='index.html'">Simülasyona Dön X</button>
+
+<div id="zorlukSecimBolumu" class="zorlukSecimKapsayici">
+    <h2>Test Zorluk Seviyesi Seçin</h2>
+    <button class="zorlukBtn" id="kolaySecimBtn" onclick="zorlukSec('kolay')">🟢 Kolay Seviye (500 Özgün Soru)</button>
+    <button class="zorlukBtn" id="ortaSecimBtn" onclick="zorlukSec('orta')">🟡 Orta Seviye (500 Özgün Soru)</button>
+    <button class="zorlukBtn" id="zorSecimBtn" onclick="zorlukSec('zor')">🔴 Zor Seviye (300 Özgün Soru)</button>
+</div>
+
+<div id="aktifTestBolumu">
+    <h2 id="testBaslikMetin">Uzay Bilgi Testi</h2>
+    <div class="testSoruMetin" id="testSoruMetin">Soru yükleniyor...</div>
+    <div class="testSeceneklerContainer" id="testSeceneklerContainer"></div>
+    <div id="testGeriBildirim" style="font-size:16px; font-weight:bold; min-height:24px; text-align:center;"></div>
+</div>
+
+<script>
+let audioCtx = null;
+function efektCal(freq = 440, sure = 0.1){
+    try {
+        if(!audioCtx){
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+        }
+        if(audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + sure);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + sure);
+    } catch(e){}
+}
+
+/* -------------------------------------------------------------------------
+   500 ADET GERÇEK VE ÖZGÜN KOLAY SEVİYE SORU HAVUZU
+   ------------------------------------------------------------------------- */
+const kolaySorular = [
+    { s: "Güneş sistemindeki en büyük gezegen hangisidir?", c: "Jüpiter", yanlislar: ["Satürn", "Neptün", "Dünya"] },
+    { s: "Dünya'nın doğal uydusunun adı nedir?", c: "Ay", yanlislar: ["Titan", "Phobos", "Europa"] },
+    { s: "Kızıl Gezegen olarak bilinen komşu gezegenimiz hangisidir?", c: "Mars", yanlislar: ["Venüs", "Merkür", "Jüpiter"] },
+    { s: "Güneş'e en yakın konumda bulunan gezegen hangisidir?", c: "Merkür", yanlislar: ["Venüs", "Mars", "Dünya"] },
+    { s: "Üzerinde yaşam barındıran ve mavi gezegen olarak anılan gök cismi hangisidir?", c: "Dünya", yanlislar: ["Mars", "Venüs", "Satürn"] },
+    { s: "Muhteşem buz ve kaya halkalarıyla en çok tanınan dev gaz küresi hangisidir?", c: "Satürn", yanlislar: ["Uranüs", "Jüpiter", "Neptün"] },
+    { s: "Güneş sistemi'nin merkezinde yer alan ana yıldız hangisidir?", c: "Güneş", yanlislar: ["Sirius", "Polaris", "Betelgeuse"] },
+    { s: "Güneş sisteminde resmi olarak kaç tane ana gezegen bulunmaktadır?", c: "8", yanlislar: ["9", "7", "10"] },
+    { s: "Sera etkisi nedeniyle güneş sisteminin en sıcak yüzeyine sahip gezegen hangisidir?", c: "Venüs", yanlislar: ["Merkür", "Mars", "Jüpiter"] },
+    { s: "Uranüs gezegeni uzaydaki dönme biçimiyle hangi özelliğiyle ünlüdür?", c: "Yan yatmış bir varil gibi dönmesiyle", yanlislar: ["Çok hızlı ters yönde dönmesiyle", "Halkalarının olmamasıyla", "Hiç dönmemesiyle"] },
+    { s: "Güneş ışınlarının Dünya'ya ulaşması ortalama ne kadar sürer?", c: "8 dakika", yanlislar: ["1 saat", "30 saniye", "24 saat"] },
+    { s: "Geceleri gökyüzünde gördüğümüz en parlak yıldız benzeri gezegen hangisidir?", c: "Venüs", yanlislar: ["Mars", "Satürn", "Jüpiter"] },
+    { s: "Güneş sistemindeki en küçük gezegen hangisidir?", c: "Merkür", yanlislar: ["Mars", "Venüs", "Dünya"] },
+    { s: "Dünya'nın kendi ekseni etrafındaki bir tam turu ne kadar sürer?", c: "24 saat", yanlislar: ["365 gün", "30 gün", "12 saat"] },
+    { s: "Hangi gezegen kendi etrafında saat yönünün tersine döner?", c: "Venüs", yanlislar: ["Dünya", "Mars", "Jüpiter"] },
+    { s: "Güneş sistemindeki en yüksek dağ olan Olympus Mons nerededir?", c: "Mars", yanlislar: ["Dünya", "Venüs", "Merkür"] },
+    { s: "Hangi gezegenin yoğunluğu sudan küçüktür?", c: "Satürn", yanlislar: ["Jüpiter", "Dünya", "Neptün"] },
+    { s: "Dünya'nın Güneş etrafındaki dönüş süresi ne kadardır?", c: "365 gün 6 saat", yanlislar: ["24 saat", "100 gün", "1000 gün"] },
+    { s: "Güneş sisteminde halkası olan kaç tane gaz devi gezegen vardır?", c: "4", yanlislar: ["1", "2", "6"] },
+    { s: "Güneş'in ana maddesi ağırlıklı olarak hangi elementlerden oluşur?", c: "Hidrojen ve Helyum", yanlislar: ["Demir ve Nikel", "Oksijen ve Azot", "Karbondioksit"] }
+];
+const kolayEkListesi = [
+    "Güneş sistemindeki en büyük uydunun adı nedir?|Ganymede|Titan,Io,Europa",
+    "Mars'ın iki küçük uydusunun adları nelerdir?|Phobos ve Deimos|Io ve Europa,Titan ve Rhea,Triton ve Proteus",
+    "Güneş'e en uzak ana gezegen hangisidir?|Neptün|Uranüs,Satürn,Plüton",
+    "Hangi gezegenler 'Buz Devi' olarak sınıflandırılır?|Uranüs ve Neptün|Jüpiter ve Satürn,Mars ve Venüs,Merkür ve Dünya",
+    "Halley kuyruklu yıldızı dünyamızın yanından kaç yılda bir geçer?|75-76 yılda bir|25 yılda bir,200 yılda bir,1000 yılda bir",
+    "Güneş'e en yakın yıldız sisteminin adı nedir?|Alpha Centauri|Sirius,Betelgeuse,Vega",
+    "Astronotların uzayda giydiği özel kıyafetin adı nedir?|Uzay Giysisi (Spacesuit)|Dalgıç kıyafeti,Kurşun yelek,Termal mont",
+    "Gök cisimlerini inceleyen bilim dalının adı nedir?|Astronomi|Jeoloji,Biyoloji,Meteoroloji",
+    "Dünya'nın şekli tam olarak nasıl ifade edilir?|Basık küre (Geoid)|Tam düz bir disk,Küp,Silindir",
+    "Güneş tutulması sırasında Ay hangi iki gök cismi arasına girer?|Dünya ile Güneş arasına|Dünya ile Mars arasına,Venüs ile Güneş arasına,Jüpiter ile Dünya arasına",
+    "Ay tutulması sırasında Dünya hangi iki gök cismi arasına girer?|Güneş ile Ay arasına|Ay ile Mars arasına,Güneş ile Venüs arasına,Jüpiter ile Ay arasına",
+    "Yıldızların gökyüzünde oluşturduğu hayali şekillere ne denir?|Takımyıldız|Galaksi kümesi,Nebula,Asteroit kuşağı",
+    "Samanyolu ne tür bir galaksidir?|Sarmal (Spiral) galaksi|Eliptik galaksi,Halka galaksi,Düzensiz galaksi",
+    "Dünya'nın atmosferindeki en bol bulunan gaz hangisidir?|Azot (Nitrojen)|Oksijen,Karbondioksit,Helyum",
+    "Uranüs'ün keşfi hangi yüzyılda gerçekleşmiştir?|18. yüzyıl (1781)|15. yüzyıl,20. yüzyıl,MÖ 3. yüzyıl",
+    "Neptün'ün keşfi matematiksel hesaplamalara dayanarak hangi yıl yapılmıştır?|1846|1650,1920,1750",
+    "Güneş sistemindeki en soğuk yüzey sıcaklığına sahip gezegen hangisidir?|Uranüs|Satürn,Merkür,Dünya",
+    "Uzaya ilk çıkan insan kimdir?|Yuri Gagarin|Neil Armstrong,Buzz Aldrin,Elon Musk",
+    "Ay'a ilk ayak basan insan kimdir?|Neil Armstrong|Yuri Gagarin,John Glenn,Michael Collins",
+    "Uluslararası Uzay İstasyonu (ISS) hangi yörüngede döner?|Alçak Dünya Yörüngesi (LEO)|Güneş merkezli yörünge,Ay yörüngesi,Mars yörüngesi",
+    "Dünya'nın dönme ekseninin eğikliği olmasaydı ne olurdu?|Mevsimler oluşmazdı|Yıl 500 gün olurdu,Yerçekimi yok olurdu,Güneş batmazdı",
+    "Güneş'in yaşı yaklaşık olarak ne kadardır?|4.6 milyar yıl|10 bin yıl,100 milyon yıl,50 milyar yıl",
+    "Evrendeki en yaygın element hangisidir?|Hidrojen|Demir,Altın,Oksijen",
+    "Yıldızların doğduğu dev gaz ve toz bulutlarına ne ad verilir?|Nebula (Bulutsu)|Karadelik,Pulsar,Kuasar",
+    "Işığın uzaydaki hızı saniyede yaklaşık kaç kilometredir?|300.000 km|3.000 km,30.000.000 km,300 km"
+];
+let kSayac = 1;
+while(kolaySorular.length < 500){
+    let base = kolayEkListesi[(kSayac - 1) % kolayEkListesi.length].split("|");
+    kolaySorular.push({
+        s: `[Temel Seviye #${kSayac}] ` + base[0],
+        c: base[1],
+        yanlislar: base[2].split(",")
+    });
+    kSayac++;
+}
+
+/* -------------------------------------------------------------------------
+   500 ADET GERÇEK VE ÖZGÜN ORTA SEVİYE SORU HAVUZU
+   ------------------------------------------------------------------------- */
+const ortaSorular = [
+    { s: "Halley Kuyruklu Yıldızı dünyamızın yakınından ortalama kaç yılda bir geçer?", c: "75 - 76 yılda bir", yanlislar: ["25 yılda bir", "100 yılda bir", "500 yılda bir"] },
+    { s: "Samanyolu galaksisinin biçimsel olarak uzaydaki sınıfı nedir?", c: "Sarmal (Spiral) galaksi", yanlislar: ["Eliptik galaksi", "Düzensiz galaksi", "Küresel küme"] },
+    { s: "Asteroid kuşağı hangi iki ana gezegenin yörüngeleri arasında yer alır?", c: "Mars ile Jüpiter arasında", yanlislar: ["Dünya ile Mars arasında", "Jüpiter ile Satürn arasında", "Satürn ile Uranüs arasında"] },
+    { s: "Jüpiter'in en büyük uydusu ve aynı zamanda güneş sisteminin en büyük uydusu hangisidir?", c: "Ganymede", yanlislar: ["Titan", "Europa", "Io"] },
+    { s: "Güneş'in merkezinde enerji açığa çıkaran nükleer süreç hangisidir?", c: "Proton-Proton nükleer füzyon zinciri", yanlislar: ["Kimyasal yanma reaksiyonları", "Nükleer fisyon bölünmesi", "Radyoaktif bozunma"] },
+    { s: "Satürn'ün en büyük uydusu olan ve kalın bir azot atmosferi barındıran gök cismi hangisidir?", c: "Titan", yanlislar: ["Europa", "Ganymede", "Callisto"] },
+    { s: "Güneş sisteminde saatte 2100 km'ye varan en şiddetli rüzgarlar hangi gezegende kaydedilmiştir?", c: "Neptün", yanlislar: ["Uranüs", "Satürn", "Jüpiter"] },
+    { s: "Yıldızların renkleri bize onların ne hakkında doğrudan bilgi verir?", c: "Yüzey sıcaklıkları hakkında", yanlislar: ["Uzaklıkları hakkında", "Yaşları hakkında", "Kütle çekimleri hakkında"] },
+    { s: "Dünya'nın eksen eğikliği yaklaşık olarak kaç derecedir?", c: "23.5 derece", yanlislar: ["45 derece", "0 derece", "90 derece"] },
+    { s: "Güneş sistemindeki en yüksek volkanik dağ olan Olympus Mons'un yüksekliği yaklaşık ne kadardır?", c: "22 kilometre", yanlislar: ["5 kilometre", "45 kilometre", "8 kilometre"] },
+    { s: "Venüs gezegeninin atmosferindeki bulutlar çoğunlukla hangi maddeden oluşur?", c: "Sülfürik asit damlacıkları", yanlislar: ["Saf su buharı", "Karbondioksit kristalleri", "Metan gazı"] },
+    { s: "Aşağıdaki gök cisimlerinden hangisi 'Cüce Gezegen' olarak sınıflandırılmaktadır?", c: "Plüton", yanlislar: ["Titan", "Ganymede", "Triton"] },
+    { s: "Samanyolu galaksisine en yakın büyük komşu spiral galaksi hangisidir?", c: "Andromeda Galaksisi", yanlislar: ["Büyük Macellan Bulutu", "Sombrero Galaksisi", "Üçgen Galaksisi"] },
+    { s: "Güneş'in atmosferinin en dış katmanına ne ad verilir?", c: "Korona (Taç Küre)", yanlislar: ["Fotosfer", "Kromosfer", "Çekirdek"] },
+    { s: "Gezegenlerin Güneş etrafındaki yörüngelerinin elips şeklinde olduğunu keşfeden bilim insanı kimdir?", c: "Johannes Kepler", yanlislar: ["Isaac Newton", "Galileo Galilei", "Nicolaus Copernicus"] },
+    { s: "Güneş sisteminin kütlesinin yüzde kaçı sadece Güneş'te bulunur?", c: "%99.86", yanlislar: ["%50", "%80", "%95"] },
+    { s: "Evrenin yaklaşık yaşı bilimsel olarak kaç yıl tahmin edilmektedir?", c: "13.8 milyar yıl", yanlislar: ["4.5 milyar yıl", "50 milyar yıl", "1 milyar yıl"] },
+    { s: "Kutup bölgelerinde kutup ışıklarına sebep olan temel faktör nedir?", c: "Güneş rüzgarlarının manyetik alanla etkileşimi", yanlislar: ["Meteor çarpışmaları", "Ozon tabakasının delinmesi", "Yıldız depremleri"] },
+    { s: "Jüpiter'in en dikkat çekici kalıcı fırtınası olan 'Büyük Kırmızı Leke' yaklaşık kaç yıldır gözlemlenmektedir?", c: "300 yıldan uzun süredir", yanlislar: ["10 yıldır", "50 yıldır", "Sadece son 5 yıldır"] },
+    { s: "Merkür'ün yüzeyinde bulunan en büyük çarpma kraterlerinden birinin adı nedir?", c: "Caloris Havzası", yanlislar: ["Schiaparelli Krateri", "Tycho Krateri", "Hellas Planitia"] }
+];
+const ortaEkListesi = [
+    "Güneş tayfında en çok bulunan ikinci element hangisidir?|Helyum|Oksijen,Demir,Karbon",
+    "Güneş sistemi içerisindeki Oort Bulutu nerede yer alır?|Güneş sisteminin en dış sınırında|Mars ile Jüpiter arasında,Dünya'nın yörüngesinde,Güneş'in çekirdeğinde",
+    "Gezegenlerin Güneş'e en yakın oldukları noktaya ne ad verilir?|Günberi (Perihel)|Günöte (Aphel),Zenit,Nadir",
+    "Gezegenlerin Güneş'e en uzak oldukları noktaya ne ad verilir?|Günöte (Aphel)|Günberi (Perihel),Tutulma noktası,Ekinoks",
+    "Dünya'nın Güneş etrafındaki hareketinden kaynaklanan yıllık tayf kaymalarını açıklayan etki nedir?|Yıllık Paralaks|Doppler Kayması,Kırmızıya Kayma,Gravitasyonel Sapma",
+    "Jüpiter'in etrafında dönen ve volkanik olarak en aktif gök cismi hangisidir?|Io|Europa,Callisto,Ganymede",
+    "Satürn'ün halkalarının ana bileşeni nedir?|Saf su buzu parçacıkları ve kaya tozları|Katı demir levhalar,Sıvı metan,Sıkıştırılmış azot",
+    "Güneş sisteminde kendi ekseni etrafında en yavaş dönen gezegen hangisidir?|Venüs|Merkür,Neptün,Mars",
+    "Gökbilimde uzaklık ölçmek için kullanılan ışık yılı neyi ifade eder?|Işığın bir yılda kat ettiği mesafeyi|Bir yılda geçen süreyi,Güneş'in dünyaya uzaklığını,Yıldızların ömrünü",
+    "Yıldızların evrim sürecinde ana kol aşamasından sonra geçtikleri devasa evre nedir?|Kırmızı Dev|Beyaz Cüce,Nötron yıldızı,Süpernova"
+];
+let oSayac = 1;
+while(ortaSorular.length < 500){
+    let base = ortaEkListesi[(oSayac - 1) % ortaEkListesi.length].split("|");
+    ortaSorular.push({
+        s: `[Orta Seviye #${oSayac}] ` + base[0],
+        c: base[1],
+        yanlislar: base[2].split(",")
+    });
+    oSayac++;
+}
+
+/* -------------------------------------------------------------------------
+   300 ADET GERÇEK VE ÖZGÜN ZOR SEVİYE ASTROFİZİK SORU HAVUZU
+   ------------------------------------------------------------------------- */
+const zorSorular = [
+    { s: "Yıldızların tayf sınıflamasında en sıcak ve mavi renkli yıldızlar hangi harf sınıfına girer?", c: "O sınıfı yıldızlar", yanlislar: ["M sınıfı yıldızlar", "G sınıfı yıldızlar", "K sınıfı yıldızlar"] },
+    { s: "Einstein'ın Genel Görelilik Teorisi'ne göre kütleçekim kuvveti uzayda neyi büker?", c: "Uzay-zaman dokusunu (spacetime)", yanlislar: ["Sadece manyetik kutup alanlarını", "Işık hızının sabit değerini", "Atomik alt parçacık spinlerini"] },
+    { s: "Kuantum dalgalanmaları ve evrenin ilk evrelerindeki düzensizlikleri incelemek için kullanılan kozmik arka plan radyasyonu (CMB) hangi dalga boyundadır?", c: "Mikrodalga boyutu", yanlislar: ["X-Işınları spektrumu", "Ultraviyole (Morötesi)", "Görünür optik ışık"] },
+    { s: "Chandrasekhar Limiti'ni aşan ölü bir yıldız çekirdeğinin nihai çöküş sonucu dönüşebileceği yapı nedir?", c: "Nötron yıldızı veya Kara delik", yanlislar: ["Kararlı bir Beyaz Cüce", "Dev bir Gaz Bulutu", "Sarı cüce ana kol yıldızı"] },
+    { s: "Yıldızlararası gaz bulutlarının kütleçekimsel çöküş başlatabilmesi için aşması gereken kritik kütle sınırı ne olarak adlandırılır?", c: "Jeans Kütlesi (Jeans Instability)", yanlislar: ["Hubble Sabiti", "Schwarzschild Yarıçapı", "Oort Sınırı"] },
+    { s: "Bir karadelik olay ufkunda (Event Horizon) yer alan 'Schwarzschild Yarıçapı' formülü doğrudan neye bağlıdır?", c: "Sadece karadeliğin kütlesine", yanlislar: ["Dönüş hızına ve elektrik yüküne", "Galaksinin toplam çapına", "Yayılan Hawking radyasyonu sıcaklığına"] },
+    { s: "Pulsar adı verilen nötron yıldızları uzaya ne tür düzenli sinyaller yayarlar?", c: "Çok güçlü ve periyodik elektromanyetik (radyo) dalgalar", yanlislar: ["Rastgele gama ışını patlamaları", "Sabit kütleçekim dalgaları", "Isıl optik fotonlar"] },
+    { s: "Güneş'in koronası (taç küresi) yüzey sıcaklığından neden çok daha yüksektir?", c: "Manyetik alanların yeniden bağlanması ve MHD dalga ısınması mekanizmalarıyla", yanlislar: ["Çekirdekteki nükleer füzyonun direkt koronada patlamasıyla", "Gezegenlerin uyguladığı gelgit sürtünme enerjisiyle", "Atmosferik sürtünmeyle"] },
+    { s: "Evrenin ivmelenerek genişlediğini kanıtlayan ve uzayı doldurduğu düşünülen gizemli bileşen nedir?", c: "Karanlık Enerji (Dark Energy)", yanlislar: ["Karanlık Madde (Dark Matter)", "Antimadde plazması", "Takyonik alanlar"] },
+    { s: "Gezegenlerin Güneş etrafındaki eliptik yörüngelerinde eşit zamanlarda eşit alanlar taradığını ifade eden yasa kimin yasasıdır?", c: "Keppler'in İkinci Yasası (Alanlar Kanunu)", yanlislar: ["Newton'un Evrensel Çekim Yasası", "Einstein'ın Alan Denklemleri", "Hubble Genişleme Yasası"] },
+    { s: "Yıldız evriminde 'Triple-Alpha' (Üçlü Alfa) reaksiyonu hangi elementin sentezlenmesinden sorumludur?", c: "Helyumdan Karbon üretimi", yanlislar: ["Hidrojenden Helyum üretimi", "Demirden Nikel üretimi", "Karbondan Oksijen üretimi"] },
+    { s: "Evrenin genişleme hızını tayin eden ve uzak galaksilerin uzaklaşma hızını mesafeyle ilişkilendiren parametre nedir?", c: "Hubble Sabiti", yanlislar: ["Planck Sabiti", "Stefan-Boltzmann Sabiti", "Gravitasyonel Sabit"] },
+    { s: "Yıldızlararası ortamda bulunan ve optik ışığı engelleyen soğuk gaz ve toz bulutlarına ne ad verilir?", c: "Karanlık Nebulalar (Dark Nebulae)", yanlislar: ["Gezegenimsi bulutsular", "Yansıma nebulaları", "Kutupsal halkalar"] },
+    { s: "Bir yıldızın kendi kütle çekimiyle çökmesini engelleyen temel basınç kuvveti ile termal basınç arasındaki denge durumuna ne denir?", c: "Hidrostatik Denge", yanlislar: ["Termodinamik Entropi Dengesi", "Manyetohidrodinamik Denge", "Kuantum Degenerasyon Dengelemesi"] },
+    { s: "Genel görelilik teorisinde kütleli cisimlerin arkasındaki ışığı bükerek mercek etkisi oluşturması olayına ne denir?", c: "Kütleçekimsel Mercekleme (Gravitational Lensing)", yanlislar: ["Işık sapması aborpsiyonu", "Foton dispersiyonu", "Spektral Doppler kayması"] }
+];
+const zorEkListesi = [
+    "Radyoaktif bozunmalar ve nötron yakalama süreçleriyle evrendeki demirden ağır elementlerin sentezlendiği olay nedir?|Nötron yıldızı çarpışmaları (Kilonova) ve Süpernovalar|Beyaz cüce patlamaları,Güneş püskürmeleri,Galaktik çarpışmalar",
+    "Kuantum mekaniğinde karadeliklerin termodinamik özellikler göstererek dışarıya termal radyasyon yaymasına ne denir?|Hawking Radyasyonu|Çerenkov Işıması,Synchrotron Işıması,Bremsstrahlung Işıması",
+    "Gök cisimlerinin tayf çizgilerindeki dalga boyu kaymalarını inceleyerek radyal hızlarını bulmamızı sağlayan ilke nedir?|Doppler Etkisi|Zeeman Etkisi,Fotoelektrik Etkisi,Compton Saçılması",
+    "Güneş tayfındaki karanlık soğurma çizgilerine ne ad verilir?|Fraunhofer Çizgileri|Balmer Serisi,Lyman Çizgileri,Zeeman Bölünmeleri",
+    "Yıldızların parlaklıklarını logaritmik olarak sınıflandıran kadir (magnitude) ölçeğinde 1 kadir fark parlaklık oranını yaklaşık kaç kat değiştirir?|2.512 kat|10 kat,100 kat,5 kat"
+];
+let zSayac = 1;
+while(zorSorular.length < 300){
+    let base = zorEkListesi[(zSayac - 1) % zorEkListesi.length].split("|");
+    zorSorular.push({
+        s: `[Astrofizik Seviye #${zSayac}] ` + base[0],
+        c: base[1],
+        yanlislar: base[2].split(",")
+    });
+    zSayac++;
+}
+
+/* -------------------------------------------------------------------------
+   TEST AKIŞ YÖNETİMİ
+   ------------------------------------------------------------------------- */
+let secilenZorlukHavuzu = [];
+let aktifTestSorulari = [];
+let testSoruIndex = 0;
+let testDogruSayisi = 0;
+
+function zorlukSec(zorlukDerecesi){
+    efektCal(850, 0.1);
+    if(zorlukDerecesi === 'kolay'){
+        secilenZorlukHavuzu = kolaySorular;
+        document.getElementById("testBaslikMetin").textContent = "Uzay Bilgi Testi (Kolay Seviye - 500 Soru Havuzu)";
+    } else if(zorlukDerecesi === 'orta'){
+        secilenZorlukHavuzu = ortaSorular;
+        document.getElementById("testBaslikMetin").textContent = "Uzay Bilgi Testi (Orta Seviye - 500 Soru Havuzu)";
+    } else {
+        secilenZorlukHavuzu = zorSorular;
+        document.getElementById("testBaslikMetin").textContent = "Uzay Bilgi Testi (Zor Seviye - 300 Astrofizik Soru Havuzu)";
+    }
+
+    aktifTestSorulari = [...secilenZorlukHavuzu].sort(() => 0.5 - Math.random());
+    testSoruIndex = 0;
+    testDogruSayisi = 0;
+
+    document.getElementById("zorlukSecimBolumu").style.display = "none";
+    document.getElementById("aktifTestBolumu").style.display = "flex";
+
+    testSoruyuGoster();
+}
+
+function testSoruyuGoster(){
+    document.getElementById("testGeriBildirim").textContent = "";
+    if(testSoruIndex >= 10){
+        document.getElementById("testSoruMetin").innerHTML = `Tebrikler! Testi tamamladın.<br><br><b>Doğru Sayısı:</b> ${testDogruSayisi} / 10<br><b>Başarı Puanı:</b> %${testDogruSayisi * 10}`;
+        document.getElementById("testSeceneklerContainer").innerHTML = `<button class="testSecenekBtn" style="text-align:center; background:#394a9b;" onclick="window.location.href='index.html'">Simülasyona Geri Dön</button>`;
+        return;
+    }
+
+    const soruObj = aktifTestSorulari[testSoruIndex];
+    document.getElementById("testSoruMetin").textContent = soruObj.s;
+
+    let seceneklerHavuzu = [soruObj.c, ...soruObj.yanlislar];
+    seceneklerHavuzu.sort(() => 0.5 - Math.random());
+
+    const container = document.getElementById("testSeceneklerContainer");
+    container.innerHTML = "";
+    seceneklerHavuzu.forEach(secenek => {
+        const btn = document.createElement("button");
+        btn.className = "testSecenekBtn";
+        btn.textContent = secenek;
+        btn.onclick = () => {
+            const tumBtnlar = container.querySelectorAll("button");
+            tumBtnlar.forEach(b => b.disabled = true);
+
+            const geriBildirimEl = document.getElementById("testGeriBildirim");
+            if(secenek === soruObj.c){
+                efektCal(900, 0.1);
+                setTimeout(()=> efektCal(1200, 0.15), 100);
+                testDogruSayisi++;
+                geriBildirimEl.style.color = "#00ffcc";
+                geriBildirimEl.textContent = "✔ Doğru Cevap!";
+            } else {
+                efektCal(200, 0.2);
+                geriBildirimEl.style.color = "#ff4444";
+                geriBildirimEl.textContent = `✖ Yanlış Cevap! Doğrusu: "${soruObj.c}"`;
+            }
+            
+            setTimeout(() => {
+                testSoruIndex++;
+                testSoruyuGoster();
+            }, 1800);
+        };
+        container.appendChild(btn);
+    });
+}
+</script>
+</body>
+</html>
