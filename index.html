@@ -18,7 +18,24 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 .tarihPaneli{position:fixed; top:7.5vh; left:0; right:0; text-align:center; z-index:20; pointer-events:none;}
 .tarihKutusu{display:inline-block; padding:0.5vh 1.2vw; background:rgba(6,10,30,.85); border:1px solid #414b88; border-radius:20px; font-size:clamp(11px, 1.2vw, 14px); color:#00ffcc; letter-spacing:1px; box-shadow:0 0 10px rgba(0,255,204,.2);}
 
-.solUstPanel{position:fixed; left:1.5vw; top:2vh; z-index:50; display:flex; flex-direction:column; gap:8px; width:clamp(240px, 26vw, 360px);}
+/* Sol Üst Panel Düzenlemesi: Telefonda taşmayı önlemek için kaydırma çubuğu eklendi */
+.solUstPanel{
+    position:fixed; 
+    left:1.5vw; 
+    top:2vh; 
+    bottom: 2vh; /* Alttan boşluk bırakıldı */
+    z-index:50; 
+    display:flex; 
+    flex-direction:column; 
+    gap:8px; 
+    width:clamp(240px, 26vw, 360px);
+    max-height: 94vh;
+    overflow-y: auto; /* Şıklar/butonlar sığmazsa kaydırma çubuğu çıkar, altta kalmaz */
+    padding-right: 4px;
+}
+.solUstPanel::-webkit-scrollbar { width: 4px; }
+.solUstPanel::-webkit-scrollbar-thumb { background: #414b88; border-radius: 4px; }
+
 .zamanHizi{padding:8px 10px; background:rgba(5,7,19,.90); border:1px solid #414b88; border-radius:12px;}
 .zamanHiziBaslik{color:#aeb6e9; font-size:clamp(10px, 1.1vw, 12px); margin-bottom:5px; text-align:center;}
 .hizButonlari{display:flex; gap:4px; flex-wrap:wrap; justify-content:center;}
@@ -70,7 +87,25 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 
 .not{padding:10px 14px; background:rgba(5,8,20,.87); border:1px solid #414b88; border-radius:12px; color:#dce0ff; font-size:clamp(11px, 1.1vw, 13px); line-height:1.4;}
 
-.sagUstPanel{position:fixed; top:2vh; right:1.5vw; z-index:50; display:flex; flex-direction:column; gap:8px; align-items:flex-end; width:clamp(220px, 24vw, 340px);}
+/* Sağ Üst Panel Düzenlemesi */
+.sagUstPanel{
+    position:fixed; 
+    top:2vh; 
+    bottom: 2vh;
+    right:1.5vw; 
+    z-index:50; 
+    display:flex; 
+    flex-direction:column; 
+    gap:8px; 
+    align-items:flex-end; 
+    width:clamp(220px, 24vw, 340px);
+    max-height: 94vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.sagUstPanel::-webkit-scrollbar { width: 4px; }
+.sagUstPanel::-webkit-scrollbar-thumb { background: #414b88; border-radius: 4px; }
+
 .arama{display:flex; gap:6px; padding:6px; background:rgba(6,8,20,.9); border:1px solid #414b88; border-radius:12px; width:100%;}
 #aramaInput{width:100%; padding:8px 10px; background:#0b0e20; color:white; border:1px solid #3d456f; border-radius:8px; outline:none; font-size:clamp(11px, 1.1vw, 13px);}
 #aramaInput:focus{border-color:#7180dc;}
