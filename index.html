@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Uzay Kaşifi | 3D Güneş Sistemi ve İnteraktif Uzay Simülasyonu</title>
+<title>Uzay Kaşifi</title>
 <meta name="google-site-verification" content="MvAljxFIG21JPon3kJDfscK-sioECFxFxSrZHV3ghJI" />
 <meta name="description" content="Güneş sistemindeki gezegenleri 3 boyutlu incele, zamanı hızlandır ve uzay hakkında merak ettiğin soruları keşfet.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
@@ -226,13 +226,14 @@ html,body{margin:0; width:100%; height:100%; overflow:hidden; background:#000; c
 .robotSecenekBtn{background:#18214a; border:1px solid #4452a3; border-radius:8px; padding:7px 9px; color:white; font-size:11px; text-align:left; cursor:pointer; transition:0.2s;}
 .robotSecenekBtn:hover{background:#2a3675; border-color:#00ffcc;}
 
-.bilgi{position:fixed; left:1.5vw; bottom:2vh; width:clamp(280px, 30vw, 390px); padding:16px; background:rgba(5,7,19,.95); border:1px solid #5663a8; border-radius:17px; z-index:40; display:none; box-shadow:0 0 25px rgba(45,60,140,.18);}
+/* BİLGİ PANELİ: Tıklanamama sorunu z-index ve pointer-events düzeltilerek giderildi */
+.bilgi{position:fixed; left:1.5vw; bottom:2vh; width:clamp(280px, 30vw, 390px); padding:16px; background:rgba(5,7,19,.98); border:1px solid #5663a8; border-radius:17px; z-index:300; display:none; box-shadow:0 0 25px rgba(45,60,140,.3); pointer-events: auto;}
 .bilgi h2{margin:0 0 6px; font-size:clamp(20px, 2.2vw, 27px);}
 .bilgi p{color:#cdd1e6; line-height:1.4; font-size:clamp(12px, 1.1vw, 14px);}
-.kapat{position:absolute; right:15px; top:15px; background:#151a31; color:white; border:1px solid #454d70; border-radius:7px; padding:8px 14px; cursor:pointer; font-size:14px; font-weight:bold;}
+.kapat{position:absolute; right:15px; top:15px; background:#151a31; color:white; border:1px solid #454d70; border-radius:7px; padding:8px 14px; cursor:pointer; font-size:14px; font-weight:bold; z-index:10;}
 .kapat:hover{background:#29356e;}
-.butongrubu{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;}
-.buton{border:0; border-radius:8px; padding:8px 12px; background:#29356e; color:white; cursor:pointer; font-weight:bold; font-size:clamp(11px, 1vw, 13px);}
+.butongrubu{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; position:relative; z-index:10;}
+.buton{border:0; border-radius:8px; padding:8px 12px; background:#29356e; color:white; cursor:pointer; font-weight:bold; font-size:clamp(11px, 1vw, 13px); pointer-events: auto;}
 .buton:hover{background:#394a9b;}
 .sesDurumu{font-size:11px; margin-top:6px; color:#00ffcc; font-family:monospace; min-height:16px;}
 
